@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mehedi Hasan | Software Engineer</title>
 
-   <!-- Favicons -->
    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -56,14 +55,16 @@
       animation: fadeIn 1.5s ease-out;
     }
     
-    .subtitle {
-      animation: fadeIn 2s ease-out;
-    }
+  .subtitle {
+  animation: fadeIn 1.5s ease-out;
+  animation-delay: 0.3s; /* Delays the subtitle slightly */
+  animation-fill-mode: backwards; /* Ensures it stays invisible before the delay ends */
+}
   </style>
 </head>
 <body class="bg-gradient-to-br from-black via-slate-950 to-indigo-950">
   <div class="w-screen h-screen flex flex-col items-center justify-center relative">
-    <div class="absolute glow-orb"></div>
+<div class="absolute glow-orb top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
     
     <div class="relative z-10 text-center px-4">
       <h1 class="brand-name text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[0.25em] sm:tracking-[0.3em] mb-6 sm:mb-8">
