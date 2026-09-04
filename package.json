@@ -1,0 +1,42 @@
+{
+  "name": "next-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint:check": "next lint",
+    "lint:fix": "next lint --fix",
+    "type:check": "tsc",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write . --list-different",
+    "check": "pnpm lint:check && pnpm type:check && pnpm format:check",
+    "fix": "pnpm lint:fix && pnpm format:fix",
+    "prepare": "husky",
+    "pre-commit": "pnpm check && pnpm fix"
+  },
+  "dependencies": {
+    "next": "15.2.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.4",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-perfectionist": "^4.10.1",
+    "eslint-plugin-prefer-arrow-functions": "^3.6.2",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@10.7.0"
+}
