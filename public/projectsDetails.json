@@ -1,0 +1,32 @@
+const projects = [
+  {
+    "title": "Lifeflow",
+    "description": "The LifeFlow Blood Donation Application is a user-friendly platform that facilitates blood donation activities. It connects donors with those in need, streamlining the donation process. It includes features for user registration, blood donation requests, donor management, content management, and role-based access control.",
+    "cover": "/lifeflow-ss.jpg",
+    "year": "2023",
+    "live": "https://lifeflowclient.web.app",
+    "client": "https://github.com/thecodermehedi/lifeflow-client",
+    "server": "https://github.com/thecodermehedi/lifeflow-server",
+    "tech": ["MERN", "Tailwind"]
+  },
+  {
+    "title": "HireHarbor",
+    "description": "HireHarbor is a comprehensive job-seeking website designed to provide an intuitive and visually appealing platform for users to discover and apply for various job opportunities. The platform caters to different job types, including On-Site, Remote, Hybrid, and Part-Time positions.",
+    "cover": "/hireharbor-ss.png",
+    "year": "2023",
+    "live": "https://hireharbor.vercel.app",
+    "client": "https://github.com/thecodermehedi/hireharbor-client",
+    "server": "https://github.com/thecodermehedi/hireharbor-server",
+    "tech": ["MERN", "Tailwind"]
+  },
+  {
+    "title": "Techventure",
+    "description": "Techventure is an innovative e-commerce platform specializing in technology and electronics, offering a user-friendly interface for users to explore, add, and manage their favorite tech products. The platform focuses on a seamless user experience, incorporating modern design principles and a range of features to enhance online shopping.",
+    "cover": "/techventure-ss.png",
+    "year": "2023",
+    "live": "https://techventure.vercel.app",
+    "client": "https://github.com/thecodermehedi/techventure-client",
+    "server": "https://github.com/thecodermehedi/techventure-server",
+    "tech": ["MERN", "Tailwind"]
+  }
+]
