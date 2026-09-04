@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Optimizing Node.js Garbage Collection for High-Throughput APIs - mehedi.engineer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#2f3037",
+                        "outline-variant": "#444748",
+                        "surface-container-lowest": "#0e0e10",
+                        "surface-tint": "#c6c6c7",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c6c6cf",
+                        "on-tertiary-container": "#656467",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-tertiary": "#303033",
+                        "surface": "#131315",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "inverse-primary": "#5d5f5f",
+                        "primary": "#ffffff",
+                        "on-background": "#e5e1e4",
+                        "on-primary-fixed": "#1a1c1c",
+                        "surface-container-high": "#2a2a2c",
+                        "on-tertiary-fixed": "#1b1b1e",
+                        "on-secondary-container": "#b4b4bd",
+                        "on-primary-container": "#636565",
+                        "tertiary-fixed-dim": "#c8c6c9",
+                        "tertiary-fixed": "#e4e1e5",
+                        "on-secondary-fixed": "#1a1b22",
+                        "inverse-on-surface": "#313032",
+                        "surface-container-low": "#1c1b1d",
+                        "secondary-fixed": "#e2e1eb",
+                        "outline": "#8e9192",
+                        "on-surface-variant": "#c4c7c8",
+                        "on-tertiary-fixed-variant": "#47464a",
+                        "surface-variant": "#353437",
+                        "surface-bright": "#39393b",
+                        "on-secondary-fixed-variant": "#45464e",
+                        "background": "#131315",
+                        "tertiary-container": "#e4e1e5",
+                        "primary-container": "#e2e2e2",
+                        "surface-container-highest": "#353437",
+                        "on-surface": "#e5e1e4",
+                        "surface-container": "#201f22",
+                        "secondary-container": "#45464e",
+                        "secondary": "#c6c6cf",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e5e1e4",
+                        "on-primary": "#2f3131",
+                        "surface-dim": "#131315",
+                        "tertiary": "#ffffff",
+                        "primary-fixed": "#e2e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-md": "1rem",
+                        "section-gap": "8rem",
+                        "stack-sm": "0.5rem",
+                        "container-max": "1200px",
+                        "content-width": "800px",
+                        "section-gap-mobile": "4rem",
+                        "stack-lg": "2rem",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": [
+                            "JetBrains Mono"
+                        ],
+                        "body-lg": [
+                            "Inter"
+                        ],
+                        "headline-xl-mobile": [
+                            "JetBrains Mono"
+                        ],
+                        "body-md": [
+                            "Inter"
+                        ],
+                        "headline-xl": [
+                            "JetBrains Mono"
+                        ],
+                        "code-block": [
+                            "JetBrains Mono"
+                        ],
+                        "label-sm": [
+                            "JetBrains Mono"
+                        ]
+                    },
+                    "fontSize": {
+                        "headline-md": [
+                            "20px",
+                            {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "body-lg": [
+                            "18px",
+                            {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "headline-xl-mobile": [
+                            "30px",
+                            {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "body-md": [
+                            "16px",
+                            {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "headline-xl": [
+                            "40px",
+                            {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "code-block": [
+                            "14px",
+                            {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "label-sm": [
+                            "12px",
+                            {
+                                "lineHeight": "1",
+                                "letterSpacing": "0.1em",
+                                "fontWeight": "500"
+                            }
+                        ]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: theme('colors.surface-container-lowest');
+            color: theme('colors.on-background');
+            font-family: theme('fontFamily.body-md');
+        }
+
+        .code-comment::before {
+            content: "// ";
+            color: theme('colors.on-surface-variant');
+        }
+
+        pre {
+            background-color: theme('colors.surface-container-low');
+            border: 1px solid theme('colors.outline-variant');
+            padding: theme('spacing.stack-md');
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: theme('fontFamily.code-block');
+            font-size: theme('fontSize.code-block');
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col pt-16 selection:bg-primary/20 selection:text-primary bg-[#0e0e10]">
+    <!-- TopNavBar -->
+    <header
+        class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-200 ease-in-out">
+        <div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+            <a class="font-headline-md text-headline-md font-bold text-primary tracking-tight"
+                href="./index.html">mehedi.engineer</a>
+            <div class="flex items-center gap-6">
+                <nav class="hidden md:flex gap-6 items-center font-label-sm text-label-sm">
+                    <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                        href="./index.html#experience">experience</a>
+                    <a class="text-on-surface-variant transition-colors lowercase" href="./work.html">work</a>
+                    <a class="text-white border-b border-white pb-1 transition-colors lowercase"
+                        href="./writing.html">writing</a>
+                    <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                        href="./index.html#contact">contact</a>
+                </nav>
+                <div class="flex items-center gap-2 font-label-sm text-label-sm">
+                    <button
+                        class="border border-outline-variant text-on-surface hover:text-primary transition-colors px-2 py-1 rounded lowercase">en</button>
+                    <button
+                        class="border border-outline-variant text-on-surface hover:text-primary transition-colors px-2 py-1 rounded lowercase">dark</button>
+                    <button class="md:hidden text-on-surface-variant p-1 ml-2">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center w-full px-gutter py-stack-lg md:py-section-gap-mobile mt-16">
+        <article class="max-w-content-width w-full flex flex-col gap-stack-lg">
+            <!-- Breadcrumb / Back Navigation -->
+            <div
+                class="flex items-center gap-stack-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer w-fit font-label-sm text-label-sm uppercase">
+                <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                <a href="./writing.html">Back to Writing</a>
+            </div>
+            <!-- Header Section -->
+            <header class="flex flex-col gap-stack-md border-b border-outline-variant/30 pb-stack-lg">
+                <h1
+                    class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary tracking-tight font-bold">
+                    Optimizing Node.js Garbage Collection for High-Throughput APIs
+                </h1>
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-code-block text-label-sm border-t border-outline-variant/30 pt-4 mt-4">
+                    <span class="">Published: March 15, 2024</span>
+                    <span class="">Last Updated: March 18, 2024</span>
+                </div>
+                <div class="flex gap-2 flex-wrap mt-stack-sm items-center">
+                    <span
+                        class="font-code-block text-code px-2 py-1 rounded text-xs uppercase tracking-widest border border-outline-variant/50 text-on-surface">node.js</span>
+                    <span
+                        class="font-code-block text-code px-2 py-1 rounded text-xs uppercase tracking-widest border border-outline-variant/50 text-on-surface">performance</span>
+                    <span
+                        class="font-code-block text-code px-2 py-1 rounded text-xs uppercase tracking-widest border border-outline-variant/50 text-on-surface">architecture</span>
+                </div>
+            </header>
+            <!-- Hero Image -->
+            <div
+                class="w-full h-64 md:h-96 border border-outline-variant/30 bg-surface-container-highest overflow-hidden mt-stack-md relative rounded">
+                <img alt="Cover Image for Optimizing Node.js Garbage Collection"
+                    class="w-full h-full object-cover opacity-80 mix-blend-screen"
+                    data-alt="A highly detailed, technical, monochromatic abstract representation of data flowing through digital memory blocks. Dark mode aesthetic, stark white lines against a deep black background, visualizing garbage collection algorithms and high-throughput server architecture. Precision engineering feel, sharp contrasts, no gradients."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUbZEVRxHx358S2nfT2PxVUrp5S70OChRZiBXDWrQsuABALtRjVjMWDkj1BHFRH_UHjyuRl0hqIA-O71ZgS5QguDh6moctXXk1IfaM-xpm2EJy4HodgdkZRqRAzSnnOGgnSIBqd_WDFmBT2EggsE6jUiHGB6VCga-qH4U7lkD7GOUJztAdW5sDsnvBs8WPhKlI2hovbFs97Yfk_PfBInJEFu57Bbqlgk5rGmXbx3LfL_l0E_Xp7YoQwo8vtQgg_xDa2txcpzy_pQ" />
+            </div>
+            <!-- Article Body -->
+            <div class="font-body-md text-body-md text-on-surface flex flex-col gap-stack-lg mt-stack-md">
+                <p class="font-body-lg text-body-lg text-primary leading-relaxed font-body-lg">
+                    When building high-throughput APIs in Node.js, the V8 engine's garbage collection (GC) pauses can
+                    become a significant bottleneck. While Node is inherently asynchronous, GC operations are largely
+                    synchronous and can introduce unpredictable latency spikes under heavy load. This article explores
+                    advanced techniques for minimizing allocation overhead and tuning V8 flags for predictable
+                    performance.
+                </p>
+                <h2
+                    class="font-headline-md text-headline-md text-primary mt-stack-md border-b border-outline-variant/30 pb-stack-sm font-bold">
+                    The Anatomy of a GC Pause</h2>
+                <p class="leading-relaxed text-on-surface-variant font-body-md">
+                    V8's memory is divided into the Young Generation (New Space) and the Old Generation (Old Space).
+                    Scavenge collections in the Young Generation are fast but frequent. Mark-Sweep-Compact collections
+                    in the Old Generation are expensive "stop-the-world" events. The key to predictable latency is
+                    avoiding premature promotion of objects to the Old Space.
+                </p>
+                <h2
+                    class="font-headline-md text-headline-md text-primary mt-stack-md border-b border-outline-variant/30 pb-stack-sm font-bold">
+                    Object Pooling: A Case Study</h2>
+                <p class="leading-relaxed text-on-surface-variant font-body-md">
+                    Consider a high-frequency trading API processing thousands of JSON payloads per second. Allocating a
+                    new object for every incoming request quickly fills the New Space, triggering frequent Scavenge
+                    operations and eventually polluting the Old Space. Let's look at a common anti-pattern versus an
+                    optimized approach.
+                </p>
+                <div class="flex flex-col gap-unit">
+                    <span
+                        class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest font-bold">Listing
+                        1: Unoptimized Allocation vs Object Pool</span>
+                    <pre class="bg-surface-container/30 border-outline-variant/50 rounded"><code
+                            class="text-on-surface font-code-block"><span class="text-on-surface-variant">//
+                                ANTI-PATTERN: Allocating on every request</span>
+                            app.post('/trade', (req, res) =&gt; {
+                            <span class="text-primary">const payload = new TradePayload(req.body); // Allocation</span>
+                            processTrade(payload);
+                            res.sendStatus(200);
+                            });
+
+                            <span class="text-on-surface-variant">// OPTIMIZED: Reusing objects from a pool</span>
+                            const payloadPool = new ObjectPool(TradePayload, 1000);
+
+                            app.post('/trade', (req, res) =&gt; {
+                            <span class="text-primary">const payload = payloadPool.acquire();</span>
+                            payload.hydrate(req.body); // Mutation instead of allocation
+
+                            processTrade(payload);
+
+                            <span class="text-primary">payloadPool.release(payload);</span>
+                            res.sendStatus(200);
+                            });</code></pre>
+                </div>
+                <p class="leading-relaxed text-on-surface-variant font-body-md">
+                    By reusing objects, we keep the allocation rate flat. The `payloadPool` is allocated once during
+                    initialization and resides permanently in the Old Space, entirely bypassing the Scavenge cycle
+                    during request handling.
+                </p>
+                <h2
+                    class="font-headline-md text-headline-md text-primary mt-stack-md border-b border-outline-variant/30 pb-stack-sm font-bold">
+                    Tuning V8 Flags for Predictability</h2>
+                <p class="leading-relaxed text-on-surface-variant font-body-md">
+                    While code-level optimizations are paramount, adjusting V8's memory limits can provide breathing
+                    room for bursty workloads. If you have memory to spare, increasing the `max-old-space-size` delays
+                    full GC sweeps.
+                </p>
+                <ul class="flex flex-col gap-stack-sm text-on-surface-variant ml-stack-md font-body-md">
+                    <li class=""><span
+                            class="text-primary font-code-block text-code-block bg-surface-container/30 px-1 py-0.5 rounded">--max-old-space-size=4096</span>
+                        : Increases max memory to 4GB.</li>
+                    <li class=""><span
+                            class="text-primary font-code-block text-code-block bg-surface-container/30 px-1 py-0.5 rounded">--nouse-idle-notification</span>
+                        : Prevents V8 from performing GC during perceived idle times (crucial for latency-sensitive
+                        APIs).</li>
+                    <li class=""><span
+                            class="text-primary font-code-block text-code-block bg-surface-container/30 px-1 py-0.5 rounded">--trace-gc</span>
+                        : Essential for profiling in staging environments to measure pause times.</li>
+                </ul>
+                <h2
+                    class="font-headline-md text-headline-md text-primary mt-stack-md border-b border-outline-variant/30 pb-stack-sm font-bold">
+                    Conclusion</h2>
+                <p class="leading-relaxed text-on-surface-variant font-body-md">
+                    Optimizing Node.js for ultra-low latency requires a shift in mindset from "garbage collection will
+                    handle it" to strict memory management. By minimizing allocations in hot paths, utilizing object
+                    pooling, and understanding V8's generational collector, you can maintain consistent P99 latencies
+                    even under extreme load.
+                </p>
+                <div
+                    class="mt-stack-lg border-t border-outline-variant/30 pt-stack-md flex justify-between items-center">
+                    <div class="flex gap-stack-sm items-center">
+                        <span
+                            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest font-bold">Share:</span>
+                        <a class="text-on-surface hover:text-primary font-label-sm text-label-sm transition-colors uppercase"
+                            href="#">TWITTER</a>
+                        <span class="text-outline-variant/50">|</span>
+                        <a class="text-on-surface hover:text-primary font-label-sm text-label-sm transition-colors uppercase"
+                            href="#">LINKEDIN</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/20 bg-surface">
+        <div
+            class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4 py-8 px-gutter">
+            <div class="font-headline-md text-headline-md font-bold text-primary tracking-tight text-sm">
+                <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                    href="./index.html">mehedi.engineer</a>
+            </div>
+            <div class="font-body-md text-body-md text-on-surface-variant text-xs text-center">© 2026 mehedi.engineer.
+                Built with technical rigor.</div>
+            <div class="flex gap-6 font-label-sm text-label-sm">
+                <a class="text-on-surface-variant hover:text-primary transition-colors lowercase"
+                    href="https://github.com/mehedi-codes">github</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors lowercase"
+                    href="https://linkedin.com/in/mehedi-codes">linkedin</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

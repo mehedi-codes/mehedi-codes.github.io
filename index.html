@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">try {
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        "colors": {
+                            "primary": "#ffffff",
+                            "primary-container": "#e2e2e2",
+                            "on-surface": "#e5e1e4",
+                            "surface-variant": "#353437",
+                            "surface-container-low": "#1c1b1d",
+                            "on-secondary-container": "#b4b4bd",
+                            "background": "#131315",
+                            "tertiary-fixed-dim": "#c8c6c9",
+                            "secondary-fixed-dim": "#c6c6cf",
+                            "surface-container-highest": "#353437",
+                            "on-tertiary-fixed": "#1b1b1e",
+                            "on-secondary-fixed": "#1a1b22",
+                            "on-primary-fixed": "#1a1c1c",
+                            "primary-fixed-dim": "#c6c6c7",
+                            "surface-tint": "#c6c6c7",
+                            "on-surface-variant": "#c4c7c8",
+                            "secondary-container": "#45464e",
+                            "surface-container-high": "#2a2a2c",
+                            "on-error": "#690005",
+                            "on-primary": "#2f3131",
+                            "inverse-surface": "#e5e1e4",
+                            "surface-bright": "#39393b",
+                            "on-tertiary-container": "#656467",
+                            "tertiary-fixed": "#e4e1e5",
+                            "error": "#ffb4ab",
+                            "inverse-primary": "#5d5f5f",
+                            "primary-fixed": "#e2e2e2",
+                            "on-primary-fixed-variant": "#454747",
+                            "on-tertiary": "#303033",
+                            "surface-container": "#201f22",
+                            "surface-dim": "#131315",
+                            "tertiary-container": "#e4e1e5",
+                            "outline": "#8e9192",
+                            "inverse-on-surface": "#313032",
+                            "on-tertiary-fixed-variant": "#47464a",
+                            "tertiary": "#ffffff",
+                            "on-primary-container": "#636565",
+                            "outline-variant": "#444748",
+                            "surface": "#131315",
+                            "on-error-container": "#ffdad6",
+                            "on-secondary-fixed-variant": "#45464e",
+                            "surface-container-lowest": "#0e0e10",
+                            "error-container": "#93000a",
+                            "on-background": "#e5e1e4",
+                            "on-secondary": "#2f3037",
+                            "secondary": "#c6c6cf",
+                            "secondary-fixed": "#e2e1eb"
+                        },
+                        "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                        },
+                        "spacing": {
+                            "max-width": "1280px",
+                            "margin-desktop": "32px",
+                            "gutter": "16px",
+                            "margin-mobile": "16px",
+                            "unit": "4px",
+                            "container-max": "1200px",
+                            "section-gap": "8rem",
+                            "section-gap-mobile": "4rem",
+                            "stack-sm": "1rem",
+                            "stack-lg": "2rem"
+                        },
+                        "fontFamily": {
+                            "code": ["JetBrains Mono"],
+                            "headline-lg": ["JetBrains Mono"],
+                            "label-md": ["JetBrains Mono"],
+                            "label-sm": ["JetBrains Mono"],
+                            "headline-xl": ["JetBrains Mono"],
+                            "headline-md": ["JetBrains Mono"],
+                            "body-sm": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "headline-xl-mobile": ["JetBrains Mono"],
+                            "body-md": ["Inter"]
+                        },
+                        "fontSize": {
+                            "code": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                            "headline-lg": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                            "label-md": ["14px", {"lineHeight": "1", "fontWeight": "500"}],
+                            "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                            "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                            "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                            "headline-xl-mobile": ["30px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                        }
+                    },
+                }
+            }
+        } catch (_e) { }</script>
+    <style>
+        *,
+        ::before,
+        ::after {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        ::backdrop {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-translate-x: 0;
+            --tw-translate-y: 0;
+            --tw-rotate: 0;
+            --tw-skew-x: 0;
+            --tw-skew-y: 0;
+            --tw-scale-x: 1;
+            --tw-scale-y: 1;
+            --tw-pan-x: ;
+            --tw-pan-y: ;
+            --tw-pinch-zoom: ;
+            --tw-scroll-snap-strictness: proximity;
+            --tw-gradient-from-position: ;
+            --tw-gradient-via-position: ;
+            --tw-gradient-to-position: ;
+            --tw-ordinal: ;
+            --tw-slashed-zero: ;
+            --tw-numeric-figure: ;
+            --tw-numeric-spacing: ;
+            --tw-numeric-fraction: ;
+            --tw-ring-inset: ;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: rgb(59 130 246 / 0.5);
+            --tw-ring-offset-shadow: 0 0 #0000;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-colored: 0 0 #0000;
+            --tw-blur: ;
+            --tw-brightness: ;
+            --tw-contrast: ;
+            --tw-grayscale: ;
+            --tw-hue-rotate: ;
+            --tw-invert: ;
+            --tw-saturate: ;
+            --tw-sepia: ;
+            --tw-drop-shadow: ;
+            --tw-backdrop-blur: ;
+            --tw-backdrop-brightness: ;
+            --tw-backdrop-contrast: ;
+            --tw-backdrop-grayscale: ;
+            --tw-backdrop-hue-rotate: ;
+            --tw-backdrop-invert: ;
+            --tw-backdrop-opacity: ;
+            --tw-backdrop-saturate: ;
+            --tw-backdrop-sepia: ;
+            --tw-contain-size: ;
+            --tw-contain-layout: ;
+            --tw-contain-paint: ;
+            --tw-contain-style:
+        }
+
+        /* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+            border-color: #e5e7eb
+        }
+
+        ::after,
+        ::before {
+            --tw-content: ''
+        }
+
+        :host,
+        html {
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        body {
+            margin: 0;
+            line-height: inherit
+        }
+
+        hr {
+            height: 0;
+            color: inherit;
+            border-top-width: 1px
+        }
+
+        abbr:where([title]) {
+            -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: inherit;
+            font-weight: inherit
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit
+        }
+
+        b,
+        strong {
+            font-weight: bolder
+        }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-feature-settings: normal;
+            font-variation-settings: normal;
+            font-size: 1em
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline
+        }
+
+        sub {
+            bottom: -.25em
+        }
+
+        sup {
+            top: -.5em
+        }
+
+        table {
+            text-indent: 0;
+            border-color: inherit;
+            border-collapse: collapse
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: inherit;
+            font-feature-settings: inherit;
+            font-variation-settings: inherit;
+            font-size: 100%;
+            font-weight: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+            color: inherit;
+            margin: 0;
+            padding: 0
+        }
+
+        button,
+        select {
+            text-transform: none
+        }
+
+        button,
+        input:where([type=button]),
+        input:where([type=reset]),
+        input:where([type=submit]) {
+            -webkit-appearance: button;
+            background-color: transparent;
+            background-image: none
+        }
+
+        :-moz-focusring {
+            outline: auto
+        }
+
+        :-moz-ui-invalid {
+            box-shadow: none
+        }
+
+        progress {
+            vertical-align: baseline
+        }
+
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px
+        }
+
+        ::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit
+        }
+
+        summary {
+            display: list-item
+        }
+
+        blockquote,
+        dd,
+        dl,
+        figure,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        hr,
+        p,
+        pre {
+            margin: 0
+        }
+
+        fieldset {
+            margin: 0;
+            padding: 0
+        }
+
+        legend {
+            padding: 0
+        }
+
+        menu,
+        ol,
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        dialog {
+            padding: 0
+        }
+
+        textarea {
+            resize: vertical
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            opacity: 1;
+            color: #9ca3af
+        }
+
+        [role=button],
+        button {
+            cursor: pointer
+        }
+
+        :disabled {
+            cursor: default
+        }
+
+        audio,
+        canvas,
+        embed,
+        iframe,
+        img,
+        object,
+        svg,
+        video {
+            display: block;
+            vertical-align: middle
+        }
+
+        img,
+        video {
+            max-width: 100%;
+            height: auto
+        }
+
+        [hidden]:where(:not([hidden=until-found])) {
+            display: none
+        }
+
+        [type='text'],
+        input:where(:not([type])),
+        [type='email'],
+        [type='url'],
+        [type='password'],
+        [type='number'],
+        [type='date'],
+        [type='datetime-local'],
+        [type='month'],
+        [type='search'],
+        [type='tel'],
+        [type='time'],
+        [type='week'],
+        [multiple],
+        textarea,
+        select {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #fff;
+            border-color: #6b7280;
+            border-width: 1px;
+            border-radius: 0px;
+            padding-top: 0.5rem;
+            padding-right: 0.75rem;
+            padding-bottom: 0.5rem;
+            padding-left: 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            --tw-shadow: 0 0 #0000;
+        }
+
+        [type='text']:focus,
+        input:where(:not([type])):focus,
+        [type='email']:focus,
+        [type='url']:focus,
+        [type='password']:focus,
+        [type='number']:focus,
+        [type='date']:focus,
+        [type='datetime-local']:focus,
+        [type='month']:focus,
+        [type='search']:focus,
+        [type='tel']:focus,
+        [type='time']:focus,
+        [type='week']:focus,
+        [multiple]:focus,
+        textarea:focus,
+        select:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            --tw-ring-inset: var(--tw-empty,
+                    /*!*/
+                    /*!*/
+                );
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: #2563eb;
+            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+            border-color: #2563eb
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #6b7280;
+            opacity: 1
+        }
+
+        ::-webkit-datetime-edit-fields-wrapper {
+            padding: 0
+        }
+
+        ::-webkit-date-and-time-value {
+            min-height: 1.5em;
+            text-align: inherit
+        }
+
+        ::-webkit-datetime-edit {
+            display: inline-flex
+        }
+
+        ::-webkit-datetime-edit,
+        ::-webkit-datetime-edit-year-field,
+        ::-webkit-datetime-edit-month-field,
+        ::-webkit-datetime-edit-day-field,
+        ::-webkit-datetime-edit-hour-field,
+        ::-webkit-datetime-edit-minute-field,
+        ::-webkit-datetime-edit-second-field,
+        ::-webkit-datetime-edit-millisecond-field,
+        ::-webkit-datetime-edit-meridiem-field {
+            padding-top: 0;
+            padding-bottom: 0
+        }
+
+        select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+            print-color-adjust: exact
+        }
+
+        [multiple],
+        [size]:where(select:not([size="1"])) {
+            background-image: initial;
+            background-position: initial;
+            background-repeat: unset;
+            background-size: initial;
+            padding-right: 0.75rem;
+            print-color-adjust: unset
+        }
+
+        [type='checkbox'],
+        [type='radio'] {
+            -webkit-appearance: none;
+            appearance: none;
+            padding: 0;
+            print-color-adjust: exact;
+            display: inline-block;
+            vertical-align: middle;
+            background-origin: border-box;
+            -webkit-user-select: none;
+            user-select: none;
+            flex-shrink: 0;
+            height: 1rem;
+            width: 1rem;
+            color: #2563eb;
+            background-color: #fff;
+            border-color: #6b7280;
+            border-width: 1px;
+            --tw-shadow: 0 0 #0000
+        }
+
+        [type='checkbox'] {
+            border-radius: 0px
+        }
+
+        [type='radio'] {
+            border-radius: 100%
+        }
+
+        [type='checkbox']:focus,
+        [type='radio']:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            --tw-ring-inset: var(--tw-empty,
+                    /*!*/
+                    /*!*/
+                );
+            --tw-ring-offset-width: 2px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-color: #2563eb;
+            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)
+        }
+
+        [type='checkbox']:checked,
+        [type='radio']:checked {
+            border-color: transparent;
+            background-color: currentColor;
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat
+        }
+
+        [type='checkbox']:checked {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+        }
+
+        @media (forced-colors: active) {
+            [type='checkbox']:checked {
+                -webkit-appearance: auto;
+                appearance: auto
+            }
+        }
+
+        [type='radio']:checked {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+        }
+
+        @media (forced-colors: active) {
+            [type='radio']:checked {
+                -webkit-appearance: auto;
+                appearance: auto
+            }
+        }
+
+        [type='checkbox']:checked:hover,
+        [type='checkbox']:checked:focus,
+        [type='radio']:checked:hover,
+        [type='radio']:checked:focus {
+            border-color: transparent;
+            background-color: currentColor
+        }
+
+        [type='checkbox']:indeterminate {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");
+            border-color: transparent;
+            background-color: currentColor;
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media (forced-colors: active) {
+            [type='checkbox']:indeterminate {
+                -webkit-appearance: auto;
+                appearance: auto
+            }
+        }
+
+        [type='checkbox']:indeterminate:hover,
+        [type='checkbox']:indeterminate:focus {
+            border-color: transparent;
+            background-color: currentColor
+        }
+
+        [type='file'] {
+            background: unset;
+            border-color: inherit;
+            border-width: 0;
+            border-radius: 0;
+            padding: 0;
+            font-size: unset;
+            line-height: inherit
+        }
+
+        [type='file']:focus {
+            outline: 1px solid ButtonText;
+            outline: 1px auto -webkit-focus-ring-color
+        }
+
+        .fixed {
+            position: fixed
+        }
+
+        .absolute {
+            position: absolute
+        }
+
+        .relative {
+            position: relative
+        }
+
+        .-left-\[5px\] {
+            left: -5px
+        }
+
+        .top-0 {
+            top: 0px
+        }
+
+        .top-1 {
+            top: 0.25rem
+        }
+
+        .z-50 {
+            z-index: 50
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem
+        }
+
+        .mb-stack-lg {
+            margin-bottom: 2rem
+        }
+
+        .mb-stack-sm {
+            margin-bottom: 1rem
+        }
+
+        .ml-2 {
+            margin-left: 0.5rem
+        }
+
+        .ml-3 {
+            margin-left: 0.75rem
+        }
+
+        .mt-1 {
+            margin-top: 0.25rem
+        }
+
+        .mt-auto {
+            margin-top: auto
+        }
+
+        .flex {
+            display: flex
+        }
+
+        .inline-flex {
+            display: inline-flex
+        }
+
+        .grid {
+            display: grid
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .h-\[10px\] {
+            height: 10px
+        }
+
+        .h-auto {
+            height: auto
+        }
+
+        .h-full {
+            height: 100%
+        }
+
+        .min-h-\[1024px\] {
+            min-height: 1024px
+        }
+
+        .w-\[10px\] {
+            width: 10px
+        }
+
+        .w-full {
+            width: 100%
+        }
+
+        .max-w-container-max {
+            max-width: 1200px
+        }
+
+        .flex-grow {
+            flex-grow: 1
+        }
+
+        .cursor-pointer {
+            cursor: pointer
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr))
+        }
+
+        .flex-row {
+            flex-direction: row
+        }
+
+        .flex-col {
+            flex-direction: column
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap
+        }
+
+        .items-start {
+            align-items: flex-start
+        }
+
+        .items-end {
+            align-items: flex-end
+        }
+
+        .items-center {
+            align-items: center
+        }
+
+        .justify-center {
+            justify-content: center
+        }
+
+        .justify-between {
+            justify-content: space-between
+        }
+
+        .gap-12 {
+            gap: 3rem
+        }
+
+        .gap-2 {
+            gap: 0.5rem
+        }
+
+        .gap-4 {
+            gap: 1rem
+        }
+
+        .gap-6 {
+            gap: 1.5rem
+        }
+
+        .space-y-12> :not([hidden])~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(3rem * var(--tw-space-y-reverse))
+        }
+
+        .rounded {
+            border-radius: 0.125rem
+        }
+
+        .rounded-sm {
+            border-radius: 0.125rem
+        }
+
+        .border {
+            border-width: 1px
+        }
+
+        .border-b {
+            border-bottom-width: 1px
+        }
+
+        .border-l {
+            border-left-width: 1px
+        }
+
+        .border-t {
+            border-top-width: 1px
+        }
+
+        .border-outline-variant {
+            --tw-border-opacity: 1;
+            border-color: rgb(68 71 72 / var(--tw-border-opacity, 1))
+        }
+
+        .border-outline-variant\/20 {
+            border-color: rgb(68 71 72 / 0.2)
+        }
+
+        .border-outline-variant\/30 {
+            border-color: rgb(68 71 72 / 0.3)
+        }
+
+        .border-outline-variant\/50 {
+            border-color: rgb(68 71 72 / 0.5)
+        }
+
+        .bg-primary {
+            --tw-bg-opacity: 1;
+            background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-surface {
+            --tw-bg-opacity: 1;
+            background-color: rgb(19 19 21 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-surface-container-low {
+            --tw-bg-opacity: 1;
+            background-color: rgb(28 27 29 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-surface-container-lowest {
+            --tw-bg-opacity: 1;
+            background-color: rgb(14 14 16 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-surface-container\/30 {
+            background-color: rgb(32 31 34 / 0.3)
+        }
+
+        .bg-surface-variant {
+            --tw-bg-opacity: 1;
+            background-color: rgb(53 52 55 / var(--tw-bg-opacity, 1))
+        }
+
+        .bg-surface\/80 {
+            background-color: rgb(19 19 21 / 0.8)
+        }
+
+        .p-1 {
+            padding: 0.25rem
+        }
+
+        .p-6 {
+            padding: 1.5rem
+        }
+
+        .px-2 {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem
+        }
+
+        .px-gutter {
+            padding-left: 16px;
+            padding-right: 16px
+        }
+
+        .py-1 {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+
+        .py-6 {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem
+        }
+
+        .py-8 {
+            padding-top: 2rem;
+            padding-bottom: 2rem
+        }
+
+        .py-section-gap-mobile {
+            padding-top: 4rem;
+            padding-bottom: 4rem
+        }
+
+        .pb-4 {
+            padding-bottom: 1rem
+        }
+
+        .pb-section-gap-mobile {
+            padding-bottom: 4rem
+        }
+
+        .pl-8 {
+            padding-left: 2rem
+        }
+
+        .pt-24 {
+            padding-top: 6rem
+        }
+
+        .pt-4 {
+            padding-top: 1rem
+        }
+
+        .text-center {
+            text-align: center
+        }
+
+        .font-body-lg {
+            font-family: Inter
+        }
+
+        .font-body-md {
+            font-family: Inter
+        }
+
+        .font-body-sm {
+            font-family: Inter
+        }
+
+        .font-code {
+            font-family: JetBrains Mono
+        }
+
+        .font-headline-md {
+            font-family: JetBrains Mono
+        }
+
+        .font-headline-xl-mobile {
+            font-family: JetBrains Mono
+        }
+
+        .font-label-sm {
+            font-family: JetBrains Mono
+        }
+
+        .text-body-lg {
+            font-size: 18px;
+            line-height: 1.6;
+            font-weight: 400
+        }
+
+        .text-body-md {
+            font-size: 16px;
+            line-height: 1.6;
+            font-weight: 400
+        }
+
+        .text-body-sm {
+            font-size: 14px;
+            line-height: 1.5;
+            font-weight: 400
+        }
+
+        .text-code {
+            font-size: 14px;
+            line-height: 1.5;
+            font-weight: 400
+        }
+
+        .text-headline-md {
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 600
+        }
+
+        .text-headline-xl-mobile {
+            font-size: 30px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            font-weight: 700
+        }
+
+        .text-label-sm {
+            font-size: 12px;
+            line-height: 1;
+            font-weight: 500
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem
+        }
+
+        .text-xs {
+            font-size: 0.75rem;
+            line-height: 1rem
+        }
+
+        .font-bold {
+            font-weight: 700
+        }
+
+        .font-normal {
+            font-weight: 400
+        }
+
+        .lowercase {
+            text-transform: lowercase
+        }
+
+        .tracking-tight {
+            letter-spacing: -0.025em
+        }
+
+        .tracking-tighter {
+            letter-spacing: -0.05em
+        }
+
+        .text-on-background\/50 {
+            color: rgb(229 225 228 / 0.5)
+        }
+
+        .text-on-primary {
+            --tw-text-opacity: 1;
+            color: rgb(47 49 49 / var(--tw-text-opacity, 1))
+        }
+
+        .text-on-surface {
+            --tw-text-opacity: 1;
+            color: rgb(229 225 228 / var(--tw-text-opacity, 1))
+        }
+
+        .text-on-surface-variant {
+            --tw-text-opacity: 1;
+            color: rgb(196 199 200 / var(--tw-text-opacity, 1))
+        }
+
+        .text-primary {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .text-primary\/80 {
+            color: rgb(255 255 255 / 0.8)
+        }
+
+        .antialiased {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale
+        }
+
+        .shadow-\[0_0_10px_rgba\(255\2c 255\2c 255\2c 0\.5\)\] {
+            --tw-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            --tw-shadow-colored: 0 0 10px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .shadow-xl {
+            --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+        }
+
+        .backdrop-blur-md {
+            --tw-backdrop-blur: blur(12px);
+            -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+            backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+        }
+
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .transition-colors {
+            transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms
+        }
+
+        .duration-200 {
+            transition-duration: 200ms
+        }
+
+        .ease-in-out {
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+        }
+
+        .selection\:bg-primary\/20 *::selection {
+            background-color: rgb(255 255 255 / 0.2)
+        }
+
+        .selection\:text-primary *::selection {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .selection\:bg-primary\/20::selection {
+            background-color: rgb(255 255 255 / 0.2)
+        }
+
+        .selection\:text-primary::selection {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:border-primary:hover {
+            --tw-border-opacity: 1;
+            border-color: rgb(255 255 255 / var(--tw-border-opacity, 1))
+        }
+
+        .hover\:bg-primary-fixed:hover {
+            --tw-bg-opacity: 1;
+            background-color: rgb(226 226 226 / var(--tw-bg-opacity, 1))
+        }
+
+        .hover\:bg-primary\/10:hover {
+            background-color: rgb(255 255 255 / 0.1)
+        }
+
+        .hover\:text-primary:hover {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .hover\:text-white:hover {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        .group:hover .group-hover\:text-primary {
+            --tw-text-opacity: 1;
+            color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+        }
+
+        @media (min-width: 768px) {
+            .md\:ml-6 {
+                margin-left: 1.5rem
+            }
+
+            .md\:mt-0 {
+                margin-top: 0px
+            }
+
+            .md\:block {
+                display: block
+            }
+
+            .md\:flex {
+                display: flex
+            }
+
+            .md\:hidden {
+                display: none
+            }
+
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .md\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+
+            .md\:flex-row {
+                flex-direction: row
+            }
+
+            .md\:items-baseline {
+                align-items: baseline
+            }
+
+            .md\:justify-between {
+                justify-content: space-between
+            }
+
+            .md\:py-16 {
+                padding-top: 4rem;
+                padding-bottom: 4rem
+            }
+
+            .md\:py-section-gap {
+                padding-top: 8rem;
+                padding-bottom: 8rem
+            }
+
+            .md\:pb-section-gap {
+                padding-bottom: 8rem
+            }
+
+            .md\:pl-12 {
+                padding-left: 3rem
+            }
+
+            .md\:font-headline-xl {
+                font-family: JetBrains Mono
+            }
+
+            .md\:text-headline-xl {
+                font-size: 40px;
+                line-height: 1.2;
+                letter-spacing: -0.02em;
+                font-weight: 700
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="font-body-md text-body-md bg-surface text-on-surface antialiased selection:bg-primary/20 selection:text-primary min-h-[1024px] flex flex-col"
+    data-stitch-vh="min-h-[1024px]===min-h-screen" data-mode="connect">
+    <!-- TopNavBar -->
+    <header
+        class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-200 ease-in-out">
+        <div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+            <a class="font-headline-md text-headline-md font-bold text-primary tracking-tight"
+                href="./index.html">mehedi.engineer</a>
+            <div class="flex items-center gap-6">
+                <nav class="hidden md:flex gap-6 items-center font-label-sm text-label-sm">
+                    <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                        href="#experience">experience</a>
+                    <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                        href="./work.html">work</a>
+                    <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                        href="./writing.html">writing</a>
+                    <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                        href="#contact">contact</a>
+                </nav>
+                <div class="flex items-center gap-2 font-label-sm text-label-sm">
+                    <button
+                        class="border border-outline-variant text-on-surface hover:text-primary transition-colors px-2 py-1 rounded lowercase">en</button>
+                    <button
+                        class="border border-outline-variant text-on-surface hover:text-primary transition-colors px-2 py-1 rounded lowercase">dark</button>
+                    <!-- Mobile Menu Toggle -->
+                    <button class="md:hidden text-on-surface-variant p-1 ml-2">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-24 pb-section-gap-mobile md:pb-section-gap">
+        <!-- Hero Section -->
+        <section class="max-w-container-max mx-auto px-gutter py-8 md:py-16 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1
+                    class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-on-surface mb-stack-sm tracking-tighter">
+                    Mehedi Hasan
+                </h1>
+                <p class="font-headline-md text-headline-md text-primary mb-stack-lg">Software Engineer</p>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">
+                    Started my journey crafting frontend components. Deepened into backend architecture and database
+                    optimization. Now, I navigate the full stack, bridging application code with robust DevOps pipelines
+                    to build scalable, resilient systems.
+                </p>
+                <div class="flex gap-4">
+                    <a class="inline-flex items-center justify-center bg-primary text-on-primary font-label-sm text-label-sm px-6 py-3 rounded hover:bg-primary-fixed transition-colors lowercase"
+                        href="#contact">
+                        get in touch
+                    </a>
+                    <a class="inline-flex items-center justify-center border border-outline-variant text-primary font-label-sm text-label-sm px-6 py-3 rounded hover:bg-primary/10 transition-colors lowercase"
+                        href="#work">
+                        see my work
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <img alt="Terminal Graphic" class="w-full h-auto rounded shadow-xl border border-outline-variant/30"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9808_puN_8yRREmn_vwTmchmPuyON4wJKHKGtobV4r6MYJf5hiRQ36ixfr16rfkeA3ndSl9i4eLQYYbt2VHBS-bPbl1jEtvthSXBQ_idNrix0sJALfVsLhawg4Kiq4wO6A6PIcU8iK26afICdYQocQopCGNIX03mrlcxHNnuFMrpqMB7OfmgFeQn3kawT49_RGZMHdjDu9GnHsID-w5BUeMjQEfcOofNl8jvnUyfp9udPfiW1puJ95bGL9uuCSBiOjjt6A4Lpuw">
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section
+            class="max-w-container-max mx-auto px-gutter py-section-gap-mobile md:py-section-gap border-t border-outline-variant/20"
+            id="experience">
+            <div class="flex justify-between items-end mb-stack-lg">
+                <h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2 text-xs">
+                    <span class="text-primary font-code text-code">//</span> EXPERIENCE
+                </h3>
+                <a class="inline-flex items-center justify-center border border-outline-variant text-primary font-label-sm text-label-sm px-4 py-2 rounded hover:bg-primary/10 transition-colors lowercase"
+                    href="#">
+                    view resume
+                </a>
+            </div>
+            <div class="relative border-l border-outline-variant/30 ml-3 md:ml-6 space-y-12 pb-4">
+                <!-- Role 1 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div
+                        class="absolute -left-[5px] top-1 w-[10px] h-[10px] bg-primary rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.5)]">
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+                        <h4 class="font-headline-md text-headline-md text-on-surface">Software Engineer <span
+                                class="text-primary font-normal">@ TechCorp</span></h4>
+                        <span class="font-code text-code text-on-surface-variant mt-1 md:mt-0">2022 - Present</span>
+                    </div>
+                    <p class="font-code text-code text-primary/80 mb-2 lowercase">Full-stack / DevOps</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Led a team of 5 engineers migrating legacy monolithic systems to a Go-based microservices
+                        architecture. Designed and implemented CI/CD pipelines, reducing deployment times by 40% and
+                        improving system resilience.
+                    </p>
+                </div>
+                <!-- Role 2 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div
+                        class="absolute -left-[5px] top-1 w-[10px] h-[10px] bg-surface-variant border border-outline-variant rounded-sm">
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+                        <h4 class="font-headline-md text-headline-md text-on-surface">Junior Software Engineer <span
+                                class="text-primary font-normal">@ DevStudio</span></h4>
+                        <span class="font-code text-code text-on-surface-variant mt-1 md:mt-0">2020 - 2022</span>
+                    </div>
+                    <p class="font-code text-code text-primary/80 mb-2 lowercase">Backend / DB</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Developed and maintained high-traffic RESTful APIs using Node.js. Optimized database queries and
+                        schema designs in PostgreSQL, improving data retrieval efficiency by 30%.
+                    </p>
+                </div>
+                <!-- Role 3 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div
+                        class="absolute -left-[5px] top-1 w-[10px] h-[10px] bg-surface-variant border border-outline-variant rounded-sm">
+                    </div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
+                        <h4 class="font-headline-md text-headline-md text-on-surface">Intern Junior Software Engineer
+                            <span class="text-primary font-normal">@ StartupInc</span>
+                        </h4>
+                        <span class="font-code text-code text-on-surface-variant mt-1 md:mt-0">2018 - 2020</span>
+                    </div>
+                    <p class="font-code text-code text-primary/80 mb-2 lowercase">Frontend</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Assisted in building MVP features for early-stage products using React. Translated UI/UX designs
+                        into responsive, interactive web components.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section
+            class="max-w-container-max mx-auto px-gutter py-section-gap-mobile md:py-section-gap border-t border-outline-variant/20"
+            id="work">
+            <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-lg flex items-center gap-2 text-xs">
+                <span class="text-primary font-code text-code">//</span> WORK
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <!--href="/work/fintect-dashboard" -->
+                <a href="./work-detail.html"
+                    class="group border border-outline-variant/50 bg-surface-container/30 hover:border-primary transition-colors p-6 rounded flex flex-col h-full relative cursor-pointer">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-code text-code text-primary text-lg">01</span>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_outward</span>
+                    </div>
+                    <h4 class="font-headline-md text-headline-md text-on-surface mb-2">Fintech Dashboard</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                        A high-performance analytics dashboard processing real-time financial data with minimal latency.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span
+                            class="border border-outline-variant/50 text-on-surface font-label-sm text-label-sm px-2 py-1 rounded text-xs">React</span>
+                        <span
+                            class="border border-outline-variant/50 text-on-surface font-label-sm text-label-sm px-2 py-1 rounded text-xs">TypeScript</span>
+                    </div>
+                    <div class="border-t border-outline-variant/30 pt-4 mt-auto">
+                        <span
+                            class="font-code text-code text-on-surface-variant group-hover:text-primary transition-colors text-sm">fintech-dash.mehedi.engineer</span>
+                    </div>
+                </a>
+                <!-- Project 2 -->
+                <!--href="/work/open-source-library" -->
+                <a href="./work-detail.html"
+                    class="group border border-outline-variant/50 bg-surface-container/30 hover:border-primary transition-colors p-6 rounded flex flex-col h-full relative cursor-pointer">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-code text-code text-primary text-lg">02</span>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_outward</span>
+                    </div>
+                    <h4 class="font-headline-md text-headline-md text-on-surface mb-2">Open Source Library</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                        A widely adopted state management utility focused on immutable data structures and predictable
+                        rendering.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span
+                            class="border border-outline-variant/50 text-on-surface font-label-sm text-label-sm px-2 py-1 rounded text-xs">Node.js</span>
+                        <span
+                            class="border border-outline-variant/50 text-on-surface font-label-sm text-label-sm px-2 py-1 rounded text-xs">Jest</span>
+                    </div>
+                    <div class="border-t border-outline-variant/30 pt-4 mt-auto">
+                        <span
+                            class="font-code text-code text-on-surface-variant group-hover:text-primary transition-colors text-sm">npm.im/pkg-name</span>
+                    </div>
+                </a>
+                <!-- See More Link-->
+                <a class="group border border-outline-variant/50 hover:border-primary transition-colors p-6 rounded flex flex-col h-full relative cursor-pointer bg-surface-container-low"
+                    href="./work.html">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-label-sm text-label-sm text-primary text-lg">view all</span>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_outward</span>
+                    </div>
+                    <h4 class="font-headline-md text-headline-md text-on-surface mb-2">see more work</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">click here to see more
+                        of work where you will be able to search and filer and explore more</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span
+                            class="border border-outline-variant/50 text-on-surface font-label-sm text-label-sm px-2 py-1 rounded text-xs">Archive</span>
+                    </div>
+                    <div class="border-t border-outline-variant/30 pt-4 mt-auto">
+                        <span
+                            class="font-code text-code text-on-surface-variant group-hover:text-primary transition-colors text-sm">/work</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Writing Section -->
+        <section
+            class="max-w-container-max mx-auto px-gutter py-section-gap-mobile md:py-section-gap border-t border-outline-variant/20"
+            id="writing">
+            <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-lg flex items-center gap-2 text-xs">
+                <span class="text-primary font-code text-code">//</span> WRITING
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Post 1 -->
+                <!--href="/writing/optimizing-nodejs-gc"-->
+                <a href="./writing-detail.html"
+                    class="group border border-outline-variant/50 bg-surface-container/30 hover:border-primary transition-colors p-6 rounded flex flex-col h-full relative cursor-pointer">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-label-sm text-label-sm text-on-surface-variant text-sm">March 15, 2024</span>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_outward</span>
+                    </div>
+                    <h4 class="font-headline-md text-headline-md text-on-surface mb-2">Optimizing Node.js Garbage
+                        Collection for High-Throughput APIs</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                        A deep dive into V8 engine internals and practical strategies for reducing GC pauses in heavily
+                        loaded microservices.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span
+                            class="border border-outline-variant/50 text-on-surface font-label-sm text-label-sm px-2 py-1 rounded text-xs">Performance</span>
+                        <span
+                            class="border border-outline-variant/50 text-on-surface font-label-sm text-label-sm px-2 py-1 rounded text-xs">Backend</span>
+                    </div>
+                </a>
+                <!-- Post 2 -->
+                <!--href="/writing/react-state-machines"-->
+                <a href="./writing-detail.html"
+                    class="group border border-outline-variant/50 bg-surface-container/30 hover:border-primary transition-colors p-6 rounded flex flex-col h-full relative cursor-pointer">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-label-sm text-label-sm text-on-surface-variant text-sm">February 02,
+                            2024</span>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_outward</span>
+                    </div>
+                    <h4 class="font-headline-md text-headline-md text-on-surface mb-2">Building a Resilient State
+                        Machine in React</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                        Moving beyond simple boolean flags. How to implement robust finite state machines using XState
+                        to manage complex UI logic.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span
+                            class="border border-outline-variant/50 text-on-surface font-label-sm text-label-sm px-2 py-1 rounded text-xs">React</span>
+                        <span
+                            class="border border-outline-variant/50 text-on-surface font-label-sm text-label-sm px-2 py-1 rounded text-xs">Frontend</span>
+                    </div>
+                </a>
+                <!-- See More Link -->
+                <a class="group border border-outline-variant/50 bg-surface-container/30 hover:border-primary transition-colors p-6 rounded flex flex-col h-full relative cursor-pointer"
+                    href="./writing.html">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-label-sm text-label-sm text-on-surface-variant text-sm">View All</span>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_outward</span>
+                    </div>
+                    <h4 class="font-headline-md text-headline-md text-on-surface mb-2">see more writing</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">click here to see more
+                        of writing where you will be able to search and filer and explore more</p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span
+                            class="border border-outline-variant/50 text-on-surface font-label-sm text-label-sm px-2 py-1 rounded text-xs">Archive</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section
+            class="max-w-container-max mx-auto px-gutter py-section-gap-mobile md:py-section-gap border-t border-outline-variant/20"
+            id="contact">
+            <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-lg flex items-center gap-2 text-xs">
+                <span class="text-primary font-code text-code">//</span> CONTACT
+            </h3>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="">
+                    <h4
+                        class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-on-surface mb-stack-md">
+                        Let's work together</h4>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        I'm currently open to new opportunities. Whether you have a question or just want to say hi,
+                        I'll try my best to get back to you!
+                    </p>
+                </div>
+                <div>
+                    <ul class="flex flex-col border-t border-outline-variant/30">
+                        <li class="border-b border-outline-variant/30 py-4 flex justify-between items-center group">
+                            <span class="font-label-sm text-label-sm text-on-surface lowercase">email</span>
+                            <a class="font-code text-code text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-2"
+                                href="mailto:hello@mehedi.engineer">
+                                hello@mehedi.engineer <span
+                                    class="material-symbols-outlined text-sm">arrow_outward</span>
+                            </a>
+                        </li>
+                        <li class="border-b border-outline-variant/30 py-4 flex justify-between items-center group">
+                            <span class="font-label-sm text-label-sm text-on-surface lowercase">linkedin</span>
+                            <a class="font-code text-code text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-2"
+                                href="https://linkedin.com/in/mehedi-codes">mehedi-codes <span
+                                    class="material-symbols-outlined text-sm">arrow_outward</span></a>
+                        </li>
+                        <li class="border-b border-outline-variant/30 py-4 flex justify-between items-center group">
+                            <span class="font-label-sm text-label-sm text-on-surface lowercase">github</span>
+                            <a class="font-code text-code text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-2"
+                                href="https://github.com/mehedi-codes">mehedi-codes <span
+                                    class="material-symbols-outlined text-sm">arrow_outward</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/20 bg-surface">
+        <div
+            class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4 py-8 px-gutter">
+            <div class="font-headline-md text-headline-md font-bold text-primary tracking-tight text-sm">
+                <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                    href="./index.html">mehedi.engineer</a>
+            </div>
+            <div class="font-body-md text-body-md text-on-surface-variant text-xs text-center">© 2026 mehedi.engineer.
+                Built with technical rigor.</div>
+            <div class="flex gap-6 font-label-sm text-label-sm">
+                <a class="text-on-surface-variant hover:text-primary transition-colors lowercase"
+                    href="https://github.com/mehedi-codes">github</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors lowercase"
+                    href="https://linkedin.com/in/mehedi-codes">linkedin</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

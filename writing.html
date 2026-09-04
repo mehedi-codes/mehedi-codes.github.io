@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">try {
+            try {
+                tailwind.config = {
+                    darkMode: "class",
+                    theme: {
+                        extend: {
+                            "colors": {
+                                "primary": "#ffffff",
+                                "primary-container": "#e2e2e2",
+                                "on-surface": "#e5e1e4",
+                                "surface-variant": "#353437",
+                                "surface-container-low": "#1c1b1d",
+                                "on-secondary-container": "#b4b4bd",
+                                "background": "#131315",
+                                "tertiary-fixed-dim": "#c8c6c9",
+                                "secondary-fixed-dim": "#c6c6cf",
+                                "surface-container-highest": "#353437",
+                                "on-tertiary-fixed": "#1b1b1e",
+                                "on-secondary-fixed": "#1a1b22",
+                                "on-primary-fixed": "#1a1c1c",
+                                "primary-fixed-dim": "#c6c6c7",
+                                "surface-tint": "#c6c6c7",
+                                "on-surface-variant": "#c4c7c8",
+                                "secondary-container": "#45464e",
+                                "surface-container-high": "#2a2a2c",
+                                "on-error": "#690005",
+                                "on-primary": "#2f3131",
+                                "inverse-surface": "#e5e1e4",
+                                "surface-bright": "#39393b",
+                                "on-tertiary-container": "#656467",
+                                "tertiary-fixed": "#e4e1e5",
+                                "error": "#ffb4ab",
+                                "inverse-primary": "#5d5f5f",
+                                "primary-fixed": "#e2e2e2",
+                                "on-primary-fixed-variant": "#454747",
+                                "on-tertiary": "#303033",
+                                "surface-container": "#201f22",
+                                "surface-dim": "#131315",
+                                "tertiary-container": "#e4e1e5",
+                                "outline": "#8e9192",
+                                "inverse-on-surface": "#313032",
+                                "on-tertiary-fixed-variant": "#47464a",
+                                "tertiary": "#ffffff",
+                                "on-primary-container": "#636565",
+                                "outline-variant": "#444748",
+                                "surface": "#131315",
+                                "on-error-container": "#ffdad6",
+                                "on-secondary-fixed-variant": "#45464e",
+                                "surface-container-lowest": "#0e0e10",
+                                "error-container": "#93000a",
+                                "on-background": "#e5e1e4",
+                                "on-secondary": "#2f3037",
+                                "secondary": "#c6c6cf",
+                                "secondary-fixed": "#e2e1eb"
+                            },
+                            "borderRadius": {
+                                "DEFAULT": "0.125rem",
+                                "lg": "0.25rem",
+                                "xl": "0.5rem",
+                                "full": "0.75rem"
+                            },
+                            "spacing": {
+                                "max-width": "1280px",
+                                "margin-desktop": "32px",
+                                "gutter": "16px",
+                                "margin-mobile": "16px",
+                                "unit": "4px",
+                                "container-max": "1200px",
+                                "section-gap": "8rem",
+                                "section-gap-mobile": "4rem"
+                            },
+                            "fontFamily": {
+                                "code": ["JetBrains Mono"],
+                                "headline-lg": ["JetBrains Mono"],
+                                "label-md": ["JetBrains Mono"],
+                                "label-sm": ["JetBrains Mono"],
+                                "headline-xl": ["JetBrains Mono"],
+                                "headline-md": ["JetBrains Mono"],
+                                "body-sm": ["Inter"],
+                                "body-lg": ["Inter"],
+                                "headline-xl-mobile": ["JetBrains Mono"],
+                                "body-md": ["Inter"]
+                            },
+                            "fontSize": {
+                                "code": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                                "headline-lg": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                                "label-md": ["14px", {"lineHeight": "1", "fontWeight": "500"}],
+                                "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                                "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                                "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                                "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                                "headline-xl-mobile": ["30px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                            }
+                        },
+                    },
+                }
+            } catch (_e) { }
+        } catch (_e) { }</script>
+</head>
+
+<body
+    class="font-body-md text-body-md bg-surface text-on-surface antialiased selection:bg-primary/20 selection:text-primary min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <header
+        class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-200 ease-in-out">
+        <div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+            <a class="font-headline-md text-headline-md font-bold text-primary tracking-tight"
+                href="./index.html">mehedi.engineer</a>
+            <div class="flex items-center gap-6">
+                <nav class="hidden md:flex gap-6 items-center font-label-sm text-label-sm">
+                    <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                        href="./index.html#experience">experience</a>
+                    <a class="text-on-surface-variant transition-colors lowercase" href="./work.html">work</a>
+                    <a class="text-white border-b border-white pb-1 transition-colors lowercase"
+                        href="./writing.html">writing</a>
+                    <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                        href="./index.html#contact">contact</a>
+                </nav>
+                <div class="flex items-center gap-2 font-label-sm text-label-sm">
+                    <button
+                        class="border border-outline-variant text-on-surface hover:text-primary transition-colors px-2 py-1 rounded lowercase">en</button>
+                    <button
+                        class="border border-outline-variant text-on-surface hover:text-primary transition-colors px-2 py-1 rounded lowercase">dark</button>
+                    <button class="md:hidden text-on-surface-variant p-1 ml-2">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 px-gutter max-w-container-max mx-auto w-full pb-section-gap">
+        <!-- Header -->
+        <section class="mb-12">
+            <h1 class="font-headline-md text-headline-xl text-primary mb-4 tracking-tight">Writing</h1>
+            <p class="text-on-surface-variant font-body-md text-body-lg max-w-2xl">A collection of technical articles,
+                deep dives, and tutorials on software engineering.</p>
+        </section>
+        <!-- Search & Filter -->
+        <section class="mb-12 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+            <div class="relative w-full md:w-96">
+                <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+                <input
+                    class="w-full bg-surface-container/30 border border-outline-variant/50 rounded text-on-surface font-code text-code pl-10 pr-4 py-2 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary placeholder-on-surface-variant/50 transition-colors"
+                    placeholder="Search articles..." type="text" />
+            </div>
+            <div class="flex flex-wrap gap-2 font-label-sm text-label-sm"><button
+                    class="px-4 py-2 rounded bg-surface-container/50 text-primary border border-primary transition-colors lowercase">all</button><button
+                    class="px-4 py-2 rounded bg-surface-container/30 border border-outline-variant/50 text-on-surface-variant hover:text-on-surface hover:border-outline transition-colors lowercase">performance</button><button
+                    class="px-4 py-2 rounded bg-surface-container/30 border border-outline-variant/50 text-on-surface-variant hover:text-on-surface hover:border-outline transition-colors lowercase">backend</button><button
+                    class="px-4 py-2 rounded bg-surface-container/30 border border-outline-variant/50 text-on-surface-variant hover:text-on-surface hover:border-outline transition-colors lowercase">react</button>
+            </div>
+        </section>
+        <!-- Blog List -->
+        <div class="flex flex-col gap-6">
+            <!-- Card 1 -->
+            <article
+                class="group border border-outline-variant/50 bg-surface-container/30 hover:border-primary transition-colors rounded flex flex-col md:flex-row overflow-hidden h-full relative cursor-pointer"
+                onclick="window.location.href='./writing-detail.html'">
+                <div
+                    class="w-full md:w-1/3 h-48 md:h-auto border-b md:border-b-0 md:border-r border-outline-variant/30 relative overflow-hidden bg-surface-container-highest">
+                    <div class="bg-cover bg-center w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                        data-alt="A dark, terminal-style technical illustration showing abstract data structures and glowing green code snippets on a deep black background. High-precision engineering aesthetic."
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7e1zHQGBDFNWbceP5MwXFhWq0IUiZMmoKGffAIp9gNRn3kotf_gAfT5xIhZassaZAo7ZLiQmCQ5G_ylQyzDdDc3Hovk43SAOGipc79w_lfjdNNkXKCzCxng5gR_tZVq_YcDdoeYdxJ8ROeWmpP54GgcKvfn2kLiSIMPK0aOgf1TccHZuPzRfrsGyAMbpfLHSHZDaMaudKwU4odxgOk9Jm6wYewlopblcFI95UI1lf3G23fdQfLl0QkIPBW3xBXC40UX20kDAO-Q");'>
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col justify-between w-full md:w-2/3">
+                    <div>
+                        <div class="flex gap-2 items-center mb-4"><span
+                                class="border border-outline-variant/50 text-on-surface font-code text-code px-2 py-1 rounded text-xs uppercase tracking-widest">performance</span><span
+                                class="border border-outline-variant/50 text-on-surface font-code text-code px-2 py-1 rounded text-xs uppercase tracking-widest">backend</span>
+                        </div>
+                        <h2
+                            class="font-headline-md text-headline-md text-primary mb-2 group-hover:underline underline-offset-4 decoration-primary">
+                            Optimizing Node.js Garbage Collection for High-Throughput APIs</h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">A deep dive into V8
+                            engine internals and practical strategies for reducing GC pauses in heavily loaded
+                            microservices. We analyze heap snapshots and implement memory pooling.</p>
+                    </div>
+                    <div
+                        class="mt-6 flex justify-between items-center font-code text-label-sm text-on-surface-variant pt-4 border-t border-outline-variant/30">
+                        <span class="">Published: March 15, 2024</span><span class="">Last Updated: March 18,
+                            2024</span>
+                    </div>
+                </div>
+            </article>
+            <!-- Card 2 -->
+            <article
+                class="group border border-outline-variant/50 bg-surface-container/30 hover:border-primary transition-colors rounded flex flex-col md:flex-row overflow-hidden h-full relative cursor-pointer"
+                onclick="window.location.href='./writing-detail.html'">
+                <div
+                    class="w-full md:w-1/3 h-48 md:h-auto border-b md:border-b-0 md:border-r border-outline-variant/30 relative overflow-hidden bg-surface-container-highest">
+                    <div class="bg-cover bg-center w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                        data-alt="A minimalist architectural diagram of a distributed system with glowing nodes and connecting lines on a dark charcoal background. Clean, brutalist technical style."
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYtgu2D1rSd7KYkITW27TDcWBzRI0yirP4pr3DGP8duyAom9yZY0fkPSwAjNlP0nrCG-s4UBc-GkZ-j_37rPUV5hOkWtmYGr364gAvNyMhS6kCIyOtf5UlaG6xZ_rX0SJ52C1kJeIRDPXqSWPKRRCN7w3T1UEMu40E75kixZf62EQK_boAmmtiGee9MhAO9TZ5Q9czNyCESt9gP6v01vdZEl9V0vAgsCouTx4LrTyeU6ehnJVv3oNStSiMYpCCVTt62DpX__2XAQ");'>
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col justify-between w-full md:w-2/3">
+                    <div>
+                        <div class="flex gap-2 items-center mb-4"><span
+                                class="border border-outline-variant/50 text-on-surface font-code text-code px-2 py-1 rounded text-xs uppercase tracking-widest">react</span><span
+                                class="border border-outline-variant/50 text-on-surface font-code text-code px-2 py-1 rounded text-xs uppercase tracking-widest">frontend</span>
+                        </div>
+                        <h2
+                            class="font-headline-md text-headline-md text-primary mb-2 group-hover:underline underline-offset-4 decoration-primary">
+                            Building a Resilient State Machine in React</h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Moving beyond simple
+                            boolean flags. How to implement robust finite state machines using XState to manage complex
+                            UI logic and prevent impossible states.</p>
+                    </div>
+                    <div
+                        class="mt-6 flex justify-between items-center font-code text-label-sm text-on-surface-variant pt-4 border-t border-outline-variant/30">
+                        <span class="">Published: February 02, 2024</span><span class="">Last Updated: February 02,
+                            2024</span>
+                    </div>
+                </div>
+            </article>
+            <!-- Card 3 -->
+            <article
+                class="group border border-outline-variant/50 bg-surface-container/30 hover:border-primary transition-colors rounded flex flex-col md:flex-row overflow-hidden h-full relative cursor-pointer"
+                onclick="window.location.href='./writing-detail.html'">
+                <div
+                    class="w-full md:w-1/3 h-48 md:h-auto border-b md:border-b-0 md:border-r border-outline-variant/30 relative overflow-hidden bg-surface-container-highest">
+                    <div class="bg-cover bg-center w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                        data-alt="A macro shot of a server rack with cool blue and white LED lights illuminating the dark metal chassis. High contrast, precise engineering focus."
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFoS6szdlz8Scqa4pjPfNzHS1RPVanffmgPLkBtkK6wOgHLfg8N8d59_XZebyLSyMCNQ-TYK0C1koWeIHF3I8dL4gwvxQY0LZF40t0x-WtZUR-QAofUMxm6YhDwclBbkRmTKofDOFJEMT_3KVn-iFdUcwFPl9c29khQnT_4tHsozNfoF4aLeAG-ufDlg9Xt-9hov4IkKUi3LGNahaXEEGXQG4oGwHzxL5TuYiO2vXdH73Cjpfda_Ch047f_wYBNlGRzXnoISJH4A");'>
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col justify-between w-full md:w-2/3">
+                    <div>
+                        <div class="flex gap-2 items-center mb-4"><span
+                                class="border border-outline-variant/50 text-on-surface font-code text-code px-2 py-1 rounded text-xs uppercase tracking-widest">infrastructure</span><span
+                                class="border border-outline-variant/50 text-on-surface font-code text-code px-2 py-1 rounded text-xs uppercase tracking-widest">docker</span>
+                        </div>
+                        <h2
+                            class="font-headline-md text-headline-md text-primary mb-2 group-hover:underline underline-offset-4 decoration-primary">
+                            Zero-Downtime Deployments with Kubernetes</h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">A comprehensive guide
+                            to configuring rolling updates, readiness probes, and graceful shutdowns to ensure seamless
+                            deployments in production environments.</p>
+                    </div>
+                    <div
+                        class="mt-6 flex justify-between items-center font-code text-label-sm text-on-surface-variant pt-4 border-t border-outline-variant/30">
+                        <span class="">Published: November 28, 2023</span><span class="">Last Updated: January 10,
+                            2024</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant/20 bg-surface">
+        <div
+            class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4 py-8 px-gutter">
+            <div class="font-headline-md text-headline-md font-bold text-primary tracking-tight text-sm">
+                <a class="text-on-surface-variant hover:text-white transition-colors lowercase"
+                    href="./index.html">mehedi.engineer</a>
+            </div>
+            <div class="font-body-md text-body-md text-on-surface-variant text-xs text-center">© 2026 mehedi.engineer.
+                Built with technical rigor.</div>
+            <div class="flex gap-6 font-label-sm text-label-sm">
+                <a class="text-on-surface-variant hover:text-primary transition-colors lowercase"
+                    href="https://github.com/mehedi-codes">github</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors lowercase"
+                    href="https://linkedin.com/in/mehedi-codes">linkedin</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
