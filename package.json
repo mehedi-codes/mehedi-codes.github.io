@@ -11,9 +11,7 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check",
-    "deploy": "astro build && wrangler deploy",
-    "preview:cf": "astro build && wrangler dev"
+    "fmt:check": "oxfmt --check"
   },
   "dependencies": {
     "@fontsource/hind-siliguri": "^5.3.0",
@@ -27,8 +25,7 @@
     "@astrojs/check": "^0.9.10",
     "oxfmt": "^0.67.0",
     "oxlint": "^1.82.0",
-    "typescript": "^6.0.0",
-    "wrangler": "^4.132.0"
+    "typescript": "^6.0.0"
   },
   "engines": {
     "node": ">=22.12.0"
