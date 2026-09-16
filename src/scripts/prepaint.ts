@@ -1,5 +1,10 @@
 export const prepaint = `(function () {
     try {
+        if (document.documentElement.hasAttribute("data-force-dark")) {
+            document.documentElement.classList.add("dark");
+            return;
+        }
+
         document.documentElement.classList.toggle(
             "dark",
             localStorage.getItem("theme") === "dark",
