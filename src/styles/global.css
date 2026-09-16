@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@import "@fontsource/inter";
+@import "@fontsource/jetbrains-mono";
+@import "@fontsource/hind-siliguri";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --paper: #fafaf8;
+  --ink: #1a1a1f;
+  --subtle: #e8e6e1;
+  --muted: #64635e;
+  --inter: "Inter", sans-serif;
+  --jetbrains-mono: "JetBrains Mono", monospace;
+  --hind-siliguri: "Hind Siliguri", "Inter", sans-serif;
+}
+
+.dark {
+  color-scheme: dark;
+  --paper: #141419;
+  --ink: #f4f4f1;
+  --subtle: #2b2b31;
+  --muted: #9a9aa1;
+}
+
+@theme inline {
+  --font-jetbrains: var(--jetbrains-mono);
+  --font-inter: var(--inter);
+  --font-hind: var(--hind-siliguri);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-subtle: var(--subtle);
+  --color-muted: var(--muted);
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-ink selection:bg-ink selection:text-paper;
+  }
+}
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility flex-between {
+  @apply flex justify-between items-center;
+}
+
+@utility font-heading {
+  font-family: var(--jetbrains-mono);
+}
+
+@utility font-body {
+  font-family: var(--inter);
+}
+
+@utility link-underline {
+  @apply hover:text-ink transition-colors relative inline-block pb-0.5 after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-px after:bottom-0 after:left-0 after:bg-ink after:origin-bottom-right after:transition-transform after:duration-250 after:ease-out hover:after:scale-x-100 hover:after:origin-bottom-left;
+}
+
+@utility btn-fill {
+  @apply relative inline-block outline outline-subtle px-2 cursor-pointer transition-colors duration-300 ease-in-out hover:border-ink hover:text-paper;
+
+  &::before {
+    @apply absolute inset-0 -z-10 bg-ink origin-bottom-right scale-x-0 transition-transform duration-300 ease-in-out;
+    content: "";
+  }
+  &:hover::before {
+    @apply origin-bottom-left scale-x-100;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  @apply animate-none mix-blend-normal;
+}
+
+@keyframes logo-sweep {
+  0% {
+    background-position: 250% 0;
+  }
+  100% {
+    background-position: -250% 0;
+  }
+}
+
+@utility shimmer-text {
+  @apply bg-[linear-gradient(110deg,var(--ink)_40%,var(--muted)_50%,var(--ink)_60%)] bg-size-[250%_100%] bg-clip-text text-transparent select-none;
+  animation: logo-sweep 4s linear infinite;
+}
+
+@utility hero-grid {
+  @apply bg-[linear-gradient(to_right,var(--color-subtle)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-subtle)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_60%_55%_at_50%_44%,black_0%,transparent_75%)] opacity-60;
+}
+
+[data-lang="bn"] {
+   @apply hidden
+}
+
+html[lang="bn"] [data-lang="bn"] {
+  @apply [display:revert]
+}
+
+html[lang="bn"] [data-lang="en"] {
+  @apply hidden
+}
+
+html[lang="bn"] .font-heading {
+  font-family: var(--hind-siliguri);
+}
+
+html[lang="bn"] .font-body {
+  font-family: var(--hind-siliguri);
+}
