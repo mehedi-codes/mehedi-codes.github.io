@@ -1,0 +1,18 @@
+---
+import { locale } from "@/i18n/locale";
+---
+
+<button
+    id="theme-toggle"
+    type="button"
+    class="btn-fill w-16"
+>
+    <span id="theme-toggle-label">
+        <span data-lang="en">{locale.en["theme.dark"]}</span>
+        <span data-lang="bn" lang="bn">{locale.bn["theme.dark"]}</span>
+    </span>
+</button>
+
+<script>
+    import "@/scripts/theme-toggle";
+</script>

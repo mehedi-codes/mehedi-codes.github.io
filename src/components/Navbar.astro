@@ -1,0 +1,35 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+import LangToggle from "./LangToggle.astro";
+import { locale } from "@/i18n/locale";
+
+const links = [
+    { key: "nav.experience", href: "#experience" },
+    { key: "nav.work", href: "/work" },
+    { key: "nav.writing", href: "/writing" },
+    { key: "nav.contact", href: "#contact" },
+] as const;
+---
+
+<section class="py-3 border-b border-subtle text-muted">
+    <div class="container flex-between mx-auto font-heading">
+        <a href="/" class="text-xl font-semibold shimmer-text">
+            <span data-lang="en">{locale.en.logo}</span>
+            <span data-lang="bn" lang="bn">{locale.bn.logo}</span>
+        </a>
+        <nav class="space-x-6">
+            {
+                links.map((link) => (
+                    <a class="link-underline" href={link.href}>
+                        <span data-lang="en">{locale.en[link.key]}</span>
+                        <span data-lang="bn" lang="bn">
+                            {locale.bn[link.key]}
+                        </span>
+                    </a>
+                ))
+            }
+            <LangToggle />
+            <ThemeToggle />
+        </nav>
+    </div>
+</section>
