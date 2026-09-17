@@ -36,20 +36,20 @@
   body {
     @apply bg-paper text-ink selection:bg-ink selection:text-paper scroll-smooth;
   }
-  pre::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     @apply size-1.25;
   }
-  pre::-webkit-scrollbar-track,
-  pre::-webkit-scrollbar-corner {
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
     @apply bg-transparent;
   }
-  pre::-webkit-scrollbar-button {
+  ::-webkit-scrollbar-button {
     @apply hidden;
   }
-  pre::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     @apply bg-transparent;
   }
-  pre {
+  * {
     @apply scrollbar-thin [scrollbar-color:transparent_transparent];
   }
 }
