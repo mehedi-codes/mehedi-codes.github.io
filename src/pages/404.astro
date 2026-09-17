@@ -1,8 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { locale } from "@/i18n/locale";
-import { Image } from "astro:assets";
-import notFoundImg from "@/assets/404.webp";
 ---
 
 <Layout
@@ -12,24 +10,20 @@ import notFoundImg from "@/assets/404.webp";
         class="relative min-h-dvh flex-center flex-col text-center gap-y-8 px-6 overflow-hidden"
     >
         <div class="hero-grid pointer-events-none absolute inset-0 -z-20"></div>
-        <div class="flex-col flex-center gap-8">
-            <Image
-                src={notFoundImg}
-                alt="404"
-                width={840}
-                height={289}
-                class="w-96"
-                loading="eager"
-            />
-            <div class="relative z-0 max-w-md flex-center flex-col gap-4">
-                <h1
+        <div class="flex-col flex-center gap-8 max-w-3xl">
+            <div class="relative z-0 flex-center flex-col gap-4">
+                <h1 class="font-black text-ink text-9xl">
+                    <span data-lang="en">{locale.en["notfound.code"]}</span>
+                    <span data-lang="bn" lang="bn">{locale.bn["notfound.code"]}</span>
+                </h1>
+                <h2
                     class="font-heading text-2xl font-semibold tracking-wide text-ink sm:text-3xl"
                 >
                     <span data-lang="en">{locale.en["notfound.title"]}</span>
                     <span data-lang="bn" lang="bn"
                         >{locale.bn["notfound.title"]}</span
                     >
-                </h1>
+                </h2>
                 <p class="text-lg leading-relaxed text-muted">
                     <span data-lang="en">{locale.en["notfound.message"]}</span>
                     <span data-lang="bn" lang="bn"
