@@ -34,24 +34,10 @@
 
 @layer base {
   * {
-    @apply scrollbar-thin;
-    scrollbar-color: var(--subtle) transparent;
+    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-subtle;
   }
   body {
     @apply bg-paper text-ink selection:bg-ink selection:text-paper scroll-smooth;
-  }
-  ::-webkit-scrollbar {
-    @apply size-2;
-  }
-  ::-webkit-scrollbar-track,
-  ::-webkit-scrollbar-corner {
-    @apply bg-transparent;
-  }
-  ::-webkit-scrollbar-button {
-    @apply hidden;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-subtle rounded-full;
   }
 }
 
