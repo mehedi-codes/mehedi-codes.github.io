@@ -1,10 +1,8 @@
-# MCodeFolio
-
-![mcodefolio](https://socialify.git.ci/devbytemehedi/mcodefolio/image?description=1&font=KoHo&language=1&name=1&pattern=Solid&theme=Auto)
+![mcodefolio](https://socialify.git.ci/mehedi-codes/mehedi-codes.github.io/image?description=1&font=KoHo&language=1&name=1&pattern=Solid&theme=Auto)
 
 ## Assets
 
-- Project structure: [deafult-starter](https://github.com/devbytemehedi/default-starter)
+- Project structure: [deafult-starter](https://github.com/mehedi-codes/default-starter)
 - Favicon : [Favicon.io](https://favicon.io)
 - Metatags: [Metatags.io](https://metatags.io)
 - Icons: [feathericons](https://feathericons.com)
