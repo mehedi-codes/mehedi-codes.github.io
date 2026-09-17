@@ -19,8 +19,7 @@ const en = {
   "hero.primary-btn": "see my work",
   "hero.secondary-btn": "get in touch",
   "notfound.title": "page not found",
-  "notfound.message":
-    "The page you're looking for doesn't exist or has moved. Some things drift - let's get you back on track.",
+  "notfound.message": "The page you're looking for doesn't exist or has moved.",
   "notfound.cta": "back home",
 } as const;
 
