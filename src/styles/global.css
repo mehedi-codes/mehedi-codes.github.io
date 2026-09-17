@@ -33,11 +33,15 @@
 }
 
 @layer base {
+  * {
+    @apply scrollbar-thin;
+    scrollbar-color: var(--subtle) transparent;
+  }
   body {
     @apply bg-paper text-ink selection:bg-ink selection:text-paper scroll-smooth;
   }
   ::-webkit-scrollbar {
-    @apply size-1.25;
+    @apply size-2;
   }
   ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-corner {
@@ -47,10 +51,7 @@
     @apply hidden;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-transparent;
-  }
-  * {
-    @apply scrollbar-thin [scrollbar-color:transparent_transparent];
+    @apply bg-subtle rounded-full;
   }
 }
 
