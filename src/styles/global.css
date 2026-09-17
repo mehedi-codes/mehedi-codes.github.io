@@ -23,9 +23,6 @@
 }
 
 @theme inline {
-  --font-jetbrains: var(--jetbrains-mono);
-  --font-inter: var(--inter);
-  --font-hind: var(--hind-siliguri);
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-subtle: var(--subtle);
@@ -96,7 +93,8 @@
   @apply bg-[linear-gradient(to_right,var(--color-subtle)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-subtle)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_60%_55%_at_50%_44%,black_0%,transparent_75%)] opacity-60;
 }
 
-[data-lang="bn"] {
+[data-lang="bn"],
+html[lang="bn"] [data-lang="en"] {
   @apply hidden;
 }
 
@@ -104,14 +102,7 @@ html[lang="bn"] [data-lang="bn"] {
   @apply [display:revert];
 }
 
-html[lang="bn"] [data-lang="en"] {
-  @apply hidden;
-}
-
-html[lang="bn"] .font-heading {
-  font-family: var(--hind-siliguri);
-}
-
+html[lang="bn"] .font-heading,
 html[lang="bn"] .font-body {
   font-family: var(--hind-siliguri);
 }
