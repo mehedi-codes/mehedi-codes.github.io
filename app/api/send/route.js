@@ -3,10 +3,10 @@ import ThankYouMessage from "@/components/emails/ThankYouMessage";
 import {NextResponse} from "next/server";
 import {Resend} from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const audience = resend.audiences.get(process.env.RESEND_AUD_ID);
 
 export async function POST(request) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const audience = resend.audiences.get(process.env.RESEND_AUD_ID);
   const body = await request.json();
   const {name, email, message} = body;
   console.log("audience", typeof audience, "isArray =>", Array.isArray(audience), audience);
