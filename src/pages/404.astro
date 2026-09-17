@@ -6,48 +6,45 @@ import notFoundImg from "@/assets/404.webp";
 ---
 
 <Layout
-    dark
     title={{ en: locale.en["meta.404-title"], bn: locale.bn["meta.404-title"] }}
 >
     <section
         class="relative min-h-dvh flex-center flex-col text-center gap-y-8 px-6 overflow-hidden"
     >
         <div class="hero-grid pointer-events-none absolute inset-0 -z-20"></div>
-
-        <div class="absolute inset-0 -z-10">
+        <div class="flex-col flex-center gap-8">
             <Image
                 src={notFoundImg}
                 alt="404"
                 width={840}
                 height={289}
-                class="w-96 mx-auto mt-42"
+                class="w-96"
                 loading="eager"
             />
-        </div>
-
-        <div class="relative z-0 max-w-md flex-center flex-col gap-4">
-            <h1
-                class="font-heading text-2xl font-semibold tracking-wide text-ink sm:text-3xl"
+            <div class="relative z-0 max-w-md flex-center flex-col gap-4">
+                <h1
+                    class="font-heading text-2xl font-semibold tracking-wide text-ink sm:text-3xl"
+                >
+                    <span data-lang="en">{locale.en["notfound.title"]}</span>
+                    <span data-lang="bn" lang="bn"
+                        >{locale.bn["notfound.title"]}</span
+                    >
+                </h1>
+                <p class="text-lg leading-relaxed text-muted">
+                    <span data-lang="en">{locale.en["notfound.message"]}</span>
+                    <span data-lang="bn" lang="bn"
+                        >{locale.bn["notfound.message"]}</span
+                    >
+                </p>
+            </div>
+            <a
+                href="/"
+                class="relative z-0 border border-muted text-ink px-6 py-3 transition-colors duration-200 hover:bg-ink hover:text-paper"
             >
-                <span data-lang="en">{locale.en["notfound.title"]}</span>
-                <span data-lang="bn" lang="bn"
-                    >{locale.bn["notfound.title"]}</span
+                <span data-lang="en">{locale.en["notfound.cta"]}</span>
+                <span data-lang="bn" lang="bn">{locale.bn["notfound.cta"]}</span
                 >
-            </h1>
-            <p class="text-lg leading-relaxed text-muted">
-                <span data-lang="en">{locale.en["notfound.message"]}</span>
-                <span data-lang="bn" lang="bn"
-                    >{locale.bn["notfound.message"]}</span
-                >
-            </p>
+            </a>
         </div>
-
-        <a
-            href="/"
-            class="relative z-0 border border-muted text-ink px-6 py-3 transition-colors duration-200 hover:bg-ink hover:text-paper"
-        >
-            <span data-lang="en">{locale.en["notfound.cta"]}</span>
-            <span data-lang="bn" lang="bn">{locale.bn["notfound.cta"]}</span>
-        </a>
     </section>
 </Layout>

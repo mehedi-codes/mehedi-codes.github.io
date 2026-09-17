@@ -1,21 +1,12 @@
 export const prepaint = `(function () {
     try {
-        if (document.documentElement.hasAttribute("data-force-dark")) {
-            document.documentElement.classList.add("dark");
-            return;
-        }
-
         document.documentElement.classList.toggle(
             "dark",
             localStorage.getItem("theme") === "dark",
         );
 
-        const urlLang = new URL(location.href).searchParams.get("lang");
-        const stored = localStorage.getItem("language");
         const lang =
-            urlLang === "bn" || (urlLang === null && stored === "bn")
-                ? "bn"
-                : "en";
+            localStorage.getItem("language") === "bn" ? "bn" : "en";
         document.documentElement.lang = lang;
 
         const title = document.querySelector("title");

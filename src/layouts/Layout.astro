@@ -3,15 +3,11 @@ import "@/styles/global.css";
 import { locale } from "@/i18n/locale";
 import { prepaint } from "@/scripts/prepaint";
 
-const { dark, title } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html
-	lang="en"
-	class={dark ? "dark" : undefined}
-	data-force-dark={dark ? "" : undefined}
->
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
