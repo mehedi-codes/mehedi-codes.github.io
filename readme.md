@@ -11,17 +11,17 @@ Personal portfolio, project showcase, and blog — a static-first Astro site, bi
 
 ## Commands
 
-| Command            | Action                                     |
-| :----------------- | :----------------------------------------- |
-| `bun install`      | Install dependencies                       |
-| `bun dev`          | Start local dev server at `localhost:4321` |
-| `bun build`        | Build the production site to `./dist/`     |
-| `bun preview`      | Preview the build locally                  |
-| `bun run check`    | Run `astro check` (types + diagnostics)    |
-| `bun run lint`     | Lint with oxlint                           |
-| `bun run lint:fix` | Auto-fix lint issues                       |
-| `bun run fmt`      | Format with oxfmt                          |
-| `bun run fmt:check`| Verify formatting                          |
+| Command             | Action                                     |
+| :------------------ | :----------------------------------------- |
+| `bun install`       | Install dependencies                       |
+| `bun dev`           | Start local dev server at `localhost:4321` |
+| `bun build`         | Build the production site to `./dist/`     |
+| `bun preview`       | Preview the build locally                  |
+| `bun run check`     | Run `astro check` (types + diagnostics)    |
+| `bun run lint`      | Lint with oxlint                           |
+| `bun run lint:fix`  | Auto-fix lint issues                       |
+| `bun run fmt`       | Format with oxfmt                          |
+| `bun run fmt:check` | Verify formatting                          |
 
 ## Project structure
 

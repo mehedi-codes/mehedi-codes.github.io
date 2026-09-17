@@ -94,15 +94,15 @@
 }
 
 [data-lang="bn"] {
-   @apply hidden
+  @apply hidden;
 }
 
 html[lang="bn"] [data-lang="bn"] {
-  @apply [display:revert]
+  @apply [display:revert];
 }
 
 html[lang="bn"] [data-lang="en"] {
-  @apply hidden
+  @apply hidden;
 }
 
 html[lang="bn"] .font-heading {
