@@ -7,14 +7,16 @@ import { locale } from "@/i18n/locale";
     title={{ en: locale.en["meta.404-title"], bn: locale.bn["meta.404-title"] }}
 >
     <section
-        class="relative flex-center flex-col text-center gap-y-8 px-6 overflow-hidden"
+        class="relative flex-1 flex-center flex-col text-center gap-y-8 px-6 overflow-hidden"
     >
         <div class="hero-grid pointer-events-none absolute inset-0 -z-20"></div>
         <div class="flex-col flex-center gap-8 max-w-3xl">
             <div class="relative z-0 flex-center flex-col gap-4">
                 <h1 class="font-black text-ink text-9xl">
                     <span data-lang="en">{locale.en["notfound.code"]}</span>
-                    <span data-lang="bn" lang="bn">{locale.bn["notfound.code"]}</span>
+                    <span data-lang="bn" lang="bn"
+                        >{locale.bn["notfound.code"]}</span
+                    >
                 </h1>
                 <h2
                     class="font-heading text-2xl font-semibold tracking-wide text-ink sm:text-3xl"
