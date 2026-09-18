@@ -11,7 +11,7 @@ const en = {
   "meta.title": "Mehedi Hasan | Software Engineer",
   "meta.description": "Mehedi Hasan, a Software Engineer from Bangladesh specializing in Full-Stack Web Development.",
   "meta.404-title": "404 - page not found",
-  logo: "mehedi.hasan",
+  logo: "mehedi_hasan",
   "hero.title": "Mehedi Hasan",
   "hero.designation": "Software Engineer",
   "hero.biodata":
@@ -37,7 +37,7 @@ const bn: Record<TranslationKey, string> = {
   "meta.title": "মেহেদী হাসান | সফটওয়্যার ইঞ্জিনিয়ার",
   "meta.description": "মেহেদী হাসান, একজন বাংলাদেশী সফটওয়্যার ইঞ্জিনিয়ার, যিনি ফুল-স্ট্যাক ওয়েব ডেভেলপমেন্টে দক্ষ।",
   "meta.404-title": "৪০৪ - পৃষ্ঠা পাওয়া যায়নি",
-  logo: "মেহেদী হাসান",
+  logo: "মেহেদী_হাসান",
   "hero.title": "মেহেদী হাসান",
   "hero.designation": "সফটওয়্যার ইঞ্জিনিয়ার",
   "hero.biodata":
