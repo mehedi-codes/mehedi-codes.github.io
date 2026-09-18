@@ -1,0 +1,89 @@
+---
+import { locale } from "@/i18n/locale";
+
+const links = [
+    { key: "nav.experience", href: "#experience" },
+    { key: "nav.work", href: "/work" },
+    { key: "nav.writing", href: "/writing" },
+    { key: "nav.contact", href: "#contact" },
+] as const;
+---
+
+<nav
+    aria-label={locale.en["nav.appbar-label"]}
+    class="fixed inset-x-3 bottom-3 z-50 rounded-2xl border border-subtle bg-paper/80 shadow-lg backdrop-blur-md sm:hidden"
+>
+    <ul class="grid grid-cols-4 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+        {
+            links.map((link) => (
+                <li>
+                    <a
+                        href={link.href}
+                        class="flex flex-col items-center justify-center gap-1 py-2.5 text-muted transition-colors hover:text-ink active:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink touch-manipulation [-webkit-tap-highlight-color:transparent]"
+                    >
+                        {link.key === "nav.experience" && (
+                            <svg
+                                class="size-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                aria-hidden="true"
+                            >
+                                <rect x="3" y="7" width="18" height="13" rx="2"></rect>
+                                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                <path d="M3 13h18"></path>
+                            </svg>
+                        )}
+                        {link.key === "nav.work" && (
+                            <svg
+                                class="size-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                aria-hidden="true"
+                            >
+                                <path d="M8 8l-4 4 4 4"></path>
+                                <path d="M16 8l4 4-4 4"></path>
+                                <path d="M13 6l-2 12"></path>
+                            </svg>
+                        )}
+                        {link.key === "nav.writing" && (
+                            <svg
+                                class="size-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                aria-hidden="true"
+                            >
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                            </svg>
+                        )}
+                        {link.key === "nav.contact" && (
+                            <svg
+                                class="size-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                aria-hidden="true"
+                            >
+                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                <path d="m3 7 9 6 9-6"></path>
+                            </svg>
+                        )}
+                        <span class="font-heading text-[10px] leading-none">
+                            <span data-lang="en">{locale.en[link.key]}</span>
+                            <span data-lang="bn" lang="bn">
+                                {locale.bn[link.key]}
+                            </span>
+                        </span>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
