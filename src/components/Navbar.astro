@@ -11,16 +11,26 @@ const links = [
 ] as const;
 ---
 
-<section class="py-3 text-muted fixed top-0 inset-x-0 w-full z-50 backdrop-blur-md">
-    <div class="container flex-between mx-auto font-heading">
-        <a href="/" class="text-xl font-semibold shimmer-text">
+<section
+    class="py-3 md:py-4 text-muted sticky top-0 z-50 backdrop-blur-md w-full"
+>
+    <div
+        class="w-full max-w-7xl flex-between mx-auto font-heading px-2 sm:px-4 md:px-6 lg:px-8"
+    >
+        <a
+            href="/"
+            class="text-lg sm:text-xl md:text-2xl font-semibold shimmer-text"
+        >
             <span data-lang="en">{locale.en.logo}</span>
             <span data-lang="bn" lang="bn">{locale.bn.logo}</span>
         </a>
-        <nav class="space-x-6">
+        <nav class="flex-between gap-x-3 sm:gap-x-4 md:gap-x-6 lg:gap-x-8">
             {
                 links.map((link) => (
-                    <a class="link-underline" href={link.href}>
+                    <a
+                        class="link-underline hidden sm:inline text-sm md:text-base"
+                        href={link.href}
+                    >
                         <span data-lang="en">{locale.en[link.key]}</span>
                         <span data-lang="bn" lang="bn">
                             {locale.bn[link.key]}
