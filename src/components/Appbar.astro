@@ -11,7 +11,7 @@ const links = [
 
 <nav
     aria-label={locale.en["nav.appbar-label"]}
-    class="fixed inset-x-3 bottom-3 z-50 rounded-2xl border border-subtle bg-paper/80 shadow-lg backdrop-blur-md sm:hidden"
+    class="fixed inset-x-3 bottom-3 z-50 border border-subtle bg-paper/80 shadow-lg backdrop-blur-md sm:hidden"
 >
     <ul class="grid grid-cols-4 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
         {
@@ -23,7 +23,7 @@ const links = [
                     >
                         {link.key === "nav.experience" && (
                             <svg
-                                class="size-5"
+                                class="size-6"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -37,7 +37,7 @@ const links = [
                         )}
                         {link.key === "nav.work" && (
                             <svg
-                                class="size-5"
+                                class="size-6"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -51,7 +51,7 @@ const links = [
                         )}
                         {link.key === "nav.writing" && (
                             <svg
-                                class="size-5"
+                                class="size-6"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -64,7 +64,7 @@ const links = [
                         )}
                         {link.key === "nav.contact" && (
                             <svg
-                                class="size-5"
+                                class="size-6"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -75,7 +75,7 @@ const links = [
                                 <path d="m3 7 9 6 9-6"></path>
                             </svg>
                         )}
-                        <span class="font-heading text-[10px] leading-none">
+                        <span class="font-heading text-xs leading-none">
                             <span data-lang="en">{locale.en[link.key]}</span>
                             <span data-lang="bn" lang="bn">
                                 {locale.bn[link.key]}
