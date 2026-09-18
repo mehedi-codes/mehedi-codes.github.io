@@ -4,6 +4,7 @@ import { locale } from "@/i18n/locale";
 import { prepaint } from "@/scripts/prepaint";
 import TailwindIndicator from "@/components/TailwindIndicator.astro";
 import Appbar from "@/components/Appbar.astro";
+import Navbar from "@/components/Navbar.astro";
 
 const { title } = Astro.props;
 ---
@@ -32,7 +33,10 @@ const { title } = Astro.props;
 		<script is:inline set:html={prepaint} />
 	</head>
 	<body class="font-body pb-20 sm:pb-0">
-		<slot />
+		<Navbar />
+		<main>
+			<slot />
+		</main>
 		<Appbar />
 		<TailwindIndicator/>
 	</body>
