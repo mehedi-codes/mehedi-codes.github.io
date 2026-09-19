@@ -1,7 +1,9 @@
 ---
-type Props = { id?: string };
+import { locale, type TranslationKey } from "@/i18n/locale";
 
-const { id } = Astro.props;
+type Props = { id?: string; titleKey?: TranslationKey };
+
+const { id, titleKey } = Astro.props;
 ---
 
 <section
@@ -11,6 +13,14 @@ const { id } = Astro.props;
 	<div
 		class="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20"
 	>
+		{titleKey && (
+			<h2
+				class="font-heading text-xs sm:text-sm uppercase tracking-wider text-muted mb-6 before:content-['//'] before:mr-1.5"
+			>
+				<span data-lang="en">{locale.en[titleKey]}</span>
+				<span data-lang="bn" lang="bn">{locale.bn[titleKey]}</span>
+			</h2>
+		)}
 		<slot />
 	</div>
 </section>
