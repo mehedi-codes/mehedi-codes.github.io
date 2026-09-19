@@ -14,6 +14,10 @@ const en = {
   "work.card.source": "source code",
   "writing.title": "writing",
   "writing.view-all": "view all",
+  "contact.title": "contact",
+  "contact.heading": "Let's work together",
+  "contact.bio":
+    "I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you! ",
   "lang.label": "বাংলা",
   "theme.dark": "dark",
   "theme.light": "light",
@@ -49,6 +53,10 @@ const bn: Record<TranslationKey, string> = {
   "work.card.source": "সোর্স কোড",
   "writing.title": "লেখালিখি",
   "writing.view-all": "সব দেখুন",
+  "contact.title": "যোগাযোগ",
+  "contact.heading": "আসুন একসাথে কাজ করি",
+  "contact.bio":
+    "আমি বর্তমানে নতুন সুযোগের জন্য উন্মুক্ত। আপনার প্রশ্ন থাকুক বা শুধু হ্যালো বলতে চান, আমি যত তাড়াতাড়ি পারি উত্তর দেওয়ার চেষ্টা করব!",
   "lang.label": "English",
   "theme.dark": "কালো",
   "theme.light": "সাদা",
