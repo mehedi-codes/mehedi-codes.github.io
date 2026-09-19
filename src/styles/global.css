@@ -70,9 +70,24 @@
   }
 }
 
-::view-transition-old(root),
+::view-transition-old(root) {
+  animation: page-fade-out 200ms ease-out both;
+}
+
 ::view-transition-new(root) {
-  @apply animate-none mix-blend-normal;
+  animation: page-fade-in 200ms ease-out both;
+}
+
+@keyframes page-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
 }
 
 @keyframes logo-sweep {
@@ -99,6 +114,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .shimmer-text {
+    animation: none;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
     animation: none;
   }
 }

@@ -1,9 +1,6 @@
 import { locale } from "@/i18n/locale";
 import { el, on, persist, read } from "./utils";
 
-const btn = el<HTMLButtonElement>("theme-toggle");
-const label = el<HTMLElement>("theme-toggle-label");
-
 const duration = 500;
 const line_width = 4;
 
@@ -14,7 +11,7 @@ const hasStartViewTransition =
 
 const isDark = () => document.documentElement.classList.contains("dark");
 
-const sync = (toDark: boolean) => {
+const sync = (label: HTMLElement, toDark: boolean) => {
   const target = toDark ? "light" : "dark";
   for (const lang of ["en", "bn"] as const) {
     const node = label.querySelector(`[data-lang="${lang}"]`);
@@ -24,12 +21,12 @@ const sync = (toDark: boolean) => {
   }
 };
 
-const seed = () => {
+const seed = (label: HTMLElement) => {
   document.documentElement.classList.toggle("dark", read("theme") === "dark");
-  sync(isDark());
+  sync(label, isDark());
 };
 
-const toggleTheme = () => {
+const toggleTheme = (label: HTMLElement) => {
   const nextDark = !isDark();
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -37,6 +34,9 @@ const toggleTheme = () => {
     const style = document.createElement("style");
     style.id = "theme-toggle-animation";
     style.textContent = `
+				::view-transition-old(root) {
+					animation: none;
+				}
 				::view-transition-new(root) {
 					mask: linear-gradient(white, white) 0% 0% / ${line_width}px 100% no-repeat;
 					animation: qrScanReveal ${duration}ms ease-in-out;
@@ -58,8 +58,17 @@ const toggleTheme = () => {
   }
 
   persist("theme", nextDark ? "dark" : "light");
-  sync(nextDark);
+  sync(label, nextDark);
 };
 
-seed();
-on(btn, "click", toggleTheme);
+const init = () => {
+  const btn = el<HTMLButtonElement>("theme-toggle");
+  const label = el<HTMLElement>("theme-toggle-label");
+  seed(label);
+  if (btn.dataset.bound === "true") return;
+  btn.dataset.bound = "true";
+  on(btn, "click", () => toggleTheme(label));
+};
+
+document.addEventListener("astro:page-load", init);
+init();
