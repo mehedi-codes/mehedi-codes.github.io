@@ -1,5 +1,7 @@
 ---
 import Container from "./Container.astro";
+import WorkCard from "./WorkCard.astro";
+import { projects } from "@/data/projects";
 import { locale } from "@/i18n/locale";
 ---
 
@@ -12,4 +14,13 @@ import { locale } from "@/i18n/locale";
 		<span data-lang="en">{locale.en["work.view-all"]}</span>
 		<span data-lang="bn" lang="bn">{locale.bn["work.view-all"]}</span>
 	</a>
+	<div
+		class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+	>
+		{
+			projects.map((project, index) => (
+				<WorkCard index={index + 1} entry={project} />
+			))
+		}
+	</div>
 </Container>
