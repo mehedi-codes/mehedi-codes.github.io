@@ -1,5 +1,6 @@
 ---
 import type { WritingEntry } from "@/data/writings";
+import { Image } from "astro:assets";
 
 type Props = { entry: WritingEntry };
 
@@ -8,45 +9,60 @@ const { entry } = Astro.props;
 
 <a
 	href={entry.url}
-	class="group flex flex-col gap-3 border border-subtle hover:border-muted transition-colors p-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+	class="group flex flex-col border border-subtle hover:border-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 >
-	<span class="flex-between">
-		<span class="font-heading text-xs text-muted">
-			<span data-lang="en">{entry.date.en}</span>
-			<span data-lang="bn" lang="bn">{entry.date.bn}</span>
+	<div class="aspect-[2/3] sm:aspect-[3/2]">
+		<picture>
+			<source media="(min-width: 640px)" srcset={entry.image.landscape} />
+			<Image
+				src={entry.image.portrait}
+				alt=""
+				width={400}
+				height={600}
+				loading="lazy"
+				class="h-full w-full object-cover"
+			/>
+		</picture>
+	</div>
+	<div class="flex flex-1 flex-col gap-3 p-6">
+		<span class="flex-between">
+			<span class="font-heading text-xs text-muted">
+				<span data-lang="en">{entry.date.en}</span>
+				<span data-lang="bn" lang="bn">{entry.date.bn}</span>
+			</span>
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="size-4 text-muted group-hover:text-ink transition-colors"
+				aria-hidden="true"
+			>
+				<path d="M7 7h10v10"></path>
+				<path d="M7 17 17 7"></path>
+			</svg>
 		</span>
-		<svg
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.5"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			class="size-4 text-muted group-hover:text-ink transition-colors"
-			aria-hidden="true"
-		>
-			<path d="M7 7h10v10"></path>
-			<path d="M7 17 17 7"></path>
-		</svg>
-	</span>
-	<h3 class="font-heading font-bold text-lg text-ink">
-		<span data-lang="en">{entry.title.en}</span>
-		<span data-lang="bn" lang="bn">{entry.title.bn}</span>
-	</h3>
-	<p class="text-sm sm:text-base leading-relaxed text-muted">
-		<span data-lang="en">{entry.description.en}</span>
-		<span data-lang="bn" lang="bn">{entry.description.bn}</span>
-	</p>
-	<ul class="mt-auto flex flex-wrap gap-2">
-		{
-			entry.tags.map((tag) => (
-				<li
-					class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase"
-				>
-					<span data-lang="en">{tag.en}</span>
-					<span data-lang="bn" lang="bn">{tag.bn}</span>
-				</li>
-			))
-		}
-	</ul>
+		<h3 class="font-heading font-bold text-lg text-ink">
+			<span data-lang="en">{entry.title.en}</span>
+			<span data-lang="bn" lang="bn">{entry.title.bn}</span>
+		</h3>
+		<p class="text-sm sm:text-base leading-relaxed text-muted">
+			<span data-lang="en">{entry.description.en}</span>
+			<span data-lang="bn" lang="bn">{entry.description.bn}</span>
+		</p>
+		<ul class="mt-auto flex flex-wrap gap-2">
+			{
+				entry.tags.map((tag) => (
+					<li
+						class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase"
+					>
+						<span data-lang="en">{tag.en}</span>
+						<span data-lang="bn" lang="bn">{tag.bn}</span>
+					</li>
+				))
+			}
+		</ul>
+	</div>
 </a>

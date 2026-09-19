@@ -1,8 +1,9 @@
-export type WritingEntry = {
+﻿export type WritingEntry = {
   date: { en: string; bn: string };
   title: { en: string; bn: string };
   description: { en: string; bn: string };
   tags: { en: string; bn: string }[];
+  image: { portrait: string; landscape: string };
   url: string;
 };
 
@@ -21,6 +22,7 @@ export const writings: WritingEntry[] = [
       bn: "সংক্ষিপ্ত লেখার বিবরণ শীঘ্রই যুক্ত হবে।",
     },
     tags: [{ en: "writing", bn: "লেখালিখি" }],
+    image: { portrait: "https://placehold.net/400x600.png", landscape: "https://placehold.net/600x400.png" },
     url: "/writing/post-one",
   },
   {
@@ -37,6 +39,7 @@ export const writings: WritingEntry[] = [
       bn: "সংক্ষিপ্ত লেখার বিবরণ শীঘ্রই যুক্ত হবে।",
     },
     tags: [{ en: "writing", bn: "লেখালিখি" }],
+    image: { portrait: "https://placehold.net/400x600.png", landscape: "https://placehold.net/600x400.png" },
     url: "/writing/post-two",
   },
   {
@@ -53,6 +56,7 @@ export const writings: WritingEntry[] = [
       bn: "সংক্ষিপ্ত লেখার বিবরণ শীঘ্রই যুক্ত হবে।",
     },
     tags: [{ en: "writing", bn: "লেখালিখি" }],
+    image: { portrait: "https://placehold.net/400x600.png", landscape: "https://placehold.net/600x400.png" },
     url: "/writing/post-three",
   },
 ];

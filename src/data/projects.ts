@@ -1,7 +1,8 @@
-export type ProjectEntry = {
+﻿export type ProjectEntry = {
   title: { en: string; bn: string };
   description: { en: string; bn: string };
   tags: { en: string; bn: string }[];
+  image: { portrait: string; landscape: string };
   url: string;
   live: string;
   source: string;
@@ -21,6 +22,7 @@ export const projects: ProjectEntry[] = [
       { en: "typescript", bn: "টাইপস্ক্রিপ্ট" },
       { en: "full-stack", bn: "ফুল-স্ট্যাক" },
     ],
+    image: { portrait: "https://placehold.net/400x600.png", landscape: "https://placehold.net/600x400.png" },
     url: "example.com/project-one",
     live: "https://example.com/project-one",
     source: "https://github.com/example/project-one",
@@ -38,6 +40,7 @@ export const projects: ProjectEntry[] = [
       { en: "react", bn: "রিঅ্যাক্ট" },
       { en: "frontend", bn: "ফ্রন্ট-এন্ড" },
     ],
+    image: { portrait: "https://placehold.net/400x600.png", landscape: "https://placehold.net/600x400.png" },
     url: "example.com/project-two",
     live: "https://example.com/project-two",
     source: "https://github.com/example/project-two",
@@ -55,6 +58,7 @@ export const projects: ProjectEntry[] = [
       { en: "nodejs", bn: "নোডজেএস" },
       { en: "backend", bn: "ব্যাক-এন্ড" },
     ],
+    image: { portrait: "https://placehold.net/400x600.png", landscape: "https://placehold.net/600x400.png" },
     url: "example.com/project-three",
     live: "https://example.com/project-three",
     source: "https://github.com/example/project-three",

@@ -1,5 +1,6 @@
 ---
 import type { ProjectEntry } from "@/data/projects";
+import { Image } from "astro:assets";
 import { locale } from "@/i18n/locale";
 
 type Props = { index: number; entry: ProjectEntry };
@@ -9,78 +10,98 @@ const number = String(index).padStart(2, "0");
 ---
 
 <article
-	class="flex flex-col gap-4 border border-subtle hover:border-muted transition-colors p-6"
+	class="flex flex-col border border-subtle hover:border-muted transition-colors"
 >
-	<span class="font-heading text-sm text-muted">{number}</span>
-	<h3 class="font-heading font-bold text-lg text-ink">
-		<span data-lang="en">{entry.title.en}</span>
-		<span data-lang="bn" lang="bn">{entry.title.bn}</span>
-	</h3>
-	<p class="text-sm sm:text-base leading-relaxed text-muted">
-		<span data-lang="en">{entry.description.en}</span>
-		<span data-lang="bn" lang="bn">{entry.description.bn}</span>
-	</p>
-	<ul class="flex flex-wrap gap-2">
-		{
-			entry.tags.map((tag) => (
-				<li
-					class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase"
-				>
-					<span data-lang="en">{tag.en}</span>
-					<span data-lang="bn" lang="bn">{tag.bn}</span>
-				</li>
-			))
-		}
-	</ul>
-	<hr class="mt-auto border-subtle" />
-	<footer class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-		<span class="font-heading text-xs text-muted truncate min-w-0"
-			>{entry.url}</span
-		>
-		<div class="flex flex-wrap gap-2.5">
-			<a
-				href={entry.live}
-				target="_blank"
-				rel="noopener"
-				class="flex items-center gap-1.5 border border-muted px-3 py-1.5 text-xs transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+	<div class="aspect-[2/3] sm:aspect-[3/2]">
+		<picture>
+			<source media="(min-width: 640px)" srcset={entry.image.landscape} />
+			<Image
+				src={entry.image.portrait}
+				alt=""
+				width={400}
+				height={600}
+				loading="lazy"
+				class="h-full w-full object-cover"
+			/>
+		</picture>
+	</div>
+	<div class="flex flex-1 flex-col gap-4 p-6">
+		<span class="font-heading text-sm text-muted">{number}</span>
+		<h3 class="font-heading font-bold text-lg text-ink">
+			<span data-lang="en">{entry.title.en}</span>
+			<span data-lang="bn" lang="bn">{entry.title.bn}</span>
+		</h3>
+		<p class="text-sm sm:text-base leading-relaxed text-muted">
+			<span data-lang="en">{entry.description.en}</span>
+			<span data-lang="bn" lang="bn">{entry.description.bn}</span>
+		</p>
+		<ul class="flex flex-wrap gap-2">
+			{
+				entry.tags.map((tag) => (
+					<li
+						class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase"
+					>
+						<span data-lang="en">{tag.en}</span>
+						<span data-lang="bn" lang="bn">{tag.bn}</span>
+					</li>
+				))
+			}
+		</ul>
+		<hr class="mt-auto border-subtle" />
+		<footer class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+			<span class="font-heading text-xs text-muted truncate min-w-0"
+				>{entry.url}</span
 			>
-				<svg
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="1.5"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					class="size-3.5 shrink-0"
-					aria-hidden="true"
+			<div class="flex flex-wrap gap-2.5">
+				<a
+					href={entry.live}
+					target="_blank"
+					rel="noopener"
+					class="flex items-center gap-1.5 border border-muted px-3 py-1.5 text-xs transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 				>
-					<circle cx="12" cy="12" r="10"></circle>
-					<path
-						d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"
-					></path>
-					<path d="M2 12h20"></path>
-				</svg>
-				<span data-lang="en">{locale.en["work.card.live"]}</span>
-				<span data-lang="bn" lang="bn"
-					>{locale.bn["work.card.live"]}</span
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="size-3.5 shrink-0"
+						aria-hidden="true"
+					>
+						<circle cx="12" cy="12" r="10"></circle>
+						<path
+							d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"
+						></path>
+						<path d="M2 12h20"></path>
+					</svg>
+					<span data-lang="en">{locale.en["work.card.live"]}</span>
+					<span data-lang="bn" lang="bn"
+						>{locale.bn["work.card.live"]}</span
+					>
+				</a>
+				<a
+					href={entry.source}
+					target="_blank"
+					rel="noopener"
+					class="flex items-center gap-1.5 border border-muted px-3 py-1.5 text-xs transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 				>
-			</a>
-			<a
-				href={entry.source}
-				target="_blank"
-				rel="noopener"
-				class="flex items-center gap-1.5 border border-muted px-3 py-1.5 text-xs transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-			>
-				<svg viewBox="0 0 24 24" fill="currentColor" class="size-3.5 shrink-0" aria-hidden="true">
-					<path
-						d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 2 .8 2.6 1.2.3-1 .9-1.5 1.5-1.8-2.6-.3-5.4-1.3-5.4-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .2 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.9 1.2 1.9 1.2 3.2 0 4.5-2.8 5.5-5.4 5.8.9.8 1.7 2.3 1.7 4.7v2.9c0 .4.2.7.8.6 4.7-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"
-					></path>
-				</svg>
-				<span data-lang="en">{locale.en["work.card.source"]}</span>
-				<span data-lang="bn" lang="bn"
-					>{locale.bn["work.card.source"]}</span
-				>
-			</a>
-		</div>
-	</footer>
+					<svg
+						viewBox="0 0 24 24"
+						fill="currentColor"
+						class="size-3.5 shrink-0"
+						aria-hidden="true"
+					>
+						<path
+							d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 2 .8 2.6 1.2.3-1 .9-1.5 1.5-1.8-2.6-.3-5.4-1.3-5.4-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .2 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.9 1.2 1.9 1.2 3.2 0 4.5-2.8 5.5-5.4 5.8.9.8 1.7 2.3 1.7 4.7v2.9c0 .4.2.7.8.6 4.7-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"
+						></path>
+					</svg>
+					<span data-lang="en">{locale.en["work.card.source"]}</span>
+					<span data-lang="bn" lang="bn"
+						>{locale.bn["work.card.source"]}</span
+					>
+				</a>
+			</div>
+		</footer>
+	</div>
 </article>
