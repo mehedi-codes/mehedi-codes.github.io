@@ -13,17 +13,14 @@ const number = String(index).padStart(2, "0");
 	class="flex flex-col border border-subtle hover:border-muted transition-colors"
 >
 	<div class="aspect-[2/3] sm:aspect-[3/2]">
-		<picture>
-			<source media="(min-width: 640px)" srcset={entry.image.landscape} />
-			<Image
-				src={entry.image.portrait}
-				alt=""
-				width={400}
-				height={600}
-				loading="lazy"
-				class="h-full w-full object-cover"
-			/>
-		</picture>
+		<Image
+			src={entry.image}
+			alt=""
+			width={640}
+			height={360}
+			loading="lazy"
+			class="h-full w-full object-cover"
+		/>
 	</div>
 	<div class="flex flex-1 flex-col gap-4 p-6">
 		<span class="font-heading text-sm text-muted">{number}</span>
