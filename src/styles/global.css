@@ -93,6 +93,10 @@
   @apply bg-[linear-gradient(to_right,var(--color-subtle)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-subtle)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_60%_55%_at_50%_44%,black_0%,transparent_75%)] opacity-60;
 }
 
+@utility glow-dot {
+  box-shadow: 0 0 10px var(--ink);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .shimmer-text {
     animation: none;
