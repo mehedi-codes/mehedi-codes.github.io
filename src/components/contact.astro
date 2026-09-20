@@ -8,9 +8,13 @@ import { contacts, locale } from "@/utils/content";
 		class="flex flex-col gap-8 md:gap-12 lg:gap-24 md:flex-row md:items-stretch"
 	>
 		<div class="md:flex-1 md:flex md:flex-col">
-			<h2 class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight">
+			<h2
+				class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight"
+			>
 				<span data-lang="en">{locale.en["contact.heading"]}</span>
-				<span data-lang="bn" lang="bn">{locale.bn["contact.heading"]}</span>
+				<span data-lang="bn" lang="bn"
+					>{locale.bn["contact.heading"]}</span
+				>
 			</h2>
 			<p
 				class="text-base sm:text-lg text-muted leading-relaxed mt-4 md:mt-6 md:flex-1"
@@ -31,11 +35,17 @@ import { contacts, locale } from "@/utils/content";
 							})}
 							class="flex items-center justify-between gap-x-4 py-4 sm:py-5 transition-colors duration-200 ease-linear hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 						>
-							<span class="font-heading text-xs text-muted lowercase"
-								><span data-lang="en">{entry.label.en}</span
-								><span data-lang="bn" lang="bn">{entry.label.bn}</span
-							></span>
-							<span class="font-heading text-sm sm:text-base text-ink">{entry.username}</span>
+							<span class="font-heading text-xs text-muted lowercase">
+								<>
+									<span data-lang="en">{entry.label.en}</span>
+									<span data-lang="bn" lang="bn">
+										{entry.label.bn}
+									</span>
+								</>
+							</span>
+							<span class="font-heading text-sm sm:text-base text-ink">
+								{entry.username}
+							</span>
 						</a>
 					</li>
 				))

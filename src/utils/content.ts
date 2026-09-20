@@ -11,18 +11,18 @@ export type ContactEntry = {
 export const contacts: ContactEntry[] = [
   {
     label: { en: "email", bn: "ইমেইল" },
-    username: "hello@mehedi.dev",
-    href: "mailto:hello@mehedi.dev",
+    username: "mehedi.swe@proton.me",
+    href: "mailto:mehedi.swe@proton.me",
   },
   {
     label: { en: "github", bn: "গিটহাব" },
-    username: "@mehedi-codes",
+    username: "github.com/mehedi-codes",
     href: "https://github.com/mehedi-codes",
   },
   {
     label: { en: "linkedin", bn: "লিংকডইন" },
-    username: "in/placeholder",
-    href: "https://linkedin.com/in/placeholder",
+    username: "linkedin.com/in/mehedi-codes",
+    href: "https://linkedin.com/in/mehedi-codes",
   },
 ];
 
