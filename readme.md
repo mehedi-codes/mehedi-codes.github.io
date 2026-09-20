@@ -5,7 +5,7 @@ Personal portfolio, project showcase, and blog — a static-first Astro site, bi
 ## Stack
 
 - **Astro** — static-first framework, zero-JS by default
-- **Tailwind CSS v4** — design tokens and utilities in `src/styles/global.css`
+- **Tailwind CSS v4** — design tokens and utilities in `src/styles/base.css`
 - **Bun** — package manager and runner
 - **Fonts** — Inter / JetBrains Mono (EN), Hind Siliguri (BN)
 

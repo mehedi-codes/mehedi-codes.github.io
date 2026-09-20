@@ -1,3 +1,11 @@
+@import "tailwindcss";
+@import "./fonts.css";
+@import "./tokens.css";
+@import "./utilities.css";
+@import "./transitions.css";
+@import "./i18n.css";
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   * {
     @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-subtle;
