@@ -57,3 +57,12 @@
     animation: none;
   }
 }
+
+nav a[aria-current] {
+  color: var(--ink);
+}
+
+a.link-underline[aria-current]::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

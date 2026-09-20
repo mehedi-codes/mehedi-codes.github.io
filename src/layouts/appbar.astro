@@ -7,6 +7,10 @@ const links = [
     { key: "nav.writing", href: "/writing" },
     { key: "nav.contact", href: "/#contact" },
 ] as const;
+
+const pathname = Astro.url.pathname;
+const isPageActive = (href: string) =>
+    !href.startsWith("/#") && (pathname === href || pathname.startsWith(`${href}/`));
 ---
 
 <nav
@@ -18,6 +22,7 @@ const links = [
             links.map((link) => (
                 <li>
                     <a
+                        aria-current={isPageActive(link.href) ? "page" : undefined}
                         href={link.href}
                         class="flex flex-col items-center justify-center gap-1 py-2.5 text-muted transition-colors hover:text-ink active:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink touch-manipulation [-webkit-tap-highlight-color:transparent]"
                     >

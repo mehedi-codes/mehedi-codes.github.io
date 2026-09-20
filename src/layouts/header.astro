@@ -9,6 +9,10 @@ const links = [
     { key: "nav.writing", href: "/writing" },
     { key: "nav.contact", href: "/#contact" },
 ] as const;
+
+const pathname = Astro.url.pathname;
+const isPageActive = (href: string) =>
+    !href.startsWith("/#") && (pathname === href || pathname.startsWith(`${href}/`));
 ---
 
 <header
@@ -27,6 +31,7 @@ const links = [
                 links.map((link) => (
                     <a
                         class="link-underline hidden sm:inline text-sm md:text-base"
+                        aria-current={isPageActive(link.href) ? "page" : undefined}
                         href={link.href}
                     >
                         <span data-lang="en">{locale.en[link.key]}</span>
@@ -41,3 +46,7 @@ const links = [
         </nav>
     </div>
 </header>
+
+<script>
+    import "@/utils/scroll-spy";
+</script>
