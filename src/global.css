@@ -1,7 +1,5 @@
 @import "tailwindcss";
-@import "@fontsource/inter";
-@import "@fontsource/jetbrains-mono";
-@import "@fontsource/hind-siliguri";
+@import "./styles/fonts.css";
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -9,9 +7,9 @@
   --ink: #1a1a1f;
   --subtle: #e8e6e1;
   --muted: #64635e;
-  --inter: "Inter", sans-serif;
-  --jetbrains-mono: "JetBrains Mono", monospace;
-  --hind-siliguri: "Hind Siliguri", "Inter", sans-serif;
+  --inter: "Inter Variable", "Inter", sans-serif;
+  --jetbrains-mono: "JetBrains Mono Variable", "JetBrains Mono", monospace;
+  --hind-siliguri: "Hind Siliguri", "Anek Bangla Variable", "Inter", sans-serif;
 }
 
 .dark {
