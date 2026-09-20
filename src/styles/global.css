@@ -90,6 +90,15 @@
   }
 }
 
+::view-transition {
+  background-color: var(--paper);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
+
 @keyframes logo-sweep {
   0% {
     background-position: 250% 0;

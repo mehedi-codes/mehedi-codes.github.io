@@ -4,7 +4,7 @@ import { el, on, persist, read } from "./utils";
 const duration = 500;
 const line_width = 4;
 
-type StartViewTransition = (callback: () => void) => void;
+type StartViewTransition = (callback: () => void) => ViewTransition;
 
 const hasStartViewTransition =
   typeof (document as Document & { startViewTransition?: StartViewTransition }).startViewTransition === "function";
@@ -49,10 +49,12 @@ const toggleTheme = (label: HTMLElement) => {
 				}
 			`;
     document.head.appendChild(style);
-    document.startViewTransition?.(() => {
+    const cleanup = () => document.getElementById("theme-toggle-animation")?.remove();
+    const transition = document.startViewTransition?.(() => {
       document.documentElement.classList.toggle("dark", nextDark);
     });
-    setTimeout(() => document.getElementById("theme-toggle-animation")?.remove(), duration);
+    transition?.finished.then(cleanup, cleanup);
+    setTimeout(cleanup, duration + 250);
   } else {
     document.documentElement.classList.toggle("dark", nextDark);
   }
