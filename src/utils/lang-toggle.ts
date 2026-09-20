@@ -1,5 +1,5 @@
-import { locale } from "@/content";
-import { applyMeta, el, getLang, on, persist, read, setLang } from "./utils";
+import { locale } from "@/utils/content";
+import { applyMeta, el, getLang, on, persist, read, setLang } from "./dom";
 
 const init = () => {
   const btn = el<HTMLButtonElement>("lang-toggle");

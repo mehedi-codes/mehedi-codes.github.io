@@ -1,5 +1,5 @@
-import { locale } from "@/content";
-import { el, on, persist, read } from "./utils";
+import { locale } from "@/utils/content";
+import { el, on, persist, read } from "./dom";
 
 const duration = 500;
 const line_width = 4;
