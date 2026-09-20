@@ -1,4 +1,4 @@
-import { locale } from "@/i18n/locale";
+import { locale } from "@/content";
 import { applyMeta, el, getLang, on, persist, read, setLang } from "./utils";
 
 const init = () => {

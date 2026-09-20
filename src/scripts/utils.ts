@@ -1,4 +1,4 @@
-export type Lang = "en" | "bn";
+import type { Lang } from "@/content";
 
 export const el = <T extends HTMLElement>(id: string): T => {
   const node = document.getElementById(id);

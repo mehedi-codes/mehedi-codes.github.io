@@ -1,7 +1,6 @@
 ---
-import type { ProjectEntry } from "@/data/projects";
+import { locale, type ProjectEntry } from "@/content";
 import { Image } from "astro:assets";
-import { locale } from "@/i18n/locale";
 
 type Props = { index: number; entry: ProjectEntry };
 
@@ -12,7 +11,7 @@ const number = String(index).padStart(2, "0");
 <article
 	class="flex flex-col border border-subtle hover:border-muted transition-colors"
 >
-	<div class="aspect-video sm:aspect-[3/2]">
+	<div class="aspect-video sm:aspect-3/2">
 		<Image
 			src={entry.image}
 			alt=""

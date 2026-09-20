@@ -1,4 +1,4 @@
-import { locale } from "@/i18n/locale";
+import { locale } from "@/content";
 import { el, on, persist, read } from "./utils";
 
 const duration = 500;
