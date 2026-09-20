@@ -3,7 +3,8 @@
 @import "./variables.css";
 @import "./utilities.css";
 @import "./transitions.css";
-@import "./i18n.css";
+@import "./bilingual.css";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
