@@ -26,7 +26,7 @@ import { contacts, locale } from "@/utils/content";
 		<ul class="flex flex-col md:w-96 lg:w-md">
 			{
 				contacts.map((entry) => (
-					<li class="border-y border-muted not-last:-mb-px px-2 transition-colors duration-200 ease-linear hover:bg-subtle focus-visible:outline-1 focus-visible:outline-offset-1 focus-visible:outline-ink">
+					<li class="border-y border-subtle not-last:-mb-px px-2 transition-colors duration-200 ease-linear hover:bg-subtle focus-visible:outline-1 focus-visible:outline-offset-1 focus-visible:outline-ink">
 						<a
 							href={entry.href}
 							{...(!entry.href.startsWith("mailto:") && {

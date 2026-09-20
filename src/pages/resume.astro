@@ -46,7 +46,7 @@ const copy = {
     </head>
     <body class="font-body min-h-dvh flex flex-col relative">
         <header
-            class="py-3 md:py-4 text-muted sticky top-0 z-50 bg-paper/80 backdrop-blur-md border-b border-subtle w-full px-2 sm:px-4 md:px-6 lg:px-8 hidden sm:block"
+            class="py-2 text-muted sticky top-0 z-50 bg-paper/80 backdrop-blur-md w-full px-2 sm:px-4 md:px-6 lg:px-8 hidden sm:block"
         >
             <div class="w-full max-w-7xl flex-between mx-auto font-heading">
                 <a
@@ -58,7 +58,7 @@ const copy = {
                 </a>
                 <a
                     href={resumeDoc.download}
-                    class="inline-flex items-center gap-2 border border-muted px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:border-ink hover:text-ink hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+                    class="inline-flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:outline-ink hover:text-ink outline outline-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -70,9 +70,10 @@ const copy = {
                         class="size-4 shrink-0"
                         aria-hidden="true"
                     >
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <path d="m7 10 5 5 5-5" />
-                        <path d="M12 15V3" />
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                        ></path>
+                        <path d="m7 10 5 5 5-5"></path>
+                        <path d="M12 15V3"></path>
                     </svg>
                     <span data-lang="en">{copy.download.en}</span>
                     <span data-lang="bn" lang="bn">{copy.download.bn}</span>
@@ -85,18 +86,19 @@ const copy = {
                     src={resumeDoc.preview}
                     title="Mehedi Hasan — Resume preview"
                     loading="lazy"
-                    class="block w-full flex-1 min-h-0"
-                ></iframe>
+                    class="block w-full flex-1 min-h-0"></iframe>
             </section>
         </main>
         <nav
             aria-label={copy.download.en}
-            class="fixed inset-x-3 bottom-3 z-50 border border-subtle bg-paper/80 shadow-lg backdrop-blur-md sm:hidden"
+            class="fixed inset-x-2 bottom-0 z-50 backdrop-blur-md sm:hidden"
         >
-            <div class="px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+            <div
+                class="px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+            >
                 <a
                     href={resumeDoc.download}
-                    class="flex w-full items-center justify-center gap-2 border border-muted px-5 py-2.5 font-heading text-sm text-ink transition-colors duration-200 ease-linear hover:border-ink hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink touch-manipulation [-webkit-tap-highlight-color:transparent]"
+                    class="flex w-full items-center justify-center gap-2 px-5 py-2.5 font-heading text-sm text-ink transition-colors duration-200 ease-linear hover:outline-ink outline outline-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink touch-manipulation [-webkit-tap-highlight-color:transparent]"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -108,9 +110,10 @@ const copy = {
                         class="size-4 shrink-0"
                         aria-hidden="true"
                     >
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <path d="m7 10 5 5 5-5" />
-                        <path d="M12 15V3" />
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                        ></path>
+                        <path d="m7 10 5 5 5-5"></path>
+                        <path d="M12 15V3"></path>
                     </svg>
                     <span data-lang="en">{copy.download.en}</span>
                     <span data-lang="bn" lang="bn">{copy.download.bn}</span>

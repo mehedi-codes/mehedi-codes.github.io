@@ -12,13 +12,16 @@ const links = [
 
 const pathname = Astro.url.pathname;
 const isPageActive = (href: string) =>
-    !href.startsWith("/#") && (pathname === href || pathname.startsWith(`${href}/`));
+    !href.startsWith("/#") &&
+    (pathname === href || pathname.startsWith(`${href}/`));
 ---
 
 <header
-    class="py-3 md:py-4 text-muted sticky top-0 z-50 bg-paper/80 backdrop-blur-md w-full px-2 sm:px-4 md:px-6 lg:px-8"
+    class="py-3 md:py-4 text-muted sticky top-0 z-50 bg-paper/80 backdrop-blur-md w-full"
 >
-    <div class="w-full max-w-7xl flex-between mx-auto font-heading">
+    <div
+        class="w-full max-w-7xl flex-between mx-auto font-heading px-2 sm:px-4 md:px-6 lg:px-8"
+    >
         <a
             href="/"
             class="text-lg sm:text-xl md:text-2xl font-semibold shimmer-text"
@@ -31,7 +34,9 @@ const isPageActive = (href: string) =>
                 links.map((link) => (
                     <a
                         class="link-underline hidden sm:inline text-sm md:text-base"
-                        aria-current={isPageActive(link.href) ? "page" : undefined}
+                        aria-current={
+                            isPageActive(link.href) ? "page" : undefined
+                        }
                         href={link.href}
                     >
                         <span data-lang="en">{locale.en[link.key]}</span>
