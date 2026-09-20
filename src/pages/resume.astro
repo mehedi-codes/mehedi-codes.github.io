@@ -1,0 +1,125 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "@/styles/base.css";
+import { prepaint } from "@/utils/prepaint";
+
+const baseDocUrl =
+    "https://docs.google.com/document/d/11VkPFKIzrgFL16qshkxgQpQGTI2holqsCHxLUnNIgBQ";
+const resumeDoc = {
+    preview: `${baseDocUrl}/preview`,
+    download: `${baseDocUrl}/export?format=pdf`,
+};
+
+const copy = {
+    logo: { en: "mehedi_hasan", bn: "মেহেদী_হাসান" },
+    title: { en: "Resume | Mehedi Hasan", bn: "রেজিউমি | মেহেদী হাসান" },
+    description: {
+        en: "Resume of Mehedi Hasan, Software Engineer.",
+        bn: "সফটওয়্যার ইঞ্জিনিয়ার মেহেদী হাসানের রেজিউমি।",
+    },
+    download: {
+        en: "Download Resume as PDF",
+        bn: "পিডিএফ হিসেবে রেজুমে ডাউনলোড করুন",
+    },
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth motion-reduce:scroll-auto">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content={Astro.generator} />
+        <ClientRouter />
+        <title data-title-en={copy.title.en} data-title-bn={copy.title.bn}>
+            {copy.title.en}
+        </title>
+        <meta
+            name="description"
+            data-desc-en={copy.description.en}
+            data-desc-bn={copy.description.bn}
+            content={copy.description.en}
+        />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/webp" href="/favicon.webp" />
+        <script is:inline set:html={prepaint} />
+    </head>
+    <body class="font-body min-h-dvh flex flex-col pb-20 sm:pb-0 relative">
+        <header
+            class="py-3 md:py-4 text-muted sticky top-0 z-50 bg-paper/80 backdrop-blur-md w-full px-2 sm:px-4 md:px-6 lg:px-8 hidden sm:block"
+        >
+            <div class="w-full max-w-7xl flex-between mx-auto font-heading">
+                <a
+                    href="/"
+                    class="text-lg sm:text-xl md:text-2xl font-semibold shimmer-text"
+                >
+                    <span data-lang="en">{copy.logo.en}</span>
+                    <span data-lang="bn" lang="bn">{copy.logo.bn}</span>
+                </a>
+                <a
+                    href={resumeDoc.download}
+                    class="inline-flex items-center gap-2 border border-muted px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:border-ink hover:text-ink hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="size-4 shrink-0"
+                        aria-hidden="true"
+                    >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <path d="m7 10 5 5 5-5" />
+                        <path d="M12 15V3" />
+                    </svg>
+                    <span data-lang="en">{copy.download.en}</span>
+                    <span data-lang="bn" lang="bn">{copy.download.bn}</span>
+                </a>
+            </div>
+        </header>
+        <main class="flex-1 flex flex-col">
+            <section
+                class="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-12"
+            >
+                <div class="border border-subtle">
+                    <iframe
+                        src={resumeDoc.preview}
+                        title="Mehedi Hasan — Resume preview"
+                        loading="lazy"
+                        class="h-[75vh] md:h-[calc(100vh-14rem)] w-full"
+                    ></iframe>
+                </div>
+            </section>
+        </main>
+        <nav
+            aria-label={copy.download.en}
+            class="fixed inset-x-3 bottom-3 z-50 border border-subtle bg-paper/80 shadow-lg backdrop-blur-md sm:hidden"
+        >
+            <div class="px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+                <a
+                    href={resumeDoc.download}
+                    class="flex w-full items-center justify-center gap-2 border border-muted px-5 py-2.5 font-heading text-sm text-ink transition-colors duration-200 ease-linear hover:border-ink hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink touch-manipulation [-webkit-tap-highlight-color:transparent]"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="size-4 shrink-0"
+                        aria-hidden="true"
+                    >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <path d="m7 10 5 5 5-5" />
+                        <path d="M12 15V3" />
+                    </svg>
+                    <span data-lang="en">{copy.download.en}</span>
+                    <span data-lang="bn" lang="bn">{copy.download.bn}</span>
+                </a>
+            </div>
+        </nav>
+    </body>
+</html>
