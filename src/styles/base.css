@@ -1,0 +1,8 @@
+@layer base {
+  * {
+    @apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-subtle;
+  }
+  body {
+    @apply bg-paper text-ink selection:bg-ink selection:text-paper;
+  }
+}

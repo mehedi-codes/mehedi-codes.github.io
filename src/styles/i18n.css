@@ -1,0 +1,13 @@
+[data-lang="bn"],
+html[lang="bn"] [data-lang="en"] {
+  @apply hidden;
+}
+
+html[lang="bn"] [data-lang="bn"] {
+  @apply [display:revert];
+}
+
+html[lang="bn"] .font-heading,
+html[lang="bn"] .font-body {
+  font-family: var(--hind-siliguri);
+}

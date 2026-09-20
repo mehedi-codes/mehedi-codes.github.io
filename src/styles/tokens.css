@@ -1,0 +1,24 @@
+:root {
+  --paper: #fafaf8;
+  --ink: #1a1a1f;
+  --subtle: #e8e6e1;
+  --muted: #64635e;
+  --inter: "Inter Variable", "Inter", sans-serif;
+  --jetbrains-mono: "JetBrains Mono Variable", "JetBrains Mono", monospace;
+  --hind-siliguri: "Hind Siliguri", "Anek Bangla Variable", "Inter", sans-serif;
+}
+
+.dark {
+  color-scheme: dark;
+  --paper: #141419;
+  --ink: #f4f4f1;
+  --subtle: #2b2b31;
+  --muted: #9a9aa1;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-subtle: var(--subtle);
+  --color-muted: var(--muted);
+}
