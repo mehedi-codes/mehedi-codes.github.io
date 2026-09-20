@@ -44,7 +44,7 @@ const copy = {
         <link rel="icon" type="image/webp" href="/favicon.webp" />
         <script is:inline set:html={prepaint} />
     </head>
-    <body class="font-body min-h-dvh flex flex-col pb-20 sm:pb-0 relative">
+    <body class="font-body min-h-dvh flex flex-col relative">
         <header
             class="py-3 md:py-4 text-muted sticky top-0 z-50 bg-paper/80 backdrop-blur-md w-full px-2 sm:px-4 md:px-6 lg:px-8 hidden sm:block"
         >
@@ -80,17 +80,13 @@ const copy = {
             </div>
         </header>
         <main class="flex-1 flex flex-col">
-            <section
-                class="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-12"
-            >
-                <div class="border border-subtle">
-                    <iframe
-                        src={resumeDoc.preview}
-                        title="Mehedi Hasan — Resume preview"
-                        loading="lazy"
-                        class="h-[75vh] md:h-[calc(100vh-14rem)] w-full"
-                    ></iframe>
-                </div>
+            <section class="flex flex-1 flex-col min-h-0 bg-paper">
+                <iframe
+                    src={resumeDoc.preview}
+                    title="Mehedi Hasan — Resume preview"
+                    loading="lazy"
+                    class="block w-full flex-1 min-h-0"
+                ></iframe>
             </section>
         </main>
         <nav
