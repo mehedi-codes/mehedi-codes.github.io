@@ -26,14 +26,14 @@ import { contacts, locale } from "@/utils/content";
 		<ul class="flex flex-col md:w-96 lg:w-md">
 			{
 				contacts.map((entry) => (
-					<li class="border-y border-muted not-last:-mb-px">
+					<li class="border-y border-muted not-last:-mb-px px-2 transition-colors duration-200 ease-linear hover:bg-subtle focus-visible:outline-1 focus-visible:outline-offset-1 focus-visible:outline-ink">
 						<a
 							href={entry.href}
 							{...(!entry.href.startsWith("mailto:") && {
 								target: "_blank",
 								rel: "noopener",
 							})}
-							class="flex items-center justify-between gap-x-4 py-4 sm:py-5 transition-colors duration-200 ease-linear hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+							class="flex items-center justify-between gap-x-4 py-4 sm:py-5"
 						>
 							<span class="font-heading text-xs text-muted lowercase">
 								<>

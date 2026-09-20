@@ -8,16 +8,12 @@ import { locale, writings } from "@/utils/content";
 	<a
 		href="/writing"
 		slot="action"
-		class="border border-muted px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+		class="border border-muted px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:border-ink hover:text-ink hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 	>
 		<span data-lang="en">{locale.en["writing.view-all"]}</span>
 		<span data-lang="bn" lang="bn">{locale.bn["writing.view-all"]}</span>
 	</a>
-	<div
-		class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
-	>
-		{writings.map((entry) => (
-			<WritingCard entry={entry} />
-		))}
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+		{writings.map((entry) => <WritingCard entry={entry} />)}
 	</div>
 </Container>
