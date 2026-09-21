@@ -2,6 +2,8 @@
 import { ClientRouter } from "astro:transitions";
 import "@/styles/base.css";
 import { prepaint } from "@/utils/prepaint";
+import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
+import jmLatin from "@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url";
 
 const baseDocUrl =
     "https://docs.google.com/document/d/11VkPFKIzrgFL16qshkxgQpQGTI2holqsCHxLUnNIgBQ";
@@ -42,6 +44,8 @@ const copy = {
         />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/webp" href="/favicon.webp" />
+        <link rel="preload" as="font" type="font/woff2" href={interLatin} crossorigin />
+        <link rel="preload" as="font" type="font/woff2" href={jmLatin} crossorigin />
         <script is:inline set:html={prepaint} />
     </head>
     <body class="font-body min-h-dvh flex flex-col relative">
