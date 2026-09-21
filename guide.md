@@ -24,7 +24,7 @@
 - [x] Custom domain: `mehedi.engineer` → `mehedi-codes.github.io` (DNS configured)
 - [ ] `/resume` fallback link if the Google Doc iframe fails + print button
 - [x] Performance baseline: Lighthouse on live site → **98/100, LCP 1.8s, FCP 1.6s, CLS 0, TBT 0**
-- [x] Perf cleanup: inline stylesheets + preload latin fonts + drop unused Anek Bangla import (re-measuring)
+- [x] Perf cleanup: inline stylesheets + preload latin fonts + drop unused Anek Bangla import — **live-verified: render-blocking audit gone, FCP 1.6s → 1.4s, LCP 1.8s, 97–99/100**
 
 ## 📝 Phase 2 — Content system (MDX + Pages CMS)
 
