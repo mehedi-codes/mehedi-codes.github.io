@@ -1,6 +1,5 @@
 ---
 import "@/styles/base.css";
-import { ClientRouter } from "astro:transitions";
 import { locale } from "@/utils/content";
 import { prepaint } from "@/utils/prepaint";
 import Breakpoint from "@/components/helpers/breakpoint.astro";
@@ -18,7 +17,6 @@ const { title } = Astro.props;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-		<ClientRouter />
 		<title
 			data-title-en={title?.en ?? locale.en["meta.title"]}
 			data-title-bn={title?.bn ?? locale.bn["meta.title"]}
@@ -47,3 +45,9 @@ const { title } = Astro.props;
 		<Breakpoint />
 	</body>
 </html>
+
+<script>
+	import "@/utils/theme-toggle";
+	import "@/utils/lang-toggle";
+	import "@/utils/scroll-spy";
+</script>

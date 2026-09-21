@@ -1,6 +1,6 @@
 # mehedi.engineer — Progress Checklist
 
-> Tracking the build of the personal site. Locked decisions: client-side language toggle (no `/bn` routes), GitHub Pages hosting, Pages CMS + MDX + React/Svelte islands planned for later.
+> Tracking the build of the personal site. Locked decisions: client-side language toggle (no `/bn` routes), GitHub Pages hosting, Pages CMS + MDX + React/Svelte islands planned for later. Client-side page transitions were dropped — `ClientRouter` (Astro View Transitions) was removed for perf/simplicity; navigation is plain full-page loads.
 
 ## ✅ Done
 
@@ -25,6 +25,7 @@
 - [ ] `/resume` fallback link if the Google Doc iframe fails + print button
 - [x] Performance baseline: Lighthouse on live site → **98/100, LCP 1.8s, FCP 1.6s, CLS 0, TBT 0**
 - [x] Perf cleanup: inline stylesheets + preload latin fonts + drop unused Anek Bangla import — **live-verified: render-blocking audit gone, FCP 1.6s → 1.4s, LCP 1.8s, 97–99/100**
+- [x] Perf cleanup 2: removed `ClientRouter` + merged theme/lang/scroll-spy scripts into one bundle — **local-verified: Lighthouse 100, script requests 4 → 1, critical chain 514 ms → one round trip, forced-reflow source eliminated**
 
 ## 📝 Phase 2 — Content system (MDX + Pages CMS)
 
@@ -48,5 +49,5 @@
 
 ## 🧹 Maintenance
 
-- [ ] Commit current uncommitted changes (`experience.astro`, `hero.astro`, `content.ts`)
+- [x] Commit current uncommitted changes (`experience.astro`, `hero.astro`, `content.ts`) → `0926d5e`
 - [ ] Set domain renewal reminder for `mehedi.engineer` (auto-renew if available)
