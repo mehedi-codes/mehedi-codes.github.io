@@ -46,8 +46,8 @@ export const experience: ExpEntry[] = [
       bn: "ইটি টেক লিমিটেড",
     },
     period: {
-      en: "May 2025 - Present । 1 Year 5 Months",
-      bn: "মে ২০২৫ - বর্তমান । ১ বছর ৫ মাস",
+      en: "May 2025 - Present // 1 Year 5 Months",
+      bn: "মে ২০২৫ - বর্তমান // ১ বছর ৫ মাস",
     },
     tags: {
       en: "full-time / full-stack",
@@ -69,8 +69,8 @@ export const experience: ExpEntry[] = [
       bn: "ইটি টেক লিমিটেড",
     },
     period: {
-      en: "May 2024 - Apr 2025 । 1 Year",
-      bn: "মে ২০২৪ - এপ্রিল ২০২৫ । ১ বছর",
+      en: "May 2024 - Apr 2025 // 1 Year",
+      bn: "মে ২০২৪ - এপ্রিল ২০২৫ // ১ বছর",
     },
     tags: {
       en: "full-time / front-end",
@@ -91,8 +91,8 @@ export const experience: ExpEntry[] = [
       bn: "ইটি টেক লিমিটেড",
     },
     period: {
-      en: "Feb 2024 - Apr 2024 | 3 Month",
-      bn: "ফেব্রুয়ারি ২০২৪ - এপ্রিল ২০২৪ | ৩ মাস",
+      en: "Feb 2024 - Apr 2024 // 3 Month",
+      bn: "ফেব্রুয়ারি ২০২৪ - এপ্রিল ২০২৪ // ৩ মাস",
     },
     tags: {
       en: "internship / front-end",
