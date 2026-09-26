@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Tasks API">
+  <rect width="640" height="360" fill="#fafaf8"/>
+  <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M24 0H0V24" fill="none" stroke="#e8e6e1" stroke-width="1"/>
+  </pattern>
+  <rect width="640" height="360" fill="url(#grid)"/>
+
+  <g stroke="#e8e6e1" stroke-width="1">
+    <path d="M48 84H592"/>
+    <path d="M48 276H592"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+    <text x="48" y="60" font-size="13" fill="#64635e" letter-spacing="2">GET</text>
+    <text x="88" y="60" font-size="13" fill="#64635e" letter-spacing="2">/api/v1/tasks</text>
+    <circle cx="16" cy="56" r="5" fill="#64635e"/>
+
+    <text x="88" y="60" font-size="13" fill="#64635e" letter-spacing="2"></text>
+
+    <text x="88" y="122" font-size="13" fill="#64635e" letter-spacing="2">/api/v1/auth/sign-in/email</text>
+    <circle cx="16" cy="118" r="5" fill="#64635e"/>
+
+    <text x="88" y="184" font-size="13" fill="#64635e" letter-spacing="2">/api/v1/auth/two-factor/enable</text>
+    <circle cx="16" cy="180" r="5" fill="#64635e"/>
+
+    <text x="88" y="246" font-size="13" fill="#64635e" letter-spacing="2">/api/v1/openapi.json</text>
+    <circle cx="16" cy="242" r="5" fill="#64635e"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#64635e" letter-spacing="2">
+    <text x="540" y="60" text-anchor="end">401</text>
+    <text x="540" y="122" text-anchor="end">200</text>
+    <text x="540" y="184" text-anchor="end">200</text>
+    <text x="540" y="246" text-anchor="end">200</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+    <text x="48" y="316" font-size="26" font-weight="700" fill="#1a1a1f" letter-spacing="-0.5">tasks-api</text>
+    <text x="592" y="316" font-size="12" fill="#64635e" text-anchor="end" letter-spacing="1">Hono · Drizzle · Better Auth</text>
+  </g>
+</svg>

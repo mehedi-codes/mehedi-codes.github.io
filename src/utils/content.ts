@@ -136,10 +136,13 @@ export const experience: ExpEntry[] = [
 ];
 
 export type ProjectEntry = {
+  slug: string;
   title: LocalizedString;
   description: LocalizedString;
   tags: LocalizedString[];
+  highlights: LocalizedStringList;
   image: string;
+  /** Internal detail page path, derived from `slug`. */
   url: string;
   live: string;
   source: string;
@@ -147,58 +150,44 @@ export type ProjectEntry = {
 
 export const projects: ProjectEntry[] = [
   {
+    slug: "tasks-api",
     title: {
-      en: "Project One",
-      bn: "প্রকল্প এক",
+      en: "Tasks API",
+      bn: "টাস্কস এপিআই",
     },
     description: {
-      en: "Short description coming soon.",
-      bn: "সংক্ষিপ্ত বিবরণ শীঘ্রই যুক্ত হবে।",
+      en: "Production-ready REST API for task management, with session-based authentication, two-factor authentication, transactional email, and an auto-generated OpenAPI 3.1 spec served through Scalar.",
+      bn: "টাস্ক ম্যানেজমেন্টের জন্য প্রোডাকশন-রেডি REST API — সেশন-ভিত্তিক অথেন্টিকেশন, টু-ফ্যাক্টর অথেন্টিকেশন, ট্রানজ্যাকশনাল ইমেইল এবং Scalar-এর মাধ্যমে পরিবেশিত স্বয়ংক্রিয়ভাবে তৈরি OpenAPI 3.1 স্পেস।",
     },
     tags: [
-      { en: "typescript", bn: "টাইপস্ক্রিপ্ট" },
-      { en: "full-stack", bn: "ফুল-স্ট্যাক" },
+      { en: "hono", bn: "হোনো" },
+      { en: "drizzle-orm", bn: "ড্রিজল ওআরএম" },
+      { en: "better-auth", bn: "বেটার অথ" },
+      { en: "postgresql", bn: "পোস্টগ্রেসকিউএল" },
+      { en: "rest-api", bn: "রেস্ট এপিআই" },
     ],
-    image: "/placeholder.svg",
-    url: "example.com/project-one",
-    live: "https://example.com/project-one",
-    source: "https://github.com/example/project-one",
-  },
-  {
-    title: {
-      en: "Project Two",
-      bn: "প্রকল্প দুই",
+    highlights: {
+      en: [
+        "Designed the API around one consistent module shape — a Drizzle schema, Zod validators, a service layer, and an OpenAPI route definition per domain — so every feature lands the same way",
+        "Implemented session-based authentication with Better Auth over a Drizzle adapter, covering email verification, password reset, and optional TOTP or email OTP two-factor, with sessions stored in the database and renewed on access inside a fixed update window",
+        "Hardened the auth surface with Argon2id password hashing at a 512 MB memory cost, Have I Been Pwned breach checking on sign-up, database-backed rate limits of 5 sign-in and 3 sign-up attempts per minute, and audit hooks on session and account events",
+        "Generated the OpenAPI 3.1 specification from the same Zod v4 schemas that validate requests at runtime, so the published docs and the enforced validation cannot drift apart",
+        "Sent transactional email through React Email templates and Nodemailer over Gmail SMTP, covering welcome, verification, password reset, and one-time passcodes",
+        "Structured request logging with Pino and hono-pino, shipping to BetterStack in production and human-readable output in development, behind a middleware stack of CORS, secure headers, request IDs, and response compression",
+      ],
+      bn: [
+        "প্রতিটি ডোমেইনের জন্য একই কাঠামো — Drizzle স্কিমা, Zod ভ্যালিডেটর, সার্ভিস লেয়ার ও OpenAPI রাউট সংজ্ঞাপন — এই কাঠামোকে কেন্দ্র করে API ডিজাইন করেছি, ফলে প্রতিটি নতুন ফিচার একই নিয়মে যোগ হয়",
+        "Drizzle অ্যাডাপ্টারের উপর Better Auth দিয়ে সেশন-ভিত্তিক অথেন্টিকেশন বাস্তবায়ন করেছি — ইমেইল ভেরিফিকেশন, পাসওয়ার্ড রিসেট এবং ঐচ্ছিক TOTP বা ইমেইল OTP টু-ফ্যাক্টর — সেশনগুলো ডাটাবেসে সংরক্ষিত থাকে এবং নির্ধারিত আপডেট সময়সীমার মধ্যে প্রতিবার নতুন করে চালু হয়",
+        "অথেন্টিকেশন পৃষ্ঠতল শক্ত করেছি ৫১২ এমবি মেমরি কস্টসহ Argon2id পাসওয়ার্ড হ্যাশিং, সাইন-আপের সময় Have I Been Pwned ব্রেচ চেকিং, প্রতি মিনিটে ৫টি সাইন-ইন ও ৩টি সাইন-আপ চেষ্টার সীমা রাখা ডাটাবেস-ভিত্তিক রেট লিমিট এবং সেশন ও অ্যাকাউন্ট ইভেন্টের অডিট হুক দিয়ে",
+        "রানটাইমে রিকোয়েস্ট ভ্যালিডেশনের জন্য ব্যবহৃত একই Zod v4 স্কিমা থেকেই OpenAPI 3.1 স্পেসিফিকেশন তৈরি হয়, ফলে প্রকাশিত ডকুমেন্টেশন আর প্রয়োগকৃত ভ্যালিডেশন কখনো আলাদা হতে পারে না",
+        "React Email টেমপ্লেট ও Gmail SMTP-এর মাধ্যমে Nodemailer দিয়ে ট্রানজ্যাকশনাল ইমেইল পাঠিয়েছি — ওয়েলকাম, ভেরিফিকেশন, পাসওয়ার্ড রিসেট ও ওয়ান-টাইম পাসকোডের জন্য",
+        "Pino ও hono-pino দিয়ে রিকোয়েস্ট লগিং সাজিয়েছি — প্রোডাকশনে BetterStack-এ পাঠাই, ডেভেলপমেন্টে মানুষ-পড়ার উপযোগী আউটপুট দিই — CORS, সিকিউর হেডার, রিকোয়েস্ট আইডি ও রেসপন্স কম্প্রেশনসহ মিডলওয়্যার স্ট্যাকের পেছনে",
+      ],
     },
-    description: {
-      en: "Short description coming soon.",
-      bn: "সংক্ষিপ্ত বিবরণ শীঘ্রই যুক্ত হবে।",
-    },
-    tags: [
-      { en: "react", bn: "রিঅ্যাক্ট" },
-      { en: "frontend", bn: "ফ্রন্ট-এন্ড" },
-    ],
-    image: "/placeholder.svg",
-    url: "example.com/project-two",
-    live: "https://example.com/project-two",
-    source: "https://github.com/example/project-two",
-  },
-  {
-    title: {
-      en: "Project Three",
-      bn: "প্রকল্প তিন",
-    },
-    description: {
-      en: "Short description coming soon.",
-      bn: "সংক্ষিপ্ত বিবরণ শীঘ্রই যুক্ত হবে।",
-    },
-    tags: [
-      { en: "nodejs", bn: "নোডজেএস" },
-      { en: "backend", bn: "ব্যাক-এন্ড" },
-    ],
-    image: "/placeholder.svg",
-    url: "example.com/project-three",
-    live: "https://example.com/project-three",
-    source: "https://github.com/example/project-three",
+    image: "/projects/tasks-api.svg",
+    url: "/work/tasks-api",
+    live: "https://tasks.mehedi.engineer/api/v1/docs",
+    source: "https://github.com/mehedi-codes/tasks",
   },
 ];
 
@@ -277,6 +266,10 @@ const en = {
   "work.view-all": "view all",
   "work.card.live": "live link",
   "work.card.source": "source code",
+  "work.detail.back": "back to work",
+  "work.detail.highlights": "what I built",
+  "work.detail.newer": "newer project",
+  "work.detail.older": "older project",
   "writing.title": "writing",
   "writing.view-all": "view all",
   "contact.title": "contact",
@@ -318,6 +311,10 @@ const bn: Record<TranslationKey, string> = {
   "work.view-all": "সব দেখুন",
   "work.card.live": "লাইভ লিংক",
   "work.card.source": "সোর্স কোড",
+  "work.detail.back": "সব কাজে ফিরুন",
+  "work.detail.highlights": "যা তৈরি করেছি",
+  "work.detail.newer": "নতুন প্রকল্প",
+  "work.detail.older": "পুরোনো প্রকল্প",
   "writing.title": "লেখালিখি",
   "writing.view-all": "সব দেখুন",
   "contact.title": "যোগাযোগ",

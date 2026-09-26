@@ -6,6 +6,7 @@ type Props = { index: number; entry: ProjectEntry };
 
 const { index, entry } = Astro.props;
 const number = String(index).padStart(2, "0");
+const liveHost = entry.live.replace(/^https?:\/\//, "").replace(/\/$/, "");
 ---
 
 <article
@@ -24,8 +25,13 @@ const number = String(index).padStart(2, "0");
 	<div class="flex flex-1 flex-col gap-4 p-6">
 		<span class="font-heading text-sm text-muted">{number}</span>
 		<h3 class="font-heading font-bold text-lg text-ink">
-			<span data-lang="en">{entry.title.en}</span>
-			<span data-lang="bn" lang="bn">{entry.title.bn}</span>
+			<a
+				href={entry.url}
+				class="hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+			>
+				<span data-lang="en">{entry.title.en}</span>
+				<span data-lang="bn" lang="bn">{entry.title.bn}</span>
+			</a>
 		</h3>
 		<p class="text-sm sm:text-base leading-relaxed text-muted">
 			<span data-lang="en">{entry.description.en}</span>
@@ -46,7 +52,7 @@ const number = String(index).padStart(2, "0");
 		<hr class="mt-auto border-subtle" />
 		<footer class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
 			<span class="font-heading text-xs text-muted truncate min-w-0"
-				>{entry.url}</span
+				>{liveHost}</span
 			>
 			<div class="flex flex-wrap gap-2.5">
 				<a
