@@ -12,14 +12,14 @@ const liveHost = entry.live.replace(/^https?:\/\//, "").replace(/\/$/, "");
 <article
 	class="flex flex-col border border-subtle hover:border-muted transition-colors"
 >
-	<div class="aspect-video sm:aspect-3/2">
+	<div class="aspect-2/1">
 		<Image
 			src={entry.image}
 			alt=""
-			width={640}
-			height={360}
+			width={1280}
+			height={640}
 			loading="lazy"
-			class="h-full w-full object-cover"
+			class="h-full w-full object-cover dark:opacity-90"
 		/>
 	</div>
 	<div class="flex flex-1 flex-col gap-4 p-6">
