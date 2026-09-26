@@ -26,6 +26,8 @@
 - [x] Performance baseline: Lighthouse on live site → **98/100, LCP 1.8s, FCP 1.6s, CLS 0, TBT 0**
 - [x] Perf cleanup: inline stylesheets + preload latin fonts + drop unused Anek Bangla import — **live-verified: render-blocking audit gone, FCP 1.6s → 1.4s, LCP 1.8s, 97–99/100**
 - [x] Perf cleanup 2: removed `ClientRouter` + merged theme/lang/scroll-spy scripts into one bundle — **local-verified: Lighthouse 100, script requests 4 → 1, critical chain 514 ms → one round trip, forced-reflow source eliminated**
+- [x] Experience entries: bulleted highlights as plain sentences (`highlights: { en[], bn[] }`), inline on the landing timeline
+- [ ] Experience copy: replace placeholder bullets with real achievements — currently template text ("Replace with one line about…")
 
 ## 📝 Phase 2 — Content system (MDX + Pages CMS)
 

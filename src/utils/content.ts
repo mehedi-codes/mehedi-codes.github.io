@@ -2,6 +2,8 @@ export type Lang = "en" | "bn";
 
 export type LocalizedString = { en: string; bn: string };
 
+export type LocalizedStringList = { en: string[]; bn: string[] };
+
 export type ContactEntry = {
   label: LocalizedString;
   username: string;
@@ -30,8 +32,8 @@ export type ExpEntry = {
   title: LocalizedString;
   company: LocalizedString;
   period: LocalizedString;
-  tags: LocalizedString;
-  description: LocalizedString;
+  type: LocalizedString;
+  highlights: LocalizedStringList;
   active?: boolean;
 };
 
@@ -49,13 +51,23 @@ export const experience: ExpEntry[] = [
       en: "May 2025 - Present // 1 Year 5 Months",
       bn: "মে ২০২৫ - বর্তমান // ১ বছর ৫ মাস",
     },
-    tags: {
-      en: "full-time / full-stack",
-      bn: "ফুল-টাইম / ফুল-স্ট্যাক",
+    type: {
+      en: "full-time",
+      bn: "ফুল-টাইম",
     },
-    description: {
-      en: "Details coming soon.",
-      bn: "বিস্তারিত শীঘ্রই যোগ করা হবে।",
+    highlights: {
+      en: [
+        "Replace this with one line about a backend or platform system you built or owned, and lead with the outcome.",
+        "Replace this with one line about UI or design-system work, and mention how many screens or teams it served.",
+        "Replace this with one line about tooling, CI, or releases, and say what got faster as a result.",
+        "Replace this with one line about reviews, onboarding, or mentoring, and how many juniors it covered.",
+      ],
+      bn: [
+        "এখানে আপনার তৈরি বা দায়িত্বে থাকা ব্যাকএন্ড বা প্ল্যাটফর্ম সিস্টেমের এক লাইন লিখুন, আর শুরুতে ফলাফলটা দিন।",
+        "এখানে ইন্টারফেস বা ডিজাইন সিস্টেমের কাজের এক লাইন লিখুন, আর কতগুলো স্ক্রিন বা টিম ব্যবহার করেছে তা বলুন।",
+        "এখানে টুলিং, সিআই বা রিলিজের কাজের এক লাইন লিখুন, আর ফলে কত দ্রুত হয়েছে তা বলুন।",
+        "এখানে কোড রিভিউ, অনবোর্ডিং বা মেন্টরিংয়ের এক লাইন লিখুন, আর কতজন জুনিয়রকে ঢুকিয়েছেন তা বলুন।",
+      ],
     },
     active: true,
   },
@@ -72,13 +84,21 @@ export const experience: ExpEntry[] = [
       en: "May 2024 - Apr 2025 // 1 Year",
       bn: "মে ২০২৪ - এপ্রিল ২০২৫ // ১ বছর",
     },
-    tags: {
-      en: "full-time / front-end",
-      bn: "ফুল-টাইম / ফ্রন্ট-এন্ড",
+    type: {
+      en: "full-time",
+      bn: "ফুল-টাইম",
     },
-    description: {
-      en: "Details coming soon.",
-      bn: "বিস্তারিত শীঘ্রই যোগ করা হবে।",
+    highlights: {
+      en: [
+        "Replace this with one line about the UI work you shipped in this role, and who ended up using it.",
+        "Replace this with one line about APIs, data, or integrations you worked on, and the scale involved.",
+        "Replace this with one line about reviews or pairing you did here, and what changed as a result.",
+      ],
+      bn: [
+        "এখানে এই পদে ডেলিভারি করা ইন্টারফেস কাজের এক লাইন লিখুন, আর শেষে কারা ব্যবহার করেছে তা বলুন।",
+        "এখানে এপিআই, ডেটা বা ইন্টিগ্রেশন নিয়ে কাজের এক লাইন লিখুন, আর সেখানে স্কেল কেমন ছিল তা বলুন।",
+        "এখানে রিভিউ বা পেয়ারিংয়ের এক লাইন লিখুন, আর ফলে কী বদলেছিল তা বলুন।",
+      ],
     },
   },
   {
@@ -94,13 +114,19 @@ export const experience: ExpEntry[] = [
       en: "Feb 2024 - Apr 2024 // 3 Month",
       bn: "ফেব্রুয়ারি ২০২৪ - এপ্রিল ২০২৪ // ৩ মাস",
     },
-    tags: {
-      en: "internship / front-end",
-      bn: "ইন্টার্নশিপ / ফ্রন্ট-এন্ড",
+    type: {
+      en: "internship",
+      bn: "ইন্টার্নশিপ",
     },
-    description: {
-      en: "Details coming soon.",
-      bn: "বিস্তারিত শীঘ্রই যোগ করা হবে।",
+    highlights: {
+      en: [
+        "Replace this with one line about what you built during this internship and who used it.",
+        "Replace this with one line about small tooling or scripts you wrote, and what manual work it removed.",
+      ],
+      bn: [
+        "এখানে এই ইন্টার্নশিপে যা তৈরি করেছেন তার এক লাইন লিখুন, আর কারা ব্যবহার করেছে তা বলুন।",
+        "এখানে ছোট টুল বা স্ক্রিপ্টের এক লাইন লিখুন, আর কোন ম্যানুয়াল কাজটি বাদ পড়েছে তা বলুন।",
+      ],
     },
   },
 ];

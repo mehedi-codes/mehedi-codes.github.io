@@ -49,17 +49,23 @@ import { experience, locale } from "@/utils/content";
 						</span>
 					</div>
 					<p class="mb-1.5 font-heading text-xs text-muted lowercase">
-						<span data-lang="en">{entry.tags.en}</span>
+						<span data-lang="en">{entry.type.en}</span>
 						<span data-lang="bn" lang="bn">
-							{entry.tags.bn}
+							{entry.type.bn}
 						</span>
 					</p>
-					<p class="text-sm sm:text-base leading-relaxed text-muted">
-						<span data-lang="en">{entry.description.en}</span>
-						<span data-lang="bn" lang="bn">
-							{entry.description.bn}
-						</span>
-					</p>
+					<ul class="mt-1 mb-2 list-none space-y-1.5">
+						{
+							entry.highlights.en.map((text, index) => (
+								<li class="relative pl-4 text-sm sm:text-base leading-relaxed text-muted before:absolute before:left-0 before:top-[0.7em] before:size-1 before:rounded-full before:bg-subtle">
+									<span data-lang="en">{text}</span>
+									<span data-lang="bn" lang="bn">
+										{entry.highlights.bn[index]}
+									</span>
+								</li>
+							))
+						}
+					</ul>
 				</li>
 			))
 		}
