@@ -1,4 +1,5 @@
 import { locale } from "@/utils/content";
+import { swapThemeImages } from "./theme-image";
 import { el, on, persist, read } from "./dom";
 
 const duration = 500;
@@ -23,12 +24,17 @@ const sync = (label: HTMLElement, toDark: boolean) => {
 
 const seed = (label: HTMLElement) => {
   document.documentElement.classList.toggle("dark", read("theme") === "dark");
+  swapThemeImages(isDark());
   sync(label, isDark());
 };
 
 const toggleTheme = (label: HTMLElement) => {
   const nextDark = !isDark();
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Before the transition starts, so the card cross-fades with the page
+  // rather than snapping to the new variant once the animation is done.
+  swapThemeImages(nextDark);
 
   if (hasStartViewTransition && !reduced) {
     const style = document.createElement("style");

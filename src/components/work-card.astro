@@ -1,12 +1,24 @@
 ---
-import { locale, type ProjectEntry } from "@/utils/content";
-import { Image } from "astro:assets";
+import { darkVariant, locale, type ProjectEntry } from "@/utils/content";
+import { getImage, Image } from "astro:assets";
 
 type Props = { index: number; entry: ProjectEntry };
 
 const { index, entry } = Astro.props;
 const number = String(index).padStart(2, "0");
 const liveHost = entry.live.replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+// Both variants are resolved here, not just the dark one. getImage is what
+// makes Astro fetch each card and emit a hashed copy into _astro/, so the
+// runtime src and both data attributes are all same-origin static paths. The
+// initial src is already static via <Image>, but a dark-mode visitor toggling
+// back to light reads data-light-src — if that held the remote URL, the one
+// round trip that skips the static copy would be the only one to hotlink.
+// Same transform props as <Image> below, so it hashes to the same filename.
+const [{ src: lightSrc }, { src: darkSrc }] = await Promise.all([
+  getImage({ src: entry.image, width: 1280, height: 640 }),
+  getImage({ src: darkVariant(entry.image), width: 1280, height: 640 }),
+]);
 ---
 
 <article
@@ -19,7 +31,9 @@ const liveHost = entry.live.replace(/^https?:\/\//, "").replace(/\/$/, "");
 			width={1280}
 			height={640}
 			loading="lazy"
-			class="h-full w-full object-cover dark:opacity-90"
+			data-light-src={lightSrc}
+			data-dark-src={darkSrc}
+			class="h-full w-full object-cover"
 		/>
 	</div>
 	<div class="flex flex-1 flex-col gap-4 p-6">

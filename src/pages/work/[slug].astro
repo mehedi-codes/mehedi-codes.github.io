@@ -1,8 +1,8 @@
 ---
 import Layout from "@/layouts/base.astro";
 import Container from "@/components/helpers/container.astro";
-import { locale, projects, type ProjectEntry } from "@/utils/content";
-import { Image } from "astro:assets";
+import { locale, projects, darkVariant, type ProjectEntry } from "@/utils/content";
+import { getImage, Image } from "astro:assets";
 
 export function getStaticPaths() {
 	return projects.map((entry) => ({
@@ -18,6 +18,14 @@ const index = projects.findIndex((project) => project.slug === entry.slug);
 const newer = index > 0 ? projects[index - 1] : undefined;
 const older = index < projects.length - 1 ? projects[index + 1] : undefined;
 const liveHost = entry.live.replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+// See src/components/work-card.astro — both variants need resolving here so
+// Astro emits each as a static asset, including the one only a data attribute
+// references.
+const [{ src: lightSrc }, { src: darkSrc }] = await Promise.all([
+  getImage({ src: entry.image, width: 1280, height: 640 }),
+  getImage({ src: darkVariant(entry.image), width: 1280, height: 640 }),
+]);
 
 const linkClass =
 	"flex items-center gap-1.5 border border-muted px-3 py-1.5 text-xs transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
@@ -48,7 +56,9 @@ const linkClass =
 					width={1280}
 					height={640}
 					loading="eager"
-					class="h-full w-full object-cover dark:opacity-90"
+					data-light-src={lightSrc}
+					data-dark-src={darkSrc}
+					class="h-full w-full object-cover"
 				/>
 			</div>
 
