@@ -17,7 +17,9 @@
 
 - [x] **Detail pages:** `/work/[slug]` via `getStaticPaths` off the `projects` array — cards now link to a real page
 - [x] Prev/next navigation on detail pages — built, appears automatically once a second project lands
-- [x] Replace placeholder projects: 3 × "Project One/Two/Three" → **Tasks API** (live, 6 index-matched bilingual highlights, hand-authored SVG card)
+- [x] Replace placeholder projects: 3 × "Project One/Two/Three" → **Tasks API** (live, 6 index-matched bilingual highlights)
+- [x] Project card: socialify image generated at build time — `image.remotePatterns` lets Astro fetch it and emit a hashed copy into `_astro/`, so stars/forks refresh every build and no visitor hits a third-party host. Cold build 850 ms → 11 s (cache is in `node_modules/.astro/assets`, uncommitted, so CI pays it every run)
+- [x] Project card: light and dark variants swapped on the site's `.dark` class, not `prefers-color-scheme` — `<picture>`, Tailwind's stock `dark:`, and socialify's `theme=Auto` all key off the OS, which this site ignores
 - [ ] Replace placeholder writing: 3 × "Post One/Two/Three" still say "coming soon" — the last placeholder on the site
 - [ ] SEO: `site` set so canonical URLs use the real domain; per-page `description` threaded through the layout — **remaining: `sitemap.xml`, `robots.txt`**
 - [ ] OG images (`astro-og-canvas` from frontmatter)
