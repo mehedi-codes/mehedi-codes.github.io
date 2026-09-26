@@ -29,8 +29,10 @@
 - [x] Experience entries: bulleted highlights as plain sentences (`highlights: { en[], bn[] }`), inline on the landing timeline
 - [x] Experience copy: real achievements written for all 3 roles in both `en` and `bn`, index-matched
 - [x] Experience copy: software engineer role merged 8 → 6 bullets by theme (two government case systems, one Next.js client-sites bullet) — 1,741 → 1,391 chars
-- [ ] Experience copy: junior role still describes 2 projects across 4 bullets (BJMC PIMS ×2, SARSO ×2) — merge to 3
-- [ ] Experience copy: intern role bullet 4 ("gained hands-on experience") is filler, bullet 3 (Vite proxy for CORS) is too small to stand alone
+- [x] Experience copy: junior role merged 6 → 3 bullets (BJMC PIMS ×2 and SARSO ×2 were the same projects twice; promotion bullet cut as filler) — 1,318 → 897 chars
+- [x] Experience copy: intern role trimmed 4 → 2 bullets (CORS proxy too small to stand alone, "gained hands-on experience" was filler) — 584 → 279 chars
+- [x] Experience copy: **all roles consolidated — 16 → 11 bullets, 3,293 → 2,567 chars**, every bullet now describes distinct work
+- [ ] Experience copy: `hero.biodata` still claims assistant project manager work in both languages with no timeline bullet behind it
 
 ## 📝 Phase 2 — Content system (MDX + Pages CMS)
 
