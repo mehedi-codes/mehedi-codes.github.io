@@ -15,10 +15,11 @@
 
 ## 🔜 Phase 1 — Close current-site gaps
 
-- [ ] **Detail pages:** `/work/[slug]` and `/writing/[slug]` (cards currently link to routes that 404)
-- [ ] Prev/next navigation on detail pages
-- [ ] Replace placeholder content (example.com links, "coming soon" text, placeholder images) with real posts/projects
-- [ ] SEO: per-page meta, `sitemap.xml`, `robots.txt`
+- [x] **Detail pages:** `/work/[slug]` via `getStaticPaths` off the `projects` array — cards now link to a real page
+- [x] Prev/next navigation on detail pages — built, appears automatically once a second project lands
+- [x] Replace placeholder projects: 3 × "Project One/Two/Three" → **Tasks API** (live, 6 index-matched bilingual highlights, hand-authored SVG card)
+- [ ] Replace placeholder writing: 3 × "Post One/Two/Three" still say "coming soon" — the last placeholder on the site
+- [ ] SEO: `site` set so canonical URLs use the real domain; per-page `description` threaded through the layout — **remaining: `sitemap.xml`, `robots.txt`**
 - [ ] OG images (`astro-og-canvas` from frontmatter)
 - [ ] RSS feed (`@astrojs/rss` → `feed.xml`)
 - [x] Custom domain: `mehedi.engineer` → `mehedi-codes.github.io` (DNS configured)
@@ -32,7 +33,8 @@
 - [x] Experience copy: junior role merged 6 → 3 bullets (BJMC PIMS ×2 and SARSO ×2 were the same projects twice; promotion bullet cut as filler) — 1,318 → 897 chars
 - [x] Experience copy: intern role trimmed 4 → 2 bullets (CORS proxy too small to stand alone, "gained hands-on experience" was filler) — 584 → 279 chars
 - [x] Experience copy: **all roles consolidated — 16 → 11 bullets, 3,293 → 2,567 chars**, every bullet now describes distinct work
-- [ ] Experience copy: `hero.biodata` still claims assistant project manager work in both languages with no timeline bullet behind it
+- [x] Experience copy: `hero.biodata` no longer claims assistant project manager work in either language
+- [ ] Projects: 1 of 3 slots filled — `workspace-explorer` is still a Vite scaffold (splash screen + title, template README) and needs a decision: build it, pair it with Tasks API as the frontend, or leave the slot empty
 
 ## 📝 Phase 2 — Content system (MDX + Pages CMS)
 
