@@ -5,6 +5,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  // Required for canonical URLs and the sitemap to use the real domain
+  // instead of http://localhost.
+  site: "https://mehedi.engineer",
   base: "/",
   build: {
     // Site CSS is small (~14 KB) — inline it to remove a render-blocking

@@ -40,6 +40,7 @@ const copy = {
             data-desc-bn={copy.description.bn}
             content={copy.description.en}
         />
+        <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/webp" href="/favicon.webp" />
         <link rel="preload" as="font" type="font/woff2" href={interLatin} crossorigin />
