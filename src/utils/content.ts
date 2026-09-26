@@ -64,7 +64,7 @@ export const experience: ExpEntry[] = [
         "Built and delivered multiple client-facing websites including a portfolio site for a serial entrepreneur (allsharier.com) and a company website for Jenjar International (jenjarint.com) using Next.js and TypeScript",
         "Managed hosting infrastructure across Linux VPS (PM2 + Nginx) and Windows Server (IIS) — handled database backups, restored a ransomware-attacked project from backup, and managed Google Workspace email services for clients",
         "Provided international technical support for SARSO including Zoom coordination for global recruitment sessions and annual GB and TMB standards meetings",
-        "Deployed Kaspersky EDR to one of Bangladesh's largest garments manufacturers as part of cybersecurity setup",
+        "Installed and configured the Kaspersky Security Center (EDR) administration server for a major garments manufacturer, then trained their IT team to enrol further endpoints themselves",
       ],
       bn: [
         "বাংলাদেশের একটি প্রতিরক্ষা সংস্থার জন্য ফুল-স্ট্যাক অফিসার তথ্য ব্যবস্থাপনা সিস্টেম তৈরি করেছি — ব্যাকএন্ডে Bun, Hono, Prisma ও PostgreSQL, ফ্রন্টএন্ডে Next.js ও TypeScript — সিস্টেমটিতে ৩০টিরও বেশি মডিউল রয়েছে, যা PM2 ও Nginx ব্যবহার করে লিনাক্স ভিএসপিতে ডিপ্লয় করেছি ও নিজে পরিচালনা করেছি",
@@ -74,7 +74,7 @@ export const experience: ExpEntry[] = [
         "Next.js ও TypeScript ব্যবহার করে একাধিক ক্লায়েন্ট-নির্ভর ওয়েবসাইট তৈরি ও ডেলিভারি করেছি, যার মধ্যে একজন সিরিয়াল উদ্যোক্তার পোর্টফোলিও সাইট (allsharier.com) এবং জেনজার ইন্টারন্যাশনালের প্রতিষ্ঠান ওয়েবসাইট (jenjarint.com) রয়েছে",
         "লিনাক্স ভিএসপি (PM2 + Nginx) ও উইন্ডোজ সার্ভারে (IIS) হোস্টিং অবকাঠামো পরিচালনা করেছি — ডেটাবেস ব্যাকআপ নেওয়ার কাজ করেছি, র্যানসমওয়্যার আক্রমণের শিকার একটি প্রকল্প ব্যাকআপ থেকে পুনরুদ্ধার করেছি, এবং ক্লায়েন্টদের জন্য গুগল ওয়ার্কস্পেস ইমেইল সেবা পরিচালনা করেছি",
         "SARSO-র জন্য আন্তর্জাতিক কারিগরি সহায়তা দিয়েছি, যার মধ্যে বৈশ্বিক নিয়োগ সেশন ও বার্ষিক GB ও TMB স্ট্যান্ডার্ড সভাগুলোর জুম সমন্বয় অন্তর্ভুক্ত ছিল",
-        "বাংলাদেশের অন্যতম বড় পোশাক শিল্পকারী প্রতিষ্ঠানের কাছে সাইবার সিকিউরিটি ব্যবস্থাপনার অংশ হিসেবে Kaspersky EDR ডিপ্লয় করেছি",
+        "বাংলাদেশের একটি বড় পোশাক শিল্পকারী প্রতিষ্ঠানের জন্য Kaspersky Security Center (EDR) ব্যবস্থাপনা সার্ভার ইনস্টল ও কনফিগার করেছি, এবং ক্লায়েন্টের আইটি টিমকে এর সঙ্গে আরও এন্ডপয়েন্ট সংযুক্ত করার বিষয়ে প্রশিক্ষণ দিয়েছি",
       ],
     },
     active: true,
