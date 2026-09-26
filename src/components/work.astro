@@ -2,6 +2,14 @@
 import Container from "./helpers/container.astro";
 import WorkCard from "./work-card.astro";
 import { locale, projects } from "@/utils/content";
+
+/**
+ * The homepage previews the work section; `/work` lists all of it behind the
+ * "view all" action. Capped at three so the `lg:grid-cols-3` row stays full
+ * instead of orphaning a single card on the second row.
+ */
+const PREVIEW_COUNT = 3;
+const preview = projects.slice(0, PREVIEW_COUNT);
 ---
 
 <Container id="work" titleKey="work.title">
@@ -15,7 +23,7 @@ import { locale, projects } from "@/utils/content";
 	</a>
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 		{
-			projects.map((project, index) => (
+			preview.map((project, index) => (
 				<WorkCard index={index + 1} entry={project} />
 			))
 		}
