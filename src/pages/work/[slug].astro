@@ -1,15 +1,20 @@
 ---
 import Layout from "@/layouts/base.astro";
 import Container from "@/components/helpers/container.astro";
-import { locale, projects, darkVariant, type ProjectEntry } from "@/utils/content";
+import {
+	locale,
+	projects,
+	darkVariant,
+	type ProjectEntry,
+} from "@/utils/content";
 import { getImage, Image } from "astro:assets";
 
-export function getStaticPaths() {
+export const getStaticPaths = () => {
 	return projects.map((entry) => ({
 		params: { slug: entry.slug },
 		props: { entry },
 	}));
-}
+};
 
 type Props = { entry: ProjectEntry };
 
@@ -22,8 +27,8 @@ const older = index < projects.length - 1 ? projects[index + 1] : undefined;
 // Astro emits each as a static asset, including the one only a data attribute
 // references.
 const [{ src: lightSrc }, { src: darkSrc }] = await Promise.all([
-  getImage({ src: entry.image, width: 1280, height: 640 }),
-  getImage({ src: darkVariant(entry.image), width: 1280, height: 640 }),
+	getImage({ src: entry.image, width: 1280, height: 640 }),
+	getImage({ src: darkVariant(entry.image), width: 1280, height: 640 }),
 ]);
 
 // Shared by the two footer buttons only — prev/next has its own classes. flex-1
@@ -47,7 +52,8 @@ const linkClass =
 			class="border border-muted px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 		>
 			<span data-lang="en">{locale.en["work.detail.back"]}</span>
-			<span data-lang="bn" lang="bn">{locale.bn["work.detail.back"]}</span>
+			<span data-lang="bn" lang="bn">{locale.bn["work.detail.back"]}</span
+			>
 		</a>
 
 		<article class="flex flex-col gap-6 sm:gap-8">
@@ -76,11 +82,11 @@ const linkClass =
 				<ul class="flex flex-wrap gap-2">
 					{
 						entry.tags.map((tag) => (
-							<li
-								class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase"
-							>
+							<li class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase">
 								<span data-lang="en">{tag.en}</span>
-								<span data-lang="bn" lang="bn">{tag.bn}</span>
+								<span data-lang="bn" lang="bn">
+									{tag.bn}
+								</span>
 							</li>
 						))
 					}
@@ -91,7 +97,9 @@ const linkClass =
 				<h3
 					class="font-heading text-xs sm:text-sm uppercase tracking-wider text-muted before:content-['//'] before:mr-1.5"
 				>
-					<span data-lang="en">{locale.en["work.detail.highlights"]}</span>
+					<span data-lang="en"
+						>{locale.en["work.detail.highlights"]}</span
+					>
 					<span data-lang="bn" lang="bn">
 						{locale.bn["work.detail.highlights"]}
 					</span>
@@ -113,7 +121,12 @@ const linkClass =
 			<hr class="border-subtle" />
 
 			<footer class="flex flex-wrap gap-2.5 max-w-sm">
-				<a href={entry.live} target="_blank" rel="noopener" class={linkClass}>
+				<a
+					href={entry.live}
+					target="_blank"
+					rel="noopener"
+					class={linkClass}
+				>
 					<svg
 						viewBox="0 0 24 24"
 						fill="none"
@@ -131,9 +144,16 @@ const linkClass =
 						<path d="M2 12h20"></path>
 					</svg>
 					<span data-lang="en">{locale.en["work.card.live"]}</span>
-					<span data-lang="bn" lang="bn">{locale.bn["work.card.live"]}</span>
+					<span data-lang="bn" lang="bn"
+						>{locale.bn["work.card.live"]}</span
+					>
 				</a>
-				<a href={entry.source} target="_blank" rel="noopener" class={linkClass}>
+				<a
+					href={entry.source}
+					target="_blank"
+					rel="noopener"
+					class={linkClass}
+				>
 					<svg
 						viewBox="0 0 24 24"
 						fill="currentColor"
@@ -161,14 +181,18 @@ const linkClass =
 							class="group flex flex-col gap-1 border border-subtle p-5 transition-colors duration-200 ease-linear hover:border-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 						>
 							<span class="font-heading text-xs text-muted">
-								<span data-lang="en">{locale.en["work.detail.newer"]}</span>
+								<span data-lang="en">
+									{locale.en["work.detail.newer"]}
+								</span>
 								<span data-lang="bn" lang="bn">
 									{locale.bn["work.detail.newer"]}
 								</span>
 							</span>
 							<span class="font-heading font-bold text-ink">
 								<span data-lang="en">{newer.title.en}</span>
-								<span data-lang="bn" lang="bn">{newer.title.bn}</span>
+								<span data-lang="bn" lang="bn">
+									{newer.title.bn}
+								</span>
 							</span>
 						</a>
 					) : (
@@ -180,14 +204,18 @@ const linkClass =
 							class="group flex flex-col gap-1 border border-subtle p-5 text-right transition-colors duration-200 ease-linear hover:border-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 						>
 							<span class="font-heading text-xs text-muted">
-								<span data-lang="en">{locale.en["work.detail.older"]}</span>
+								<span data-lang="en">
+									{locale.en["work.detail.older"]}
+								</span>
 								<span data-lang="bn" lang="bn">
 									{locale.bn["work.detail.older"]}
 								</span>
 							</span>
 							<span class="font-heading font-bold text-ink">
 								<span data-lang="en">{older.title.en}</span>
-								<span data-lang="bn" lang="bn">{older.title.bn}</span>
+								<span data-lang="bn" lang="bn">
+									{older.title.bn}
+								</span>
 							</span>
 						</a>
 					)}
