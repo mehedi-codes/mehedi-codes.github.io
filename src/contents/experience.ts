@@ -1,0 +1,108 @@
+import type { LocalizedString, LocalizedStringList } from "./types";
+
+export type ExpEntry = {
+  title: LocalizedString;
+  company: LocalizedString;
+  period: LocalizedString;
+  type: LocalizedString;
+  highlights: LocalizedStringList;
+  active?: boolean;
+};
+
+export const experience: ExpEntry[] = [
+  {
+    title: {
+      en: "Software Engineer",
+      bn: "সফটওয়্যার ইঞ্জিনিয়ার",
+    },
+    company: {
+      en: "ET Tech Limited",
+      bn: "ইটি টেক লিমিটেড",
+    },
+    period: {
+      en: "May 2025 - Present // 1 Year 5 Months",
+      bn: "মে ২০২৫ - বর্তমান // ১ বছর ৫ মাস",
+    },
+    type: {
+      en: "full-time",
+      bn: "ফুল-টাইম",
+    },
+    highlights: {
+      en: [
+        "Developed a full-stack Officers Information Management System for a Bangladesh defense organization — built backend with Bun, Hono, Prisma, and PostgreSQL, and frontend with Next.js and TypeScript — featuring 30+ modules, deployed and self-managed on a Linux VPS using PM2 and Nginx",
+        "Managed hosting infrastructure across Linux VPS (PM2 + Nginx) and Windows Server (IIS) — handled database backups, restored a ransomware-attacked project from backup, and managed Google Workspace email services for clients",
+        "Led development of two government case management systems in Bangladesh — one on C#.NET MVC and Razor Pages serving 11 organizations across 50 field offices, and one whose legacy PHP and CodeIgniter frontend I migrated to Tailwind CSS and cleaned up into a minimal, consistent structure",
+        "Deployed the Kaspersky EDR management server for one of Bangladesh's largest garments manufacturers, then trained their IT team to enrol endpoints",
+        "Built and delivered client websites with Next.js and TypeScript — a portfolio site for a serial entrepreneur (allsharier.com) and a company site for Jenjar International (jenjarint.com) — and migrated the ET Tech and SARSO sites to TypeScript, improving maintainability and type safety",
+        "Acted as ET Tech's technical support representative for SARSO, setting up Zoom for the organization's global recruitment sessions and annual GB and TMB standards meetings",
+      ],
+      bn: [
+        "বাংলাদেশের একটি প্রতিরক্ষা সংস্থার জন্য ফুল-স্ট্যাক অফিসার তথ্য ব্যবস্থাপনা সিস্টেম তৈরি করেছি — ব্যাকএন্ডে Bun, Hono, Prisma ও PostgreSQL, ফ্রন্টএন্ডে Next.js ও TypeScript — সিস্টেমটিতে ৩০টিরও বেশি মডিউল রয়েছে, যা PM2 ও Nginx ব্যবহার করে লিনাক্স ভিএসপিতে ডিপ্লয় করেছি ও নিজে পরিচালনা করেছি",
+        "লিনাক্স ভিএসপি (PM2 + Nginx) ও উইন্ডোজ সার্ভারে (IIS) হোস্টিং অবকাঠামো পরিচালনা করেছি — ডেটাবেস ব্যাকআপ নেওয়ার কাজ করেছি, র্যানসমওয়্যার আক্রমণের শিকার একটি প্রকল্প ব্যাকআপ থেকে পুনরুদ্ধার করেছি, এবং ক্লায়েন্টদের জন্য গুগল ওয়ার্কস্পেস ইমেইল সেবা পরিচালনা করেছি",
+        "বাংলাদেশের দুটি সরকারি কেস ম্যানেজমেন্ট সিস্টেমের উন্নয়নে দায়িত্ব নিয়েছি — C#.NET MVC ও Razor Pages দিয়ে তৈরি একটি সিস্টেম ৫০টি ফিল্ড অফিস জুড়ে ১১টি সংস্থাকে সেবা দেয়, আর আরেকটির পুরোনো PHP ও CodeIgniter ফ্রন্টএন্ড Tailwind CSS-এ মাইগ্রেট করে সরল ও ধারাবাহিক কাঠামোতে রিফ্যাক্টর করেছি",
+        "বাংলাদেশের অন্যতম বড় পোশাক শিল্পকারী প্রতিষ্ঠানের জন্য Kaspersky EDR ব্যবস্থাপনা সার্ভার ডিপ্লয় করেছি, এবং তাদের আইটি টিমকে এন্ডপয়েন্ট সংযুক্ত করার বিষয়ে প্রশিক্ষণ দিয়েছি",
+        "Next.js ও TypeScript ব্যবহার করে ক্লায়েন্ট ওয়েবসাইট তৈরি ও ডেলিভারি করেছি — একজন সিরিয়াল উদ্যোক্তার পোর্টফোলিও সাইট (allsharier.com) ও জেনজার ইন্টারন্যাশনালের প্রতিষ্ঠান ওয়েবসাইট (jenjarint.com) — এবং ইটি টেক লিমিটেড ও SARSO ওয়েবসাইট TypeScript-এ মাইগ্রেট করে রক্ষণাবেক্ষণযোগ্যতা ও টাইপ সেফটি উন্নত করেছি",
+        "SARSO-র জন্য ইটি টেক লিমিটেডের কারিগরি সহায়তা প্রতিনিধি হিসেবে দায়িত্ব পালন করেছি, যার মধ্যে সংস্থার বৈশ্বিক নিয়োগ সেশন ও বার্ষিক GB ও TMB স্ট্যান্ডার্ড সভার জুম ব্যবস্থা করা ছিল",
+      ],
+    },
+    active: true,
+  },
+  {
+    title: {
+      en: "Junior Software Engineer",
+      bn: "জুনিয়র সফটওয়্যার ইঞ্জিনিয়ার",
+    },
+    company: {
+      en: "ET Tech Limited",
+      bn: "ইটি টেক লিমিটেড",
+    },
+    period: {
+      en: "May 2024 - Apr 2025 // 1 Year",
+      bn: "মে ২০২৪ - এপ্রিল ২০২৫ // ১ বছর",
+    },
+    type: {
+      en: "full-time",
+      bn: "ফুল-টাইম",
+    },
+    highlights: {
+      en: [
+        "Led frontend development of the Personnel Information Management System (PIMS) for Bangladesh Jute Mills Corporation (BJMC), a government organization under the Ministry of Textiles and Jute — multi-level employee records, search and filters, and multi-format reporting on React and Vite with JWT auth against a NestJS REST API",
+        "Redesigned and rebuilt the ET Tech Limited company website (etlimited.net) from scratch based on iterative client feedback, delivering a fully polished production site — integrating WordPress REST API headlessly into React for dynamic blog content",
+        "Single-handedly built the SARSO (South Asian Regional Standards Organization) website, a SAARC-affiliated international body — handling client visits, requirement gathering, and end-to-end frontend development with React 19, Vite and Tailwind CSS v4, plus a .NET REST API integration for a planned member portal (sarso.org)",
+      ],
+      bn: [
+        "বস্ত্র ও পাট মন্ত্রণালয়ের অধীনে সরকারি সংস্থা বাংলাদেশ জুট মিলস কর্পোরেশনের (BJMC) কর্মী তথ্য ব্যবস্থাপনা সিস্টেমের (PIMS) ফ্রন্টএন্ড ডেভেলপমেন্টের দায়িত্ব নিয়েছি — বহু স্তরের কর্মীর তথ্য, সার্চ ও ফিল্টার এবং বহু ফরম্যাটে রিপোর্ট তৈরি — React ও Vite দিয়ে JWT অথেন্টিকেশনসহ একটি NestJS REST API ব্যাকএন্ডের সঙ্গে যুক্ত করে",
+        "ধাপে ধাপে ক্লায়েন্টের মতামতের ভিত্তিতে ইটি টেক লিমিটেডের প্রতিষ্ঠান ওয়েবসাইট (etlimited.net) সম্পূর্ণ নতুন করে ডিজাইন ও রিবিল্ড করে একটি পরিশীলিত প্রোডাকশন সাইট ডেলিভারি করেছি — ডাইনামিক ব্লগ কনটেন্টের জন্য WordPress REST API হেডলেসভাবে React-এ ইন্টিগ্রেট করেছি",
+        "এককভাবে SARSO (South Asian Regional Standards Organization) ওয়েবসাইট তৈরি করেছি, যা সার্ক-অ্যাফিলিয়েটেড একটি আন্তর্জাতিক সংস্থা — ক্লায়েন্ট ভিজিট, রিকোয়ারমেন্ট সংগ্রহ ও React 19, Vite, Tailwind CSS v4 ব্যবহার করে এন্ড-টু-এন্ড ফ্রন্টএন্ড ডেভেলপমেন্ট, সেই সঙ্গে পরিকল্পিত সদস্য পোর্টালের জন্য একটি .NET REST API ইন্টিগ্রেশন (sarso.org)",
+      ],
+    },
+  },
+  {
+    title: {
+      en: "Intern Junior Software Engineer",
+      bn: "ইন্টার্ন জুনিয়র সফটওয়্যার ইঞ্জিনিয়ার",
+    },
+    company: {
+      en: "ET Tech Limited",
+      bn: "ইটি টেক লিমিটেড",
+    },
+    period: {
+      en: "Feb 2024 - Apr 2024 // 3 Month",
+      bn: "ফেব্রুয়ারি ২০২৪ - এপ্রিল ২০২৪ // ৩ মাস",
+    },
+    type: {
+      en: "internship",
+      bn: "ইন্টার্নশিপ",
+    },
+    highlights: {
+      en: [
+        "Built and shipped a Personnel Information Management System (PIMS) dashboard using React (Vite), React Router DOM, and Tailwind CSS",
+        "Participated in client visits alongside senior engineers and teammates — gathering requirements, taking notes, and translating them into UI features",
+      ],
+      bn: [
+        "React (Vite), React Router DOM ও Tailwind CSS ব্যবহার করে কর্মী তথ্য ব্যবস্থাপনা সিস্টেমের (PIMS) ড্যাশবোর্ড তৈরি ও ডেলিভারি করেছি",
+        "সিনিয়র ইঞ্জিনিয়ার ও সহকর্মীদের সঙ্গে ক্লায়েন্ট ভিজিটে অংশ নিয়েছি — রিকোয়ারমেন্ট সংগ্রহ, নোট নেওয়া এবং সেগুলোকে UI ফিচারে রূপান্তর করা",
+      ],
+    },
+  },
+];

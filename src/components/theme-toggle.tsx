@@ -1,4 +1,4 @@
-import { locale } from "@/utils/content";
+import { locale } from "@/i18n";
 import { Fragment } from "react";
 import { ThemeAnimationType, useModeAnimation } from "react-theme-switch-animation";
 

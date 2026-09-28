@@ -1,4 +1,5 @@
-import { locale, type Lang } from "@/utils/content";
+import { locale } from "@/i18n";
+import type { Lang } from "@/i18n";
 
 const currentLang = (): Lang => (document.documentElement.lang === "bn" ? "bn" : "en");
 

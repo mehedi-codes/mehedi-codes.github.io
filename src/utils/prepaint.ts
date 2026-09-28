@@ -1,4 +1,4 @@
-import type { Lang } from "@/utils/content";
+import type { Lang } from "@/i18n";
 
 /**
  * Applies the stored theme and language before the first paint.
@@ -36,7 +36,9 @@ const prePaint = () => {
     // between them here.
     for (const img of document.querySelectorAll<HTMLImageElement>("img[data-dark-src]")) {
       const next = dark ? img.dataset.darkSrc : img.dataset.lightSrc;
-      if (next && img.getAttribute("src") !== next) img.setAttribute("src", next);
+      if (next && img.getAttribute("src") !== next) {
+        img.setAttribute("src", next);
+      }
     }
 
     const lang: Lang = localStorage.getItem("language") === "bn" ? "bn" : "en";

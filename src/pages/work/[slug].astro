@@ -1,12 +1,8 @@
 ---
 import Layout from "@/layouts/base.astro";
 import Container from "@/components/helpers/container.astro";
-import {
-	locale,
-	projects,
-	darkVariant,
-	type ProjectEntry,
-} from "@/utils/content";
+import { locale } from "@/i18n";
+import { projects, darkVariant, type ProjectEntry } from "@/contents/projects";
 import { getImage, Image } from "astro:assets";
 
 export const getStaticPaths = () => {
