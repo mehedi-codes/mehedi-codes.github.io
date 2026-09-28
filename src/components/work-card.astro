@@ -24,18 +24,27 @@ const [{ src: lightSrc }, { src: darkSrc }] = await Promise.all([
 <article
 	class="flex flex-col border border-subtle hover:border-muted transition-colors"
 >
-	<div class="aspect-2/1">
-		<Image
-			src={entry.image}
-			alt=""
-			width={1280}
-			height={640}
-			loading="lazy"
-			data-light-src={lightSrc}
-			data-dark-src={darkSrc}
-			class="h-full w-full object-cover"
-		/>
-	</div>
+	<a
+		href={entry.url}
+		class="block outline outline-offset-[-2px] outline-transparent transition-colors duration-200 ease-linear hover:outline-subtle focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ink"
+	>
+		<span class="sr-only">
+			<span data-lang="en">{entry.title.en}</span>
+			<span data-lang="bn" lang="bn">{entry.title.bn}</span>
+		</span>
+		<div class="aspect-2/1">
+			<Image
+				src={entry.image}
+				alt=""
+				width={1280}
+				height={640}
+				loading="lazy"
+				data-light-src={lightSrc}
+				data-dark-src={darkSrc}
+				class="h-full w-full object-cover"
+			/>
+		</div>
+	</a>
 	<div class="flex flex-1 flex-col gap-4 p-6">
 		<span class="font-heading text-sm text-muted">{number}</span>
 		<h3 class="font-heading font-bold text-lg text-ink">
