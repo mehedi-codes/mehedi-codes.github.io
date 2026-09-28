@@ -1,6 +1,6 @@
 ---
 import "@/styles/base.css";
-import { locale } from "@/utils/content";
+import { locale } from "@/i18n";
 import { prepaint } from "@/utils/prepaint";
 import Breakpoint from "@/components/helpers/breakpoint.astro";
 import Appbar from "./appbar.astro";
@@ -48,7 +48,5 @@ const { title, description, canonical } = Astro.props;
 </html>
 
 <script>
-	import "@/utils/theme-toggle";
-	import "@/utils/lang-toggle";
 	import "@/utils/scroll-spy";
 </script>

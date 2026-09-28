@@ -1,37 +1,92 @@
-export const prepaint = `(function () {
-    try {
-        var dark = localStorage.getItem("theme") === "dark";
-        document.documentElement.classList.toggle("dark", dark);
+import type { Lang } from "@/i18n";
 
-        // Inlined copy of swapThemeImages (src/utils/theme-image.ts) — this
-        // cannot import, and the src has to be right before first paint or an
-        // eager card on a dark page downloads the light one first and flashes.
-        var cards = document.querySelectorAll("img[data-dark-src]");
-        for (var i = 0; i < cards.length; i++) {
-            var next = dark
-                ? cards[i].dataset.darkSrc
-                : cards[i].dataset.lightSrc;
-            if (next && cards[i].getAttribute("src") !== next)
-                cards[i].setAttribute("src", next);
-        }
+/**
+ * Applies the stored theme and language before the first paint.
+ *
+ * This runs as an inlined classic script, not as a module, because a module
+ * import is deferred and would land after the first paint. That timing is the
+ * entire point. An Astro island cannot do this work either: island hydration
+ * is a dynamic import of the component chunk, so it always resolves after the
+ * paint. Without this, a visitor with dark mode stored gets a white flash on
+ * every page load, and a visitor who chose Bangla gets an English page until
+ * something reads localStorage.
+ *
+ * Theme is the one case the platform could handle without script, via
+ * prefers-color-scheme, but this site deliberately overrides the OS. Language
+ * has no media query at all, so restoring a Bangla visitor's choice is
+ * impossible without this.
+ *
+ * Not exported on purpose. The string below is the only supported way to
+ * reach this, because calling it as a module would defer it past the paint,
+ * which is the mistake this file exists to avoid.
+ *
+ * The body is turned into a string with Function.prototype.toString, so it
+ * must stay self-contained. If it ever imports a helper, the string will
+ * reference something the string does not contain, and the script will fail
+ * silently with nothing in the console to explain it.
+ */
+const prePaint = () => {
+  try {
+    const dark = localStorage.getItem("theme") === "dark";
+    document.documentElement.classList.toggle("dark", dark);
 
-        const lang =
-            localStorage.getItem("language") === "bn" ? "bn" : "en";
-        document.documentElement.lang = lang;
+    // Card images carry both URLs as data attributes. The site toggles a
+    // .dark class and ignores the OS, so <picture> and Tailwind's stock
+    // dark: variant both key off prefers-color-scheme and cannot choose
+    // between them here.
+    for (const img of document.querySelectorAll<HTMLImageElement>("img[data-dark-src]")) {
+      const next = dark ? img.dataset.darkSrc : img.dataset.lightSrc;
+      if (next && img.getAttribute("src") !== next) {
+        img.setAttribute("src", next);
+      }
+    }
 
-        const title = document.querySelector("title");
-        if (title)
-            title.textContent =
-                title.dataset[lang === "bn" ? "titleBn" : "titleEn"];
+    const lang: Lang = localStorage.getItem("language") === "bn" ? "bn" : "en";
+    document.documentElement.lang = lang;
 
-        const description = document.querySelector(
-            'meta[name="description"]',
-        );
-        if (description)
-            description.setAttribute(
-                "content",
-                description.dataset[lang === "bn" ? "descBn" : "descEn"] ??
-                    "",
-            );
-    } catch {}
-})();`;
+    // The title and the meta description sit outside every [data-lang]
+    // span, so bilingual.css cannot reach them. That is why the strings
+    // are also carried as data-title-en/bn and data-desc-en/bn.
+    const title = document.querySelector<HTMLTitleElement>("title");
+    if (title) {
+      title.textContent = title.dataset[lang === "bn" ? "titleBn" : "titleEn"] ?? "";
+    }
+
+    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    if (description) {
+      description.setAttribute("content", description.dataset[lang === "bn" ? "descBn" : "descEn"] ?? "");
+    }
+  } catch (e) {
+    // Deliberately not swallowed. This is the only thing that applies the
+    // stored theme before paint, so a silent catch turns a storage
+    // failure into an unexplainable light page.
+    console.error(e);
+  }
+};
+
+const source = prePaint.toString();
+
+// The inlined script cannot report its own failure: if the body is ever
+// transformed away, the site still builds, still deploys, and simply serves a
+// light, English page to everyone with no error anywhere. Check at build time
+// instead, so the build fails instead of the site.
+if (!source.includes("classList.toggle")) {
+  throw new Error(
+    "prePaint.toString() came back without its body. The bundler must have transformed or tree-shaken it, which means the inlined pre-paint script would do nothing.",
+  );
+}
+
+/**
+ * The pre-paint script as a string, for inlining into a document head:
+ *
+ *   <script is:inline set:html={prepaint} />
+ *
+ * It has to be a string and not a module, because a module import is deferred
+ * and would run after the first paint, which is the flash this exists to
+ * prevent.
+ *
+ * The wrapping parentheses are what turn the function source into an IIFE.
+ * Without them the inlined script would only declare a function and never call
+ * it, so nothing would happen and nothing would throw.
+ */
+export const prepaint = `(${source})();`;
