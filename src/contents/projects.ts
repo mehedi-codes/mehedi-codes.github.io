@@ -37,6 +37,7 @@ export const projects: ProjectEntry[] = [
       { en: "typescript", bn: "টাইপস্ক্রিপ্ট" },
       { en: "base-ui", bn: "বেস ইউআই" },
       { en: "tailwind-css", bn: "টেইলউইন্ড সিএসএস" },
+      { en: "frontend", bn: "ফ্রন্টএন্ড" },
     ],
     highlights: {
       en: [
@@ -80,6 +81,7 @@ export const projects: ProjectEntry[] = [
       { en: "better-auth", bn: "বেটার অথ" },
       { en: "postgresql", bn: "পোস্টগ্রেসকিউএল" },
       { en: "rest-api", bn: "রেস্ট এপিআই" },
+      { en: "backend", bn: "ব্যাকএন্ড" },
     ],
     highlights: {
       en: [
@@ -123,6 +125,7 @@ export const projects: ProjectEntry[] = [
       { en: "drizzle-orm", bn: "ড্রিজল ওআরএম" },
       { en: "postgresql", bn: "পোস্টগ্রেসকিউএল" },
       { en: "shadcn-ui", bn: "শ্যাডসিএন ইউআই" },
+      { en: "full-stack", bn: "ফুল-স্ট্যাক" },
     ],
     highlights: {
       en: [
