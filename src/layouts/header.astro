@@ -1,6 +1,6 @@
 ---
-import ThemeToggle from "../components/theme-toggle.astro";
-import LangToggle from "../components/lang-toggle.astro";
+import { LangToggle } from "@/components/lang-toggle";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { locale } from "@/utils/content";
 
 const links = [
@@ -46,8 +46,8 @@ const isPageActive = (href: string) =>
                     </a>
                 ))
             }
-            <LangToggle />
-            <ThemeToggle />
+            <LangToggle client:load />
+            <ThemeToggle client:only />
         </nav>
     </div>
 </header>
