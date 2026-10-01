@@ -9,14 +9,14 @@ type Props = { entry: WritingEntry };
 
 const { entry } = Astro.props;
 
-// The anchor is gone because writings.json has no `slug` and no `url`, so the old
-// /writing/post-* targets had nothing to point at. Adding `slug` back and a
-// [slug].astro route brings it.
-//
-
+// Rendered as <article>, not <a>: writings.json has no `slug`, so there is no
+// detail page to link to and the old /writing/post-* targets were dead. Adding
+// `slug` back and a [slug].astro route turns this into a link again.
 ---
 
-<article class="group flex flex-col border border-subtle hover:border-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
+<article
+	class="flex flex-col border border-subtle"
+>
 	<div class="aspect-video sm:aspect-3/2">
 		<Image
 			src={entry.image}
@@ -33,19 +33,6 @@ const { entry } = Astro.props;
 				<span data-lang="en">{entry.date.en}</span>
 				<span data-lang="bn" lang="bn">{entry.date.bn}</span>
 			</span>
-			<svg
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="1.5"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				class="size-4 text-muted group-hover:text-ink transition-colors"
-				aria-hidden="true"
-			>
-				<path d="M7 7h10v10"></path>
-				<path d="M7 17 17 7"></path>
-			</svg>
 		</span>
 		<h3 class="font-heading font-bold text-lg text-ink">
 			<span data-lang="en">{entry.title.en}</span>
