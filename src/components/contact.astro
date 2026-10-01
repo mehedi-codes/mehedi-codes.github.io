@@ -1,10 +1,10 @@
 ---
 import Container from "./helpers/container.astro";
-import { contacts } from "@/contents/contacts";
-import { locale } from "@/i18n";
+import contacts from "@/data/contacts.json";
+import ui from "@/data/ui.json";
 ---
 
-<Container id="contact" titleKey="contact.title">
+<Container id="contact" heading={ui.contact.title}>
 	<div
 		class="flex flex-col gap-8 md:gap-12 lg:gap-24 md:flex-row md:items-stretch"
 	>
@@ -12,16 +12,16 @@ import { locale } from "@/i18n";
 			<h2
 				class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight"
 			>
-				<span data-lang="en">{locale.en["contact.heading"]}</span>
+				<span data-lang="en">{ui.contact.heading.en}</span>
 				<span data-lang="bn" lang="bn"
-					>{locale.bn["contact.heading"]}</span
+					>{ui.contact.heading.bn}</span
 				>
 			</h2>
 			<p
 				class="text-base sm:text-lg text-muted leading-relaxed mt-4 md:mt-6 md:flex-1"
 			>
-				<span data-lang="en">{locale.en["contact.bio"]}</span>
-				<span data-lang="bn" lang="bn">{locale.bn["contact.bio"]}</span>
+				<span data-lang="en">{ui.contact.bio.en}</span>
+				<span data-lang="bn" lang="bn">{ui.contact.bio.bn}</span>
 			</p>
 		</div>
 		<ul class="flex flex-col md:w-96 lg:w-md">

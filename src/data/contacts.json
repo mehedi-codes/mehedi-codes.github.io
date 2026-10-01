@@ -1,0 +1,29 @@
+[
+  {
+    "id": "email",
+    "username": "mehedi.swe@proton.me",
+    "href": "mailto:mehedi.swe@proton.me",
+    "label": {
+      "en": "email",
+      "bn": "ইমেইল"
+    }
+  },
+  {
+    "id": "github",
+    "username": "github.com/mehedi-codes",
+    "href": "https://github.com/mehedi-codes",
+    "label": {
+      "en": "github",
+      "bn": "গিটহাব"
+    }
+  },
+  {
+    "id": "linkedin",
+    "username": "linkedin.com/in/mehedi-codes",
+    "href": "https://linkedin.com/in/mehedi-codes",
+    "label": {
+      "en": "linkedin",
+      "bn": "লিংকডইন"
+    }
+  }
+]

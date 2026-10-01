@@ -1,0 +1,27 @@
+---
+import Container from "./helpers/container.astro";
+import WorkCard from "./work-card.astro";
+import works from "@/data/works.json";
+import ui from "@/data/ui.json";
+
+const PREVIEW_COUNT = 3;
+const preview = works.slice(0, PREVIEW_COUNT);
+---
+
+<Container id="works" heading={ui.works.title}>
+	<a
+		href="/works"
+		slot="action"
+		class="border border-muted px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:border-ink hover:text-ink hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+	>
+		<span data-lang="en">{ui.works["view-all"].en}</span>
+		<span data-lang="bn" lang="bn">{ui.works["view-all"].bn}</span>
+	</a>
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+		{
+			preview.map((work, index) => (
+				<WorkCard index={index + 1} entry={work} />
+			))
+		}
+	</div>
+</Container>

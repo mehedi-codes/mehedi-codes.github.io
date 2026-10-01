@@ -1,8 +1,7 @@
 ---
 import "@/styles/base.css";
-import { locale } from "@/i18n";
+import ui from "@/data/ui.json";
 import { prepaint } from "@/utils/prepaint";
-import Breakpoint from "@/components/helpers/breakpoint.astro";
 import Appbar from "./appbar.astro";
 import Header from "./header.astro";
 import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
@@ -18,22 +17,34 @@ const { title, description, canonical } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
 		<title
-			data-title-en={title?.en ?? locale.en["meta.title"]}
-			data-title-bn={title?.bn ?? locale.bn["meta.title"]}
+			data-title-en={title?.en ?? ui.meta.title.en}
+			data-title-bn={title?.bn ?? ui.meta.title.bn}
 		>
-			{title?.en ?? locale.en["meta.title"]}
+			{title?.en ?? ui.meta.title.en}
 		</title>
 		<meta
 			name="description"
-			data-desc-en={description?.en ?? locale.en["meta.description"]}
-			data-desc-bn={description?.bn ?? locale.bn["meta.description"]}
-			content={description?.en ?? locale.en["meta.description"]}
+			data-desc-en={description?.en ?? ui.meta.description.en}
+			data-desc-bn={description?.bn ?? ui.meta.description.bn}
+			content={description?.en ?? ui.meta.description.en}
 		/>
 		<link rel="canonical" href={canonical ?? Astro.url.href} />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="icon" type="image/webp" href="/favicon.webp" />
-		<link rel="preload" as="font" type="font/woff2" href={interLatin} crossorigin />
-		<link rel="preload" as="font" type="font/woff2" href={jmLatin} crossorigin />
+		<link
+			rel="preload"
+			as="font"
+			type="font/woff2"
+			href={interLatin}
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			as="font"
+			type="font/woff2"
+			href={jmLatin}
+			crossorigin
+		/>
 
 		<script is:inline set:html={prepaint} />
 	</head>
@@ -43,7 +54,6 @@ const { title, description, canonical } = Astro.props;
 			<slot />
 		</main>
 		<Appbar />
-		<Breakpoint />
 	</body>
 </html>
 

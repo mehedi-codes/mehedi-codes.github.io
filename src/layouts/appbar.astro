@@ -1,20 +1,21 @@
 ---
-import { locale } from "@/i18n";
+import ui from "@/data/ui.json";
 
 const links = [
-    { key: "nav.experience", href: "/#experience" },
-    { key: "nav.work", href: "/work" },
-    { key: "nav.writing", href: "/writing" },
-    { key: "nav.contact", href: "/#contact" },
+    { id: "experience", label: ui.nav.experience, href: "/#experience" },
+    { id: "works", label: ui.nav.works, href: "/works" },
+    { id: "writings", label: ui.nav.writings, href: "/writings" },
+    { id: "contact", label: ui.nav.contact, href: "/#contact" },
 ] as const;
 
 const pathname = Astro.url.pathname;
 const isPageActive = (href: string) =>
-    !href.startsWith("/#") && (pathname === href || pathname.startsWith(`${href}/`));
+    !href.startsWith("/#") &&
+    (pathname === href || pathname.startsWith(`${href}/`));
 ---
 
 <nav
-    aria-label={locale.en["nav.appbar-label"]}
+    aria-label={ui.nav["appbar-label"].en}
     class="fixed inset-x-2 bottom-3 z-50 border border-subtle bg-paper/80 shadow-lg backdrop-blur-md sm:hidden"
 >
     <ul class="grid grid-cols-4 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
@@ -22,11 +23,13 @@ const isPageActive = (href: string) =>
             links.map((link) => (
                 <li>
                     <a
-                        aria-current={isPageActive(link.href) ? "page" : undefined}
+                        aria-current={
+                            isPageActive(link.href) ? "page" : undefined
+                        }
                         href={link.href}
                         class="flex flex-col items-center justify-center gap-1 py-2.5 text-muted transition-colors hover:text-ink active:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink touch-manipulation [-webkit-tap-highlight-color:transparent]"
                     >
-                        {link.key === "nav.experience" && (
+                        {link.id === "experience" && (
                             <svg
                                 class="size-6"
                                 viewBox="0 0 24 24"
@@ -46,7 +49,7 @@ const isPageActive = (href: string) =>
                                 <path d="M3 13h18" />
                             </svg>
                         )}
-                        {link.key === "nav.work" && (
+                        {link.id === "works" && (
                             <svg
                                 class="size-6"
                                 viewBox="0 0 24 24"
@@ -60,7 +63,7 @@ const isPageActive = (href: string) =>
                                 <path d="M13 6l-2 12" />
                             </svg>
                         )}
-                        {link.key === "nav.writing" && (
+                        {link.id === "writings" && (
                             <svg
                                 class="size-6"
                                 viewBox="0 0 24 24"
@@ -73,7 +76,7 @@ const isPageActive = (href: string) =>
                                 <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
                             </svg>
                         )}
-                        {link.key === "nav.contact" && (
+                        {link.id === "contact" && (
                             <svg
                                 class="size-6"
                                 viewBox="0 0 24 24"
@@ -93,9 +96,9 @@ const isPageActive = (href: string) =>
                             </svg>
                         )}
                         <span class="font-heading text-xs leading-none">
-                            <span data-lang="en">{locale.en[link.key]}</span>
+                            <span data-lang="en">{link.label.en}</span>
                             <span data-lang="bn" lang="bn">
-                                {locale.bn[link.key]}
+                                {link.label.bn}
                             </span>
                         </span>
                     </a>

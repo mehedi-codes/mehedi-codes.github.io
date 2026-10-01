@@ -1,5 +1,5 @@
 ---
-import { locale } from "@/i18n";
+import ui from "@/data/ui.json";
 import { Image } from "astro:assets";
 ---
 
@@ -108,23 +108,23 @@ import { Image } from "astro:assets";
             <h1
                 class="text-4xl leading-tight font-bold tracking-tight text-balance sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
             >
-                <span data-lang="en">{locale.en["hero.title"]}</span>
-                <span data-lang="bn" lang="bn">{locale.bn["hero.title"]}</span>
+                <span data-lang="en">{ui.hero.title.en}</span>
+                <span data-lang="bn" lang="bn">{ui.hero.title.bn}</span>
             </h1>
             <p
                 class="text-lg font-semibold tracking-wide sm:text-xl md:text-2xl lg:text-3xl"
             >
-                <span data-lang="en">{locale.en["hero.designation"]}</span>
+                <span data-lang="en">{ui.hero.designation.en}</span>
                 <span data-lang="bn" lang="bn"
-                    >{locale.bn["hero.designation"]}</span
+                    >{ui.hero.designation.bn}</span
                 >
             </p>
         </div>
         <p
             class="w-full lg:max-w-3xl leading-relaxed text-muted text-base sm:text-lg md:text-xl"
         >
-            <span data-lang="en">{locale.en["hero.biodata"]}</span>
-            <span data-lang="bn" lang="bn">{locale.bn["hero.biodata"]}</span>
+            <span data-lang="en">{ui.hero.biodata.en}</span>
+            <span data-lang="bn" lang="bn">{ui.hero.biodata.bn}</span>
         </p>
     </div>
     <div
@@ -133,17 +133,17 @@ import { Image } from "astro:assets";
         <a
             href="#work"
             class="w-full sm:w-auto border border-ink bg-ink text-paper px-6 py-3 transition-colors duration-200 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-            ><span data-lang="en">{locale.en["hero.primary-btn"]}</span><span
+            ><span data-lang="en">{ui.hero["primary-btn"].en}</span><span
                 data-lang="bn"
-                lang="bn">{locale.bn["hero.primary-btn"]}</span
+                lang="bn">{ui.hero["primary-btn"].bn}</span
             ></a
         >
         <a
             href="#contact"
             class="w-full sm:w-auto border border-muted px-6 py-3 transition-colors duration-200 ease-linear hover:border-ink hover:text-ink hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
-            ><span data-lang="en">{locale.en["hero.secondary-btn"]}</span><span
+            ><span data-lang="en">{ui.hero["secondary-btn"].en}</span><span
                 data-lang="bn"
-                lang="bn">{locale.bn["hero.secondary-btn"]}</span
+                lang="bn">{ui.hero["secondary-btn"].bn}</span
             ></a
         >
     </div>

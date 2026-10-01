@@ -2,33 +2,24 @@
 import Layout from "@/layouts/base.astro";
 import Container from "@/components/helpers/container.astro";
 import WritingCard from "@/components/writing-card.astro";
-import { locale } from "@/i18n";
-import { writings } from "@/contents/writings";
+import writings from "@/data/writings.json";
+import ui from "@/data/ui.json";
 ---
 
-<Layout
-    title={{
-        en: locale.en["writing.meta.title"],
-        bn: locale.bn["writing.meta.title"],
-    }}
->
-    <Container id="writing" titleKey="writing.title">
+<Layout title={ui.writings.meta.title}>
+    <Container id="writings" heading={ui.writings.title}>
         <a
             href="/"
             slot="action"
             class="border border-muted px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
         >
-            <span data-lang="en">{locale.en["notfound.cta"]}</span>
-            <span data-lang="bn" lang="bn">{locale.bn["notfound.cta"]}</span>
+            <span data-lang="en">{ui.notfound.cta.en}</span>
+            <span data-lang="bn" lang="bn">{ui.notfound.cta.bn}</span>
         </a>
         <div
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
-            {
-                writings.map((entry) => (
-                    <WritingCard entry={entry} />
-                ))
-            }
+            {writings.map((entry) => <WritingCard entry={entry} />)}
         </div>
     </Container>
 </Layout>

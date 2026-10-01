@@ -1,23 +1,27 @@
 ---
 import Layout from "@/layouts/base.astro";
 import Container from "@/components/helpers/container.astro";
-import { locale } from "@/i18n";
-import { projects, darkVariant, type ProjectEntry } from "@/contents/projects";
+import ui from "@/data/ui.json";
+import works from "@/data/works.json";
+import { darkVariant } from "@/utils/dark-variant";
 import { getImage, Image } from "astro:assets";
 
+/** Inferred from the data, so the two cannot drift apart. */
+type WorkEntry = (typeof works)[number];
+
 export const getStaticPaths = () => {
-	return projects.map((entry) => ({
+	return works.map((entry) => ({
 		params: { slug: entry.slug },
 		props: { entry },
 	}));
 };
 
-type Props = { entry: ProjectEntry };
+type Props = { entry: WorkEntry };
 
 const { entry } = Astro.props;
-const index = projects.findIndex((project) => project.slug === entry.slug);
-const newer = index > 0 ? projects[index - 1] : undefined;
-const older = index < projects.length - 1 ? projects[index + 1] : undefined;
+const index = works.findIndex((work) => work.slug === entry.slug);
+const newer = index > 0 ? works[index - 1] : undefined;
+const older = index < works.length - 1 ? works[index + 1] : undefined;
 
 // See src/components/work-card.astro — both variants need resolving here so
 // Astro emits each as a static asset, including the one only a data attribute
@@ -41,15 +45,14 @@ const linkClass =
 	}}
 	description={entry.description}
 >
-	<Container id="work" titleKey="work.title">
+	<Container id="works" heading={ui.works.title}>
 		<a
-			href="/work"
+			href="/works"
 			slot="action"
 			class="border border-muted px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 		>
-			<span data-lang="en">{locale.en["work.detail.back"]}</span>
-			<span data-lang="bn" lang="bn">{locale.bn["work.detail.back"]}</span
-			>
+			<span data-lang="en">{ui.works.detail.back.en}</span>
+			<span data-lang="bn" lang="bn">{ui.works.detail.back.bn}</span>
 		</a>
 
 		<article class="flex flex-col gap-6 sm:gap-8">
@@ -94,10 +97,10 @@ const linkClass =
 					class="font-heading text-xs sm:text-sm uppercase tracking-wider text-muted before:content-['//'] before:mr-1.5"
 				>
 					<span data-lang="en"
-						>{locale.en["work.detail.highlights"]}</span
+						>{ui.works.detail.highlights.en}</span
 					>
 					<span data-lang="bn" lang="bn">
-						{locale.bn["work.detail.highlights"]}
+						{ui.works.detail.highlights.bn}
 					</span>
 				</h3>
 				<ul class="list-none space-y-1.5">
@@ -139,9 +142,9 @@ const linkClass =
 						></path>
 						<path d="M2 12h20"></path>
 					</svg>
-					<span data-lang="en">{locale.en["work.card.live"]}</span>
+					<span data-lang="en">{ui.works.card.live.en}</span>
 					<span data-lang="bn" lang="bn"
-						>{locale.bn["work.card.live"]}</span
+						>{ui.works.card.live.bn}</span
 					>
 				</a>
 				<a
@@ -160,9 +163,9 @@ const linkClass =
 							d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 2 .8 2.6 1.2.3-1 .9-1.5 1.5-1.8-2.6-.3-5.4-1.3-5.4-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .2 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.9 1.2 1.9 1.2 3.2 0 4.5-2.8 5.5-5.4 5.8.9.8 1.7 2.3 1.7 4.7v2.9c0 .4.2.7.8.6 4.7-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"
 						></path>
 					</svg>
-					<span data-lang="en">{locale.en["work.card.source"]}</span>
+					<span data-lang="en">{ui.works.card.source.en}</span>
 					<span data-lang="bn" lang="bn">
-						{locale.bn["work.card.source"]}
+						{ui.works.card.source.bn}
 					</span>
 				</a>
 			</footer>
@@ -173,15 +176,15 @@ const linkClass =
 				<nav class="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
 					{newer ? (
 						<a
-							href={newer.url}
+							href={`/works/${newer.slug}`}
 							class="group flex flex-col gap-1 border border-subtle p-5 transition-colors duration-200 ease-linear hover:border-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 						>
 							<span class="font-heading text-xs text-muted">
 								<span data-lang="en">
-									{locale.en["work.detail.newer"]}
+									{ui.works.detail.newer.en}
 								</span>
 								<span data-lang="bn" lang="bn">
-									{locale.bn["work.detail.newer"]}
+									{ui.works.detail.newer.bn}
 								</span>
 							</span>
 							<span class="font-heading font-bold text-ink">
@@ -196,15 +199,15 @@ const linkClass =
 					)}
 					{older && (
 						<a
-							href={older.url}
+							href={`/works/${older.slug}`}
 							class="group flex flex-col gap-1 border border-subtle p-5 text-right transition-colors duration-200 ease-linear hover:border-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 						>
 							<span class="font-heading text-xs text-muted">
 								<span data-lang="en">
-									{locale.en["work.detail.older"]}
+									{ui.works.detail.older.en}
 								</span>
 								<span data-lang="bn" lang="bn">
-									{locale.bn["work.detail.older"]}
+									{ui.works.detail.older.bn}
 								</span>
 							</span>
 							<span class="font-heading font-bold text-ink">

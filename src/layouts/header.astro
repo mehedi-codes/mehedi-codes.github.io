@@ -1,13 +1,13 @@
 ---
 import { LangToggle } from "@/components/lang-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { locale } from "@/i18n";
+import ui from "@/data/ui.json";
 
 const links = [
-    { key: "nav.experience", href: "/#experience" },
-    { key: "nav.work", href: "/work" },
-    { key: "nav.writing", href: "/writing" },
-    { key: "nav.contact", href: "/#contact" },
+    { id: "experience", label: ui.nav.experience, href: "/#experience" },
+    { id: "works", label: ui.nav.works, href: "/works" },
+    { id: "writings", label: ui.nav.writings, href: "/writings" },
+    { id: "contact", label: ui.nav.contact, href: "/#contact" },
 ] as const;
 
 const pathname = Astro.url.pathname;
@@ -26,8 +26,8 @@ const isPageActive = (href: string) =>
             href="/"
             class="text-lg sm:text-xl md:text-2xl font-semibold shimmer-text"
         >
-            <span data-lang="en">{locale.en.logo}</span>
-            <span data-lang="bn" lang="bn">{locale.bn.logo}</span>
+            <span data-lang="en">{ui.logo.en}</span>
+            <span data-lang="bn" lang="bn">{ui.logo.bn}</span>
         </a>
         <nav class="flex-between gap-x-3 sm:gap-x-4 md:gap-x-6 lg:gap-x-8">
             {
@@ -39,9 +39,9 @@ const isPageActive = (href: string) =>
                         }
                         href={link.href}
                     >
-                        <span data-lang="en">{locale.en[link.key]}</span>
+                        <span data-lang="en">{link.label.en}</span>
                         <span data-lang="bn" lang="bn">
-                            {locale.bn[link.key]}
+                            {link.label.bn}
                         </span>
                     </a>
                 ))

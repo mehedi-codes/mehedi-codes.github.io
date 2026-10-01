@@ -1,0 +1,184 @@
+{
+  "nav": {
+    "experience": {
+      "en": "experience",
+      "bn": "অভিজ্ঞতা"
+    },
+    "works": {
+      "en": "work",
+      "bn": "কাজ"
+    },
+    "writings": {
+      "en": "writing",
+      "bn": "লেখালিখি"
+    },
+    "contact": {
+      "en": "contact",
+      "bn": "যোগাযোগ"
+    },
+    "appbar-label": {
+      "en": "main navigation",
+      "bn": "মূল নেভিগেশন"
+    }
+  },
+  "experience": {
+    "title": {
+      "en": "experience",
+      "bn": "অভিজ্ঞতা"
+    }
+  },
+  "resume": {
+    "view": {
+      "en": "view resume",
+      "bn": "রিজিউমি দেখুন"
+    }
+  },
+  "works": {
+    "title": {
+      "en": "work",
+      "bn": "কাজ"
+    },
+    "view-all": {
+      "en": "view all",
+      "bn": "সব দেখুন"
+    },
+    "card": {
+      "live": {
+        "en": "live link",
+        "bn": "লাইভ লিংক"
+      },
+      "source": {
+        "en": "source code",
+        "bn": "সোর্স কোড"
+      }
+    },
+    "detail": {
+      "back": {
+        "en": "back to work",
+        "bn": "সব কাজে ফিরুন"
+      },
+      "highlights": {
+        "en": "what I built",
+        "bn": "যা তৈরি করেছি"
+      },
+      "newer": {
+        "en": "newer project",
+        "bn": "নতুন প্রকল্প"
+      },
+      "older": {
+        "en": "older project",
+        "bn": "পুরোনো প্রকল্প"
+      }
+    },
+    "meta": {
+      "title": {
+        "en": "Work | Mehedi Hasan",
+        "bn": "কাজ | মেহেদী হাসান"
+      }
+    }
+  },
+  "writings": {
+    "title": {
+      "en": "writing",
+      "bn": "লেখালিখি"
+    },
+    "view-all": {
+      "en": "view all",
+      "bn": "সব দেখুন"
+    },
+    "meta": {
+      "title": {
+        "en": "Writing | Mehedi Hasan",
+        "bn": "লেখালিখি | মেহেদী হাসান"
+      }
+    }
+  },
+  "contact": {
+    "title": {
+      "en": "contact",
+      "bn": "যোগাযোগ"
+    },
+    "heading": {
+      "en": "Let's work together",
+      "bn": "আসুন একসাথে কাজ করি"
+    },
+    "bio": {
+      "en": "I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you! ",
+      "bn": "আমি বর্তমানে নতুন সুযোগের জন্য উন্মুক্ত। আপনার প্রশ্ন থাকুক বা শুধু হ্যালো বলতে চান, আমি যত তাড়াতাড়ি পারি উত্তর দেওয়ার চেষ্টা করব!"
+    }
+  },
+  "lang": {
+    "label": {
+      "en": "বাংলা",
+      "bn": "English"
+    }
+  },
+  "theme": {
+    "dark": {
+      "en": "dark",
+      "bn": "কালো"
+    },
+    "light": {
+      "en": "light",
+      "bn": "সাদা"
+    }
+  },
+  "meta": {
+    "title": {
+      "en": "Mehedi Hasan | Software Engineer",
+      "bn": "মেহেদী হাসান | সফটওয়্যার ইঞ্জিনিয়ার"
+    },
+    "description": {
+      "en": "Mehedi Hasan, a Software Engineer from Bangladesh specializing in Full-Stack Web Development.",
+      "bn": "মেহেদী হাসান, একজন বাংলাদেশী সফটওয়্যার ইঞ্জিনিয়ার, যিনি ফুল-স্ট্যাক ওয়েব ডেভেলপমেন্টে দক্ষ।"
+    },
+    "404-title": {
+      "en": "404 - page not found",
+      "bn": "৪০৪ - পৃষ্ঠা পাওয়া যায়নি"
+    }
+  },
+  "logo": {
+    "en": "mehedi_hasan",
+    "bn": "মেহেদী_হাসান"
+  },
+  "hero": {
+    "title": {
+      "en": "Mehedi Hasan",
+      "bn": "মেহেদী হাসান"
+    },
+    "designation": {
+      "en": "Software Engineer",
+      "bn": "সফটওয়্যার ইঞ্জিনিয়ার"
+    },
+    "biodata": {
+      "en": "Full Stack Software Engineer, building production grade web applications with TypeScript across the stack. Shipped real world systems for government organizations, international bodies, and private clients. Started as a solo frontend developer and grew into a full stack engineer. Cares about clean code, strong fundamentals, and choosing the right tool for the right job.",
+      "bn": "একজন ফুল স্ট্যাক সফটওয়্যার ইঞ্জিনিয়ার, যিনি টাইপস্ক্রিপ্ট দিয়ে প্রোডাকশন মানের ওয়েব অ্যাপ্লিকেশন তৈরি করেন। সরকারি প্রতিষ্ঠান, আন্তর্জাতিক সংস্থা এবং বেসরকারি ক্লায়েন্টদের জন্য বাস্তব সিস্টেম তৈরি ও চালু করেছেন। স্বতন্ত্র ফ্রন্টএন্ড ডেভেলপার হিসেবে শুরু করে ফুল স্ট্যাক ইঞ্জিনিয়ারে পরিণত হয়েছেন। পরিষ্কার কোড, মজবুত মৌলিক জ্ঞান এবং সঠিক কাজের জন্যে সঠিক টুল বেছে নেওয়াকে গুরুত্ব দেন।"
+    },
+    "primary-btn": {
+      "en": "see my work",
+      "bn": "আমার কাজ দেখুন"
+    },
+    "secondary-btn": {
+      "en": "get in touch",
+      "bn": "যোগাযোগ করুন"
+    }
+  },
+  "notfound": {
+    "code": {
+      "en": "404",
+      "bn": "৪০৪"
+    },
+    "title": {
+      "en": "page not found",
+      "bn": "পৃষ্ঠা পাওয়া যায়নি"
+    },
+    "message": {
+      "en": "The page you're looking for doesn't exist or has moved.",
+      "bn": "আপনি যে পৃষ্ঠাটি খুঁজছেন তা বিদ্যমান নেই বা সরিয়ে দেওয়া হয়েছে।"
+    },
+    "cta": {
+      "en": "back home",
+      "bn": "মূল পৃষ্ঠায় ফিরুন"
+    }
+  }
+}

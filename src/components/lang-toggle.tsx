@@ -1,47 +1,50 @@
-import { locale } from "@/i18n";
-import type { Lang } from "@/i18n";
+import ui from "@/data/ui.json";
 
-const currentLang = (): Lang => (document.documentElement.lang === "bn" ? "bn" : "en");
+/**
+ * The two languages this site ships. Spelled out rather than derived from the
+ * data, so adding a third one is a deliberate edit that fails until every
+ * localized leaf has it. `utils/prepaint.ts` declares its own copy.
+ */
+type Lang = "en" | "bn";
 
-// Must mirror whatever the pre-paint script in base.astro does, or the tab
-// title and the page language disagree after a toggle.
-const applyMeta = (lang: Lang) => {
-  const title = document.querySelector<HTMLTitleElement>("title");
-  if (title) {
-    title.textContent = title.dataset[lang === "bn" ? "titleBn" : "titleEn"] ?? "";
+const updateMetadata = (lang: Lang): void => {
+  document.documentElement.lang = lang;
+  localStorage.setItem("language", lang);
+
+  const titleSuffix = lang === "bn" ? "titleBn" : "titleEn";
+  const descSuffix = lang === "bn" ? "descBn" : "descEn";
+
+  const titleElement = document.querySelector<HTMLTitleElement>("title");
+  if (titleElement !== null) {
+    const text = titleElement.dataset[titleSuffix];
+    if (text) {
+      titleElement.textContent = text;
+    }
   }
-  const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-  if (description) {
-    description.setAttribute("content", description.dataset[lang === "bn" ? "descBn" : "descEn"] ?? "");
+
+  const descElement = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+  if (descElement !== null) {
+    const content = descElement.dataset[descSuffix];
+    if (content) {
+      descElement.setAttribute("content", content);
+    }
   }
 };
 
 export const LangToggle = () => {
-  // Read the live language off <html>, not localStorage. That attribute is
-  // the single source of truth, and the pre-paint script reconciles it with
-  // storage before this ever runs.
-  const toggle = () => {
-    const next = currentLang() === "bn" ? "en" : "bn";
-    document.documentElement.lang = next;
-    localStorage.setItem("language", next);
-    applyMeta(next);
+  const toggle = (): void => {
+    const currentLang = document.documentElement.lang === "bn" ? "bn" : "en";
+    const nextLang: Lang = currentLang === "bn" ? "en" : "bn";
+    updateMetadata(nextLang);
   };
 
   return (
-    <button type="button" className="btn-fill" onClick={toggle}>
-      {/*
-              No state: bilingual.css shows whichever pair matches html[lang].
-              The lang attributes are inverted on purpose. locale.en["lang.label"]
-              is the Bangla word "বাংলা", so the span shown while the page is in
-              English still holds Bangla text and needs lang="bn" for correct
-              pronunciation. Everywhere else on the site the two agree; here the
-              button names the language you are NOT in, so they cannot.
-            */}
+    <button type="button" className="btn-fill" onClick={toggle} aria-label="Toggle language">
       <span data-lang="en" lang="bn">
-        {locale.en["lang.label"]}
+        {ui.lang.label.en}
       </span>
       <span data-lang="bn" lang="en">
-        {locale.bn["lang.label"]}
+        {ui.lang.label.bn}
       </span>
     </button>
   );

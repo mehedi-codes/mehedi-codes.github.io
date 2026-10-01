@@ -1,4 +1,4 @@
-import { locale } from "@/i18n";
+import ui from "@/data/ui.json";
 import { Fragment } from "react";
 import { ThemeAnimationType, useModeAnimation } from "react-theme-switch-animation";
 
@@ -12,16 +12,16 @@ export const ThemeToggle = () => {
       <span>
         {isDarkMode ? (
           <Fragment>
-            <span data-lang="en">{locale.en["theme.light"]}</span>
+            <span data-lang="en">{ui.theme.light.en}</span>
             <span data-lang="bn" lang="bn">
-              {locale.bn["theme.light"]}
+              {ui.theme.light.bn}
             </span>
           </Fragment>
         ) : (
           <Fragment>
-            <span data-lang="en">{locale.en["theme.dark"]}</span>
+            <span data-lang="en">{ui.theme.dark.en}</span>
             <span data-lang="bn" lang="bn">
-              {locale.bn["theme.dark"]}
+              {ui.theme.dark.bn}
             </span>
           </Fragment>
         )}

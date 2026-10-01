@@ -1,4 +1,11 @@
-import type { Lang } from "@/i18n";
+/**
+ * The two languages this site ships. Spelled out rather than derived from the
+ * data, so adding a third one is a deliberate edit that fails until every
+ * localized leaf has it. `lang-toggle.tsx` declares its own copy: importing it
+ * from here would pull this module into the client bundle, and the only thing
+ * ever exported is the inlined string.
+ */
+type Lang = "en" | "bn";
 
 /**
  * Applies the stored theme and language before the first paint.

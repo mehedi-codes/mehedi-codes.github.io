@@ -1,17 +1,17 @@
 ---
 import Container from "./helpers/container.astro";
-import { experience } from "@/contents/experience";
-import { locale } from "@/i18n";
+import experience from "@/data/experience.json";
+import ui from "@/data/ui.json";
 ---
 
-<Container id="experience" titleKey="experience.title">
+<Container id="experience" heading={ui.experience.title}>
 	<a
 		href="/resume"
 		slot="action"
 		class="border border-muted px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:border-ink hover:text-ink hover:bg-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 	>
-		<span data-lang="en">{locale.en["resume.view"]}</span>
-		<span data-lang="bn" lang="bn">{locale.bn["resume.view"]}</span>
+		<span data-lang="en">{ui.resume.view.en}</span>
+		<span data-lang="bn" lang="bn">{ui.resume.view.bn}</span>
 	</a>
 	<ol
 		class="relative ml-3 space-y-10 sm:space-y-12 border-l border-subtle pb-4 md:ml-6"
@@ -56,16 +56,14 @@ import { locale } from "@/i18n";
 						</span>
 					</p>
 					<ul class="mt-1 mb-2 list-none space-y-1.5">
-						{
-							entry.highlights.en.map((text, index) => (
-								<li class="relative pl-4 text-sm sm:text-base leading-relaxed text-muted before:absolute before:left-0 before:top-[0.7em] before:size-1 before:rounded-full before:bg-subtle">
-									<span data-lang="en">{text}</span>
-									<span data-lang="bn" lang="bn">
-										{entry.highlights.bn[index]}
-									</span>
-								</li>
-							))
-						}
+						{entry.highlights.en.map((text, index) => (
+							<li class="relative pl-4 text-sm sm:text-base leading-relaxed text-muted before:absolute before:left-0 before:top-[0.7em] before:size-1 before:rounded-full before:bg-subtle">
+								<span data-lang="en">{text}</span>
+								<span data-lang="bn" lang="bn">
+									{entry.highlights.bn[index]}
+								</span>
+							</li>
+						))}
 					</ul>
 				</li>
 			))
