@@ -1,5 +1,6 @@
 ---
 import "@/styles/base.css";
+import { ClientRouter } from "astro:transitions";
 import ui from "@/data/ui.json";
 import { prepaint } from "@/utils/prepaint";
 import Appbar from "./appbar.astro";
@@ -16,6 +17,7 @@ const { title, description, canonical } = Astro.props;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
+		<ClientRouter />
 		<title
 			data-title-en={title?.en ?? ui.meta.title.en}
 			data-title-bn={title?.bn ?? ui.meta.title.bn}
@@ -59,4 +61,5 @@ const { title, description, canonical } = Astro.props;
 
 <script>
 	import "@/utils/scroll-spy";
+	import "@/utils/head-language";
 </script>

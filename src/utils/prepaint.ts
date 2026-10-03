@@ -31,6 +31,11 @@ type Lang = "en" | "bn";
  * must stay self-contained. If it ever imports a helper, the string will
  * reference something the string does not contain, and the script will fail
  * silently with nothing in the console to explain it.
+ *
+ * That is why the title and description logic below is duplicated from
+ * `utils/head-language.ts` rather than shared with it, and why `Lang` is
+ * declared separately above. The duplication is deliberate: this copy is the
+ * one that survives serialisation. The two must be kept in step by hand.
  */
 const prePaint = () => {
   try {

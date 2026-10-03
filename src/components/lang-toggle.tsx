@@ -1,41 +1,15 @@
 import ui from "@/data/ui.json";
-
-/**
- * The two languages this site ships. Spelled out rather than derived from the
- * data, so adding a third one is a deliberate edit that fails until every
- * localized leaf has it. `utils/prepaint.ts` declares its own copy.
- */
-type Lang = "en" | "bn";
-
-const updateMetadata = (lang: Lang): void => {
-  document.documentElement.lang = lang;
-  localStorage.setItem("language", lang);
-
-  const titleSuffix = lang === "bn" ? "titleBn" : "titleEn";
-  const descSuffix = lang === "bn" ? "descBn" : "descEn";
-
-  const titleElement = document.querySelector<HTMLTitleElement>("title");
-  if (titleElement !== null) {
-    const text = titleElement.dataset[titleSuffix];
-    if (text) {
-      titleElement.textContent = text;
-    }
-  }
-
-  const descElement = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-  if (descElement !== null) {
-    const content = descElement.dataset[descSuffix];
-    if (content) {
-      descElement.setAttribute("content", content);
-    }
-  }
-};
+import { applyLanguage, type Lang } from "@/utils/head-language";
 
 export const LangToggle = () => {
   const toggle = (): void => {
     const currentLang = document.documentElement.lang === "bn" ? "bn" : "en";
     const nextLang: Lang = currentLang === "bn" ? "en" : "bn";
-    updateMetadata(nextLang);
+    // The write stays here rather than inside applyLanguage, which also runs on
+    // every navigation to re-read the stored choice and so must not be what
+    // decides it.
+    localStorage.setItem("language", nextLang);
+    applyLanguage(nextLang);
   };
 
   return (
