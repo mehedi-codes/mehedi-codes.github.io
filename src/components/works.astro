@@ -4,8 +4,7 @@ import WorkCard from "./work-card.astro";
 import works from "@/data/works.json";
 import ui from "@/data/ui.json";
 
-const PREVIEW_COUNT = 3;
-const preview = works.slice(0, PREVIEW_COUNT);
+const featured = works.filter((work) => Boolean(work.featured));
 ---
 
 <Container id="works" heading={ui.works.title}>
@@ -19,7 +18,7 @@ const preview = works.slice(0, PREVIEW_COUNT);
 	</a>
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 		{
-			preview.map((work, index) => (
+			featured.map((work, index) => (
 				<WorkCard index={index + 1} work={work} />
 			))
 		}
