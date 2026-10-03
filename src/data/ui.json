@@ -61,13 +61,13 @@
         "en": "what I built",
         "bn": "যা তৈরি করেছি"
       },
-      "newer": {
-        "en": "newer work",
-        "bn": "নতুন কাজ"
+      "prev": {
+        "en": "previous work",
+        "bn": "আগের কাজ"
       },
-      "older": {
-        "en": "older work",
-        "bn": "পুরোনো কাজ"
+      "next": {
+        "en": "next work",
+        "bn": "পরের কাজ"
       }
     },
     "meta": {

@@ -17,16 +17,18 @@ const { work } = Astro.props;
 
 // The parameter is named `w`, not `work`, on purpose: shadowing the prop would
 // make this `w.slug === w.slug`, which is true for the first entry every time
-// and pins every page's "older" link to the same project.
+// and pins every page's "next" link to the same project.
 const index = works.findIndex((w) => w.slug === work.slug);
 
-const newer = index > 0 ? works[index - 1] : undefined;
+// No bounds checks. astro/tsconfigs/strictest turns on noUncheckedIndexedAccess,
+// so an out-of-range index is already typed Work | undefined and the first and
+// last projects fall out of the type rather than out of a ternary.
+//
+// Deliberately not .at(): that wraps, so at(-1) on the first project would
+// return the last one and link it as "previous".
+const prev = works[index - 1];
+const next = works[index + 1];
 
-const older = index < works.length - 1 ? works[index + 1] : undefined;
-
-// Shared by the two footer buttons only — prev/next has its own classes. flex-1
-// splits them 50/50; the footer caps the group so they don't stretch to 600px
-// each on a max-w-7xl page.
 const linkClass =
 	"flex-1 flex items-center justify-center gap-1.5 border border-muted px-3 py-1.5 text-xs transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
 ---
@@ -49,24 +51,6 @@ const linkClass =
 		</a>
 
 		<article class="flex flex-col gap-6 sm:gap-8">
-			<!--
-				Both variants ship as data attributes. The site toggles a .dark
-				class and deliberately ignores the OS, so <picture> and Tailwind's
-				stock dark: variant both key off prefers-color-scheme and cannot
-				choose between them here.
-
-				`src` is the light variant so the markup is useful with no script at
-				all. utils/prepaint.ts rewrites it to the dark one before the first
-				paint - the inline head script runs before the body is parsed, so no
-				fetch of the wrong variant ever starts - and then keeps it in step
-				with the class for the rest of the session.
-
-				That last part cannot come from the toggle. The header toggle is a
-				React island and has no knowledge of this element; asking it to
-				notify would mean a second, competing source of theme truth. The
-				class on <html> is already the single source of truth, so the image
-				follows the class instead.
-			-->
 			<img
 				src={work.image.light}
 				data-light-src={work.image.light}
@@ -178,48 +162,48 @@ const linkClass =
 		</article>
 
 		{
-			(newer || older) && (
+			(prev || next) && (
 				<nav class="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-					{newer ? (
+					{prev ? (
 						<a
-							href={`/works/${newer.slug}`}
+							href={`/works/${prev.slug}`}
 							class="group flex flex-col gap-1 border border-subtle p-5 transition-colors duration-200 ease-linear hover:border-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 						>
 							<span class="font-heading text-xs text-muted">
 								<span data-lang="en">
-									{ui.works.detail.newer.en}
+									{ui.works.detail.prev.en}
 								</span>
 								<span data-lang="bn" lang="bn">
-									{ui.works.detail.newer.bn}
+									{ui.works.detail.prev.bn}
 								</span>
 							</span>
 							<span class="font-heading font-bold text-ink">
-								<span data-lang="en">{newer.title.en}</span>
+								<span data-lang="en">{prev.title.en}</span>
 								<span data-lang="bn" lang="bn">
-									{newer.title.bn}
+									{prev.title.bn}
 								</span>
 							</span>
 						</a>
 					) : (
 						<span />
 					)}
-					{older && (
+					{next && (
 						<a
-							href={`/works/${older.slug}`}
+							href={`/works/${next.slug}`}
 							class="group flex flex-col gap-1 border border-subtle p-5 text-right transition-colors duration-200 ease-linear hover:border-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 						>
 							<span class="font-heading text-xs text-muted">
 								<span data-lang="en">
-									{ui.works.detail.older.en}
+									{ui.works.detail.next.en}
 								</span>
 								<span data-lang="bn" lang="bn">
-									{ui.works.detail.older.bn}
+									{ui.works.detail.next.bn}
 								</span>
 							</span>
 							<span class="font-heading font-bold text-ink">
-								<span data-lang="en">{older.title.en}</span>
+								<span data-lang="en">{next.title.en}</span>
 								<span data-lang="bn" lang="bn">
-									{older.title.bn}
+									{next.title.bn}
 								</span>
 							</span>
 						</a>
