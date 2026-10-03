@@ -21,14 +21,23 @@ type Props = { entry: CollectionEntry<"writings"> };
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+// UTC is pinned, not incidental: `date` coerces to UTC midnight, so a formatter
+// left on the host zone renders the previous day anywhere west of UTC.
+const dateLabel = new Intl.DateTimeFormat("en-US", {
+	dateStyle: "long",
+	timeZone: "UTC",
+}).format(entry.data.date);
+
+// Post content is stored in one language, so both slots carry the same string.
+// base.astro reads .en and .bn off these props, so handing it a bare string
+// would not fail - it would quietly fall back to ui.meta.
+const heading = `${entry.data.title} | ${ui.hero.title.en}`;
 ---
 
 <Layout
-	title={{
-		en: `${entry.data.title.en} | ${ui.hero.title.en}`,
-		bn: `${entry.data.title.bn} | ${ui.hero.title.bn}`,
-	}}
-	description={entry.data.description}
+	title={{ en: heading, bn: heading }}
+	description={{ en: entry.data.description, bn: entry.data.description }}
 >
 	<Container id="writings" heading={ui.writings.title}>
 		<a
@@ -42,26 +51,20 @@ const { Content } = await render(entry);
 
 		<article class="flex flex-col gap-6 sm:gap-8">
 			<header class="flex flex-col gap-3">
-				<span class="font-heading text-xs text-muted">
-					<span data-lang="en">{entry.data.dateLabel.en}</span>
-					<span data-lang="bn" lang="bn">{entry.data.dateLabel.bn}</span>
+				<span lang="en" class="font-heading text-xs text-muted">
+					{dateLabel}
 				</span>
-				<h2 class="font-heading text-2xl sm:text-3xl font-bold text-ink">
-					<span data-lang="en">{entry.data.title.en}</span>
-					<span data-lang="bn" lang="bn">{entry.data.title.bn}</span>
+				<h2 lang="en" class="font-heading text-2xl sm:text-3xl font-bold text-ink">
+					{entry.data.title}
 				</h2>
-				<p class="text-sm sm:text-base leading-relaxed text-muted">
-					<span data-lang="en">{entry.data.description.en}</span>
-					<span data-lang="bn" lang="bn">{entry.data.description.bn}</span>
+				<p lang="en" class="text-sm sm:text-base leading-relaxed text-muted">
+					{entry.data.description}
 				</p>
-				<ul class="flex flex-wrap gap-2">
+				<ul lang="en" class="flex flex-wrap gap-2">
 					{
 						entry.data.tags.map((tag) => (
 							<li class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase">
-								<span data-lang="en">{tag.en}</span>
-								<span data-lang="bn" lang="bn">
-									{tag.bn}
-								</span>
+								{tag}
 							</li>
 						))
 					}
@@ -75,6 +78,7 @@ const { Content } = await render(entry);
 				there is a body that actually uses them.
 			*/}
 			<div
+				lang="en"
 				class="text-sm sm:text-base leading-relaxed text-muted [&>*+*]:mt-4 [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-ink [&_code]:font-heading [&_li]:ml-4 [&_ol]:list-decimal [&_ul]:list-disc"
 			>
 				<Content />

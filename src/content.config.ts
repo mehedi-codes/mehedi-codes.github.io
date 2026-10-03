@@ -8,28 +8,20 @@ const writings = defineCollection({
     // The sort key, held as a real Date so it can be compared. `getCollection`
     // hands entries back in filename order otherwise, which would silently
     // rearrange the index.
+    //
+    // This is also the only date in the schema. There used to be a dateLabel
+    // holding "September 19, 2026" beside it, but a stored display string can
+    // drift from the date it claims to render, so it is formatted from `date`
+    // at build time instead. Note that means the formatter must pin timeZone,
+    // because a bare YAML date coerces to UTC midnight and would render as the
+    // previous day anywhere west of UTC.
     date: z.coerce.date(),
-    // The two rendered forms, deliberately not the same field: they are display
-    // strings - "September 19, 2026" and its Bangla transliteration - and
-    // neither can be ordered.
-    dateLabel: z.object({
-      en: z.string(),
-      bn: z.string(),
-    }),
-    title: z.object({
-      en: z.string(),
-      bn: z.string(),
-    }),
-    description: z.object({
-      en: z.string(),
-      bn: z.string(),
-    }),
-    tags: z.array(
-      z.object({
-        en: z.string(),
-        bn: z.string(),
-      }),
-    ),
+    // Content is stored in one language, so these are plain strings. The
+    // interface chrome in ui.json stays bilingual; the two are not the same
+    // kind of thing and only the chrome needs a pair per string.
+    title: z.string(),
+    description: z.string(),
+    tags: z.array(z.string()),
     image: z.string(),
   }),
 });

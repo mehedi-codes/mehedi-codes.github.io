@@ -5,6 +5,13 @@ import { Image } from "astro:assets";
 type Props = { entry: CollectionEntry<"writings"> };
 
 const { entry } = Astro.props;
+
+// UTC is pinned, not incidental: `date` coerces to UTC midnight, so a formatter
+// left on the host zone renders the previous day anywhere west of UTC.
+const dateLabel = new Intl.DateTimeFormat("en-US", {
+	dateStyle: "long",
+	timeZone: "UTC",
+}).format(entry.data.date);
 ---
 
 <article
@@ -14,10 +21,7 @@ const { entry } = Astro.props;
 		href={`/writings/${entry.id}`}
 		class="block outline -outline-offset-2 outline-transparent transition-colors duration-200 ease-linear hover:outline-subtle focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ink"
 	>
-		<span class="sr-only">
-			<span data-lang="en">{entry.data.title.en}</span>
-			<span data-lang="bn" lang="bn">{entry.data.title.bn}</span>
-		</span>
+		<span class="sr-only">{entry.data.title}</span>
 		<div class="aspect-video sm:aspect-3/2">
 			<Image
 				src={entry.data.image}
@@ -30,31 +34,25 @@ const { entry } = Astro.props;
 		</div>
 	</a>
 	<div class="flex flex-1 flex-col gap-3 p-6">
-		<span class="font-heading text-xs text-muted">
-			<span data-lang="en">{entry.data.dateLabel.en}</span>
-			<span data-lang="bn" lang="bn">{entry.data.dateLabel.bn}</span>
+		<span lang="en" class="font-heading text-xs text-muted">
+			{dateLabel}
 		</span>
-		<h3 class="font-heading font-bold text-lg text-ink">
+		<h3 lang="en" class="font-heading font-bold text-lg text-ink">
 			<a
 				href={`/writings/${entry.id}`}
 				class="hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 			>
-				<span data-lang="en">{entry.data.title.en}</span>
-				<span data-lang="bn" lang="bn">{entry.data.title.bn}</span>
+				{entry.data.title}
 			</a>
 		</h3>
-		<p class="text-sm sm:text-base leading-relaxed text-muted">
-			<span data-lang="en">{entry.data.description.en}</span>
-			<span data-lang="bn" lang="bn">{entry.data.description.bn}</span>
+		<p lang="en" class="text-sm sm:text-base leading-relaxed text-muted">
+			{entry.data.description}
 		</p>
-		<ul class="mt-auto flex flex-wrap gap-2">
+		<ul lang="en" class="mt-auto flex flex-wrap gap-2">
 			{
 				entry.data.tags.map((tag) => (
 					<li class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase">
-						<span data-lang="en">{tag.en}</span>
-						<span data-lang="bn" lang="bn">
-							{tag.bn}
-						</span>
+						{tag}
 					</li>
 				))
 			}
