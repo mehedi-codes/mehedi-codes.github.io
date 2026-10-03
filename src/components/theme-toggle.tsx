@@ -7,6 +7,7 @@ export const ThemeToggle = () => {
     animationType: ThemeAnimationType.QR_SCAN,
     duration: 500,
   });
+
   return (
     <button ref={ref} onClick={toggleSwitchTheme} type="button" className="btn-fill w-16">
       <span>
