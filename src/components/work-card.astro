@@ -1,72 +1,49 @@
 ---
 import ui from "@/data/ui.json";
 import works from "@/data/works.json";
-import { darkVariant } from "@/utils/dark-variant";
-import { getImage, Image } from "astro:assets";
+import { Image } from "astro:assets";
 
-/** Inferred from the data, so the two cannot drift apart. */
-type WorkEntry = (typeof works)[number];
+type Works = typeof works;
+export type Work = Works[number];
+type Props = { index: number; work: Work };
 
-type Props = { index: number; entry: WorkEntry };
-
-const { index, entry } = Astro.props;
+const { index, work } = Astro.props;
 const number = String(index).padStart(2, "0");
-
-// Both variants are resolved here, not just the dark one. getImage is what
-// makes Astro fetch each card and emit a hashed copy into _astro/, so the
-// runtime src and both data attributes are all same-origin static paths. The
-// initial src is already static via <Image>, but a dark-mode visitor toggling
-// back to light reads data-light-src — if that held the remote URL, the one
-// round trip that skips the static copy would be the only one to hotlink.
-// Same transform props as <Image> below, so it hashes to the same filename.
-const [{ src: lightSrc }, { src: darkSrc }] = await Promise.all([
-	getImage({ src: entry.image, width: 1280, height: 640 }),
-	getImage({ src: darkVariant(entry.image), width: 1280, height: 640 }),
-]);
 ---
 
 <article
 	class="flex flex-col border border-subtle hover:border-muted transition-colors"
 >
 	<a
-		href={`/works/${entry.slug}`}
+		href={`/works/${work.slug}`}
 		class="block outline -outline-offset-2 outline-transparent transition-colors duration-200 ease-linear hover:outline-subtle focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ink"
 	>
 		<span class="sr-only">
-			<span data-lang="en">{entry.title.en}</span>
-			<span data-lang="bn" lang="bn">{entry.title.bn}</span>
+			<span data-lang="en">{work.title.en}</span>
+			<span data-lang="bn" lang="bn">{work.title.bn}</span>
 		</span>
-		<div class="aspect-2/1">
-			<Image
-				src={entry.image}
-				alt=""
-				width={1280}
-				height={640}
-				loading="lazy"
-				data-light-src={lightSrc}
-				data-dark-src={darkSrc}
-				class="h-full w-full object-cover"
-			/>
+		<div class="aspect-2/1 flex-center bg-paper h-48">
+			<Image src={work.logo} alt="" width={72} height={72} />
 		</div>
 	</a>
 	<div class="flex flex-1 flex-col gap-4 p-6">
 		<span class="font-heading text-sm text-muted">{number}</span>
 		<h3 class="font-heading font-bold text-lg text-ink">
 			<a
-				href={`/works/${entry.slug}`}
+				href={`/works/${work.slug}`}
 				class="hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 			>
-				<span data-lang="en">{entry.title.en}</span>
-				<span data-lang="bn" lang="bn">{entry.title.bn}</span>
+				<span data-lang="en">{work.title.en}</span>
+				<span data-lang="bn" lang="bn">{work.title.bn}</span>
 			</a>
 		</h3>
 		<p class="text-sm sm:text-base leading-relaxed text-muted">
-			<span data-lang="en">{entry.description.en}</span>
-			<span data-lang="bn" lang="bn">{entry.description.bn}</span>
+			<span data-lang="en">{work.description.en}</span>
+			<span data-lang="bn" lang="bn">{work.description.bn}</span>
 		</p>
 		<ul class="flex flex-wrap gap-2">
 			{
-				entry.tags.map((tag) => (
+				work.tags.map((tag) => (
 					<li class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase">
 						<span data-lang="en">{tag.en}</span>
 						<span data-lang="bn" lang="bn">
@@ -79,7 +56,7 @@ const [{ src: lightSrc }, { src: darkSrc }] = await Promise.all([
 		<hr class="mt-auto border-subtle" />
 		<footer class="flex flex-wrap gap-2.5">
 			<a
-				href={entry.live}
+				href={work.live}
 				target="_blank"
 				rel="noopener"
 				class="flex-1 flex items-center justify-center gap-1.5 border border-muted px-3 py-1.5 text-xs transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
@@ -100,11 +77,10 @@ const [{ src: lightSrc }, { src: darkSrc }] = await Promise.all([
 					<path d="M2 12h20"></path>
 				</svg>
 				<span data-lang="en">{ui.works.card.live.en}</span>
-				<span data-lang="bn" lang="bn">{ui.works.card.live.bn}</span
-				>
+				<span data-lang="bn" lang="bn">{ui.works.card.live.bn}</span>
 			</a>
 			<a
-				href={entry.source}
+				href={work.source}
 				target="_blank"
 				rel="noopener"
 				class="flex-1 flex items-center justify-center gap-1.5 border border-muted px-3 py-1.5 text-xs transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
@@ -120,9 +96,7 @@ const [{ src: lightSrc }, { src: darkSrc }] = await Promise.all([
 					></path>
 				</svg>
 				<span data-lang="en">{ui.works.card.source.en}</span>
-				<span data-lang="bn" lang="bn"
-					>{ui.works.card.source.bn}</span
-				>
+				<span data-lang="bn" lang="bn">{ui.works.card.source.bn}</span>
 			</a>
 		</footer>
 	</div>

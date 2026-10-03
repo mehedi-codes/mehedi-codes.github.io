@@ -3,33 +3,26 @@ import Layout from "@/layouts/base.astro";
 import Container from "@/components/helpers/container.astro";
 import ui from "@/data/ui.json";
 import works from "@/data/works.json";
-import { darkVariant } from "@/utils/dark-variant";
-import { getImage, Image } from "astro:assets";
-
-/** Inferred from the data, so the two cannot drift apart. */
-type WorkEntry = (typeof works)[number];
+import type { Work } from "@/components/work-card.astro";
 
 export const getStaticPaths = () => {
-	return works.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
+	return works.map((work) => ({
+		params: { slug: work.slug },
+		props: { work },
 	}));
 };
 
-type Props = { entry: WorkEntry };
+type Props = { work: Work };
+const { work } = Astro.props;
 
-const { entry } = Astro.props;
-const index = works.findIndex((work) => work.slug === entry.slug);
+// The parameter is named `w`, not `work`, on purpose: shadowing the prop would
+// make this `w.slug === w.slug`, which is true for the first entry every time
+// and pins every page's "older" link to the same project.
+const index = works.findIndex((w) => w.slug === work.slug);
+
 const newer = index > 0 ? works[index - 1] : undefined;
-const older = index < works.length - 1 ? works[index + 1] : undefined;
 
-// See src/components/work-card.astro — both variants need resolving here so
-// Astro emits each as a static asset, including the one only a data attribute
-// references.
-const [{ src: lightSrc }, { src: darkSrc }] = await Promise.all([
-	getImage({ src: entry.image, width: 1280, height: 640 }),
-	getImage({ src: darkVariant(entry.image), width: 1280, height: 640 }),
-]);
+const older = index < works.length - 1 ? works[index + 1] : undefined;
 
 // Shared by the two footer buttons only — prev/next has its own classes. flex-1
 // splits them 50/50; the footer caps the group so they don't stretch to 600px
@@ -40,10 +33,10 @@ const linkClass =
 
 <Layout
 	title={{
-		en: `${entry.title.en} | Mehedi Hasan`,
-		bn: `${entry.title.bn} | মেহেদি হাসান`,
+		en: `${work.title.en} | Mehedi Hasan`,
+		bn: `${work.title.bn} | মেহেদি হাসান`,
 	}}
-	description={entry.description}
+	description={work.description}
 >
 	<Container id="works" heading={ui.works.title}>
 		<a
@@ -56,31 +49,47 @@ const linkClass =
 		</a>
 
 		<article class="flex flex-col gap-6 sm:gap-8">
-			<div class="aspect-2/1 border border-subtle">
-				<Image
-					src={entry.image}
-					alt=""
-					width={1280}
-					height={640}
-					loading="eager"
-					data-light-src={lightSrc}
-					data-dark-src={darkSrc}
-					class="h-full w-full object-cover"
-				/>
-			</div>
+			<!--
+				Both variants ship as data attributes. The site toggles a .dark
+				class and deliberately ignores the OS, so <picture> and Tailwind's
+				stock dark: variant both key off prefers-color-scheme and cannot
+				choose between them here.
 
+				`src` is the light variant so the markup is useful with no script at
+				all. utils/prepaint.ts rewrites it to the dark one before the first
+				paint - the inline head script runs before the body is parsed, so no
+				fetch of the wrong variant ever starts - and then keeps it in step
+				with the class for the rest of the session.
+
+				That last part cannot come from the toggle. The header toggle is a
+				React island and has no knowledge of this element; asking it to
+				notify would mean a second, competing source of theme truth. The
+				class on <html> is already the single source of truth, so the image
+				follows the class instead.
+			-->
+			<img
+				src={work.image.light}
+				data-light-src={work.image.light}
+				data-dark-src={work.image.dark}
+				alt=""
+				width={1280}
+				height={640}
+				loading="eager"
+				decoding="async"
+				class="aspect-2/1 w-full border border-subtle object-cover"
+			/>
 			<header class="flex flex-col gap-3">
 				<h2 class="font-heading text-xl sm:text-2xl font-bold text-ink">
-					<span data-lang="en">{entry.title.en}</span>
-					<span data-lang="bn" lang="bn">{entry.title.bn}</span>
+					<span data-lang="en">{work.title.en}</span>
+					<span data-lang="bn" lang="bn">{work.title.bn}</span>
 				</h2>
 				<p class="text-sm sm:text-base leading-relaxed text-muted">
-					<span data-lang="en">{entry.description.en}</span>
-					<span data-lang="bn" lang="bn">{entry.description.bn}</span>
+					<span data-lang="en">{work.description.en}</span>
+					<span data-lang="bn" lang="bn">{work.description.bn}</span>
 				</p>
 				<ul class="flex flex-wrap gap-2">
 					{
-						entry.tags.map((tag) => (
+						work.tags.map((tag) => (
 							<li class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase">
 								<span data-lang="en">{tag.en}</span>
 								<span data-lang="bn" lang="bn">
@@ -96,20 +105,18 @@ const linkClass =
 				<h3
 					class="font-heading text-xs sm:text-sm uppercase tracking-wider text-muted before:content-['//'] before:mr-1.5"
 				>
-					<span data-lang="en"
-						>{ui.works.detail.highlights.en}</span
-					>
+					<span data-lang="en">{ui.works.detail.highlights.en}</span>
 					<span data-lang="bn" lang="bn">
 						{ui.works.detail.highlights.bn}
 					</span>
 				</h3>
 				<ul class="list-none space-y-1.5">
 					{
-						entry.highlights.en.map((text, i) => (
+						work.highlights.en.map((text, i) => (
 							<li class="relative pl-4 text-sm sm:text-base leading-relaxed text-muted before:absolute before:left-0 before:top-[0.7em] before:size-1 before:rounded-full before:bg-subtle">
 								<span data-lang="en">{text}</span>
 								<span data-lang="bn" lang="bn">
-									{entry.highlights.bn[i]}
+									{work.highlights.bn[i]}
 								</span>
 							</li>
 						))
@@ -121,7 +128,7 @@ const linkClass =
 
 			<footer class="flex flex-wrap gap-2.5 max-w-sm">
 				<a
-					href={entry.live}
+					href={work.live}
 					target="_blank"
 					rel="noopener"
 					class={linkClass}
@@ -143,12 +150,11 @@ const linkClass =
 						<path d="M2 12h20"></path>
 					</svg>
 					<span data-lang="en">{ui.works.card.live.en}</span>
-					<span data-lang="bn" lang="bn"
-						>{ui.works.card.live.bn}</span
+					<span data-lang="bn" lang="bn">{ui.works.card.live.bn}</span
 					>
 				</a>
 				<a
-					href={entry.source}
+					href={work.source}
 					target="_blank"
 					rel="noopener"
 					class={linkClass}

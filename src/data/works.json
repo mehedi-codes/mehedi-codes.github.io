@@ -49,7 +49,12 @@
         "oxfmt-এর পাশাপাশি oxlint-tsgolint দিয়ে টাইপ-সচেতন লিন্টিং সাজিয়েছি, ফলে ফরম্যাটিং আর টাইপ নিয়ম একই সাথে চলে"
       ]
     },
-    "image": "https://socialify.git.ci/mehedi-codes/files/image?description=1&font=JetBrains+Mono&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Ffiles%2Fmain%2Fpublic%2Ffavicon.svg&name=1&pattern=Solid&theme=Light",
+    "image": {
+      "light": "https://socialify.git.ci/mehedi-codes/files/image?description=1&font=JetBrains+Mono&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Ffiles%2Fmain%2Fpublic%2Ffavicon.svg&name=1&pattern=Solid&theme=Light",
+      "dark": "https://socialify.git.ci/mehedi-codes/files/image?description=1&font=JetBrains+Mono&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Ffiles%2Fmain%2Fpublic%2Ffavicon.svg&name=1&pattern=Solid&theme=Dark"
+    },
+    "logo": "https://raw.githubusercontent.com/mehedi-codes/files/main/public/favicon.svg",
+    "featured": true,
     "live": "https://files.mehedi.engineer",
     "source": "https://github.com/mehedi-codes/files"
   },
@@ -107,7 +112,12 @@
         "Pino ও hono-pino দিয়ে রিকোয়েস্ট লগিং সাজিয়েছি — প্রোডাকশনে BetterStack-এ পাঠাই, ডেভেলপমেন্টে মানুষ-পড়ার উপযোগী আউটপুট দিই — CORS, সিকিউর হেডার, রিকোয়েস্ট আইডি ও রেসপন্স কম্প্রেশনসহ মিডলওয়্যার স্ট্যাকের পেছনে"
       ]
     },
-    "image": "https://socialify.git.ci/mehedi-codes/tasks/image?description=1&font=JetBrains+Mono&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Ftasks%2Fmain%2Fpublic%2Flogo.svg&name=1&pattern=Solid&theme=Light",
+    "image": {
+      "light": "https://socialify.git.ci/mehedi-codes/tasks/image?description=1&font=JetBrains+Mono&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Ftasks%2Fmain%2Fpublic%2Flogo.svg&name=1&pattern=Solid&theme=Light",
+      "dark": "https://socialify.git.ci/mehedi-codes/tasks/image?description=1&font=JetBrains+Mono&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Ftasks%2Fmain%2Fpublic%2Flogo.svg&name=1&pattern=Solid&theme=Dark"
+    },
+    "logo": "https://raw.githubusercontent.com/mehedi-codes/tasks/main/public/logo.svg",
+    "featured": true,
     "live": "https://tasks.mehedi.engineer/api/v1/docs",
     "source": "https://github.com/mehedi-codes/tasks"
   },
@@ -163,7 +173,12 @@
         "ইন্টারফেসটি শ্যাডসিএন/ইউআইয়ের উপর বানিয়েছি — ফর্ম স্টেটের জন্য ট্যানস্ট্যাক ফর্ম, টোস্টের জন্য সনার আর কালার স্কিমের জন্য next-themes"
       ]
     },
-    "image": "https://socialify.git.ci/mehedi-codes/uddyog/image?description=1&font=JetBrains+Mono&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Fuddyog%2Fmain%2Fpublic%2Flogo192.png&name=1&pattern=Solid&theme=Light",
+    "image": {
+      "light": "https://socialify.git.ci/mehedi-codes/uddyog/image?description=1&font=JetBrains+Mono&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Fuddyog%2Fmain%2Fpublic%2Flogo192.png&name=1&pattern=Solid&theme=Light",
+      "dark": "https://socialify.git.ci/mehedi-codes/uddyog/image?description=1&font=JetBrains+Mono&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Fuddyog%2Fmain%2Fpublic%2Flogo192.png&name=1&pattern=Solid&theme=Dark"
+    },
+    "logo": "https://raw.githubusercontent.com/mehedi-codes/uddyog/main/public/logo192.png",
+    "featured": true,
     "live": "https://uddyog.mehedi.engineer",
     "source": "https://github.com/mehedi-codes/uddyog"
   },
@@ -217,7 +232,12 @@
         "একটি বান সিআই ওয়ার্কফ্লো যোগ করেছি, যা লকফাইল থেকে ডিপেন্ডেন্সি ইনস্টল করে পুশ আর পুল রিকোয়েস্টে লিন্ট ও বিল্ড চালায়"
       ]
     },
-    "image": "https://socialify.git.ci/mehedi-codes/humin/image?description=1&font=KoHo&language=1&name=1&pattern=Solid&theme=Light",
+    "image": {
+      "light": "https://socialify.git.ci/mehedi-codes/humin/image?description=1&font=KoHo&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Fhumin%2Fmain%2Fpublic%2Ficon.svg&name=1&pattern=Solid&theme=Light",
+      "dark": "https://socialify.git.ci/mehedi-codes/humin/image?description=1&font=KoHo&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fmehedi-codes%2Fhumin%2Fmain%2Fpublic%2Ficon.svg&name=1&pattern=Solid&theme=Dark"
+    },
+    "logo": "https://raw.githubusercontent.com/mehedi-codes/humin/main/public/icon.svg",
+    "featured": false,
     "live": "https://humin.vercel.app",
     "source": "https://github.com/mehedi-codes/humin"
   }

@@ -8,7 +8,8 @@
 type Lang = "en" | "bn";
 
 /**
- * Applies the stored theme and language before the first paint.
+ * Applies the stored theme and language before the first paint, then keeps
+ * theme-dependent images in step with the theme for the rest of the session.
  *
  * This runs as an inlined classic script, not as a module, because a module
  * import is deferred and would land after the first paint. That timing is the
@@ -46,12 +47,33 @@ const prePaint = () => {
     // .dark class and ignores the OS, so <picture> and Tailwind's stock
     // dark: variant both key off prefers-color-scheme and cannot choose
     // between them here.
-    for (const img of document.querySelectorAll<HTMLImageElement>("img[data-dark-src]")) {
-      const next = dark ? img.dataset.darkSrc : img.dataset.lightSrc;
-      if (next && img.getAttribute("src") !== next) {
-        img.setAttribute("src", next);
+    const applyImageVariants = (isDark: boolean) => {
+      for (const img of document.querySelectorAll<HTMLImageElement>("img[data-dark-src]")) {
+        const next = isDark ? img.dataset.darkSrc : img.dataset.lightSrc;
+        if (next && img.getAttribute("src") !== next) {
+          img.setAttribute("src", next);
+        }
       }
-    }
+    };
+
+    applyImageVariants(dark);
+
+    // Keep them in step for the rest of the session. The header toggle is a
+    // React island with no knowledge of these attributes, so without this it
+    // would flip the theme around an image that never changes.
+    //
+    // The class is observed rather than the toggle because the class is
+    // already the single source of truth for the theme - prepaint writes it
+    // below, the toggle writes it, and Tailwind's dark: variant reads it.
+    // Watching it means the images follow every writer for free, including
+    // the OS-level and reduced-motion paths the toggle takes.
+    //
+    // attributeFilter is what keeps this from looping: this only writes src,
+    // so a class mutation is the sole trigger. Safe to run on every page; on
+    // the eight that carry no variant image the loop matches nothing.
+    new MutationObserver(() => {
+      applyImageVariants(document.documentElement.classList.contains("dark"));
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
     const lang: Lang = localStorage.getItem("language") === "bn" ? "bn" : "en";
     document.documentElement.lang = lang;
