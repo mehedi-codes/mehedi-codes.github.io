@@ -11,3 +11,12 @@ html[lang="bn"] .font-heading,
 html[lang="bn"] .font-body {
   font-family: var(--hind-siliguri);
 }
+
+/* Project and writing content is stored in one language and marked with lang,
+   so it keeps its own face when the interface is Bangla. Without this the rule
+   above would render English content in Hind Siliguri. Specificity here is
+   (0,3,1) against the (0,2,1) above, so source order does not matter. */
+html[lang="bn"] [lang="en"].font-heading,
+html[lang="bn"] [lang="en"].font-body {
+  font-family: var(--inter);
+}

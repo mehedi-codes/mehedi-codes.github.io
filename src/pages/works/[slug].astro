@@ -31,14 +31,16 @@ const next = works[index + 1];
 
 const linkClass =
 	"flex-1 flex items-center justify-center gap-1.5 border border-muted px-3 py-1.5 text-xs transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink";
+
+// Project content is stored in one language, so both slots carry the same
+// string. base.astro reads .en and .bn off these props, so handing it a bare
+// string would not fail - it would quietly fall back to ui.meta.
+const heading = `${work.title} | ${ui.hero.title.en}`;
 ---
 
 <Layout
-	title={{
-		en: `${work.title.en} | ${ui.hero.title.en}`,
-		bn: `${work.title.bn} | ${ui.hero.title.bn}`,
-	}}
-	description={work.description}
+	title={{ en: heading, bn: heading }}
+	description={{ en: work.description, bn: work.description }}
 >
 	<Container id="works" heading={ui.works.title}>
 		<a
@@ -63,22 +65,17 @@ const linkClass =
 				class="aspect-2/1 w-full border border-subtle object-cover"
 			/>
 			<header class="flex flex-col gap-3">
-				<h2 class="font-heading text-xl sm:text-2xl font-bold text-ink">
-					<span data-lang="en">{work.title.en}</span>
-					<span data-lang="bn" lang="bn">{work.title.bn}</span>
+				<h2 lang="en" class="font-heading text-xl sm:text-2xl font-bold text-ink">
+					{work.title}
 				</h2>
-				<p class="text-sm sm:text-base leading-relaxed text-muted">
-					<span data-lang="en">{work.description.en}</span>
-					<span data-lang="bn" lang="bn">{work.description.bn}</span>
+				<p lang="en" class="text-sm sm:text-base leading-relaxed text-muted">
+					{work.description}
 				</p>
-				<ul class="flex flex-wrap gap-2">
+				<ul lang="en" class="flex flex-wrap gap-2">
 					{
 						work.tags.map((tag) => (
 							<li class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase">
-								<span data-lang="en">{tag.en}</span>
-								<span data-lang="bn" lang="bn">
-									{tag.bn}
-								</span>
+								{tag}
 							</li>
 						))
 					}
@@ -94,14 +91,11 @@ const linkClass =
 						{ui.works.detail.highlights.bn}
 					</span>
 				</h3>
-				<ul class="list-none space-y-1.5">
+				<ul lang="en" class="list-none space-y-1.5">
 					{
-						work.highlights.en.map((text, i) => (
+						work.highlights.map((text) => (
 							<li class="relative pl-4 text-sm sm:text-base leading-relaxed text-muted before:absolute before:left-0 before:top-[0.7em] before:size-1 before:rounded-full before:bg-subtle">
-								<span data-lang="en">{text}</span>
-								<span data-lang="bn" lang="bn">
-									{work.highlights.bn[i]}
-								</span>
+								{text}
 							</li>
 						))
 					}
@@ -177,11 +171,8 @@ const linkClass =
 									{ui.works.detail.prev.bn}
 								</span>
 							</span>
-							<span class="font-heading font-bold text-ink">
-								<span data-lang="en">{prev.title.en}</span>
-								<span data-lang="bn" lang="bn">
-									{prev.title.bn}
-								</span>
+							<span lang="en" class="font-heading font-bold text-ink">
+								{prev.title}
 							</span>
 						</a>
 					) : (
@@ -200,11 +191,8 @@ const linkClass =
 									{ui.works.detail.next.bn}
 								</span>
 							</span>
-							<span class="font-heading font-bold text-ink">
-								<span data-lang="en">{next.title.en}</span>
-								<span data-lang="bn" lang="bn">
-									{next.title.bn}
-								</span>
+							<span lang="en" class="font-heading font-bold text-ink">
+								{next.title}
 							</span>
 						</a>
 					)}

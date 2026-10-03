@@ -18,37 +18,29 @@ const number = String(index).padStart(2, "0");
 		href={`/works/${work.slug}`}
 		class="block outline -outline-offset-2 outline-transparent transition-colors duration-200 ease-linear hover:outline-subtle focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ink"
 	>
-		<span class="sr-only">
-			<span data-lang="en">{work.title.en}</span>
-			<span data-lang="bn" lang="bn">{work.title.bn}</span>
-		</span>
+		<span class="sr-only">{work.title}</span>
 		<div class="aspect-2/1 flex-center bg-paper h-48">
 			<Image src={work.logo} alt="" width={72} height={72} />
 		</div>
 	</a>
 	<div class="flex flex-1 flex-col gap-4 p-6">
 		<span class="font-heading text-sm text-muted">{number}</span>
-		<h3 class="font-heading font-bold text-lg text-ink">
+		<h3 lang="en" class="font-heading font-bold text-lg text-ink">
 			<a
 				href={`/works/${work.slug}`}
 				class="hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 			>
-				<span data-lang="en">{work.title.en}</span>
-				<span data-lang="bn" lang="bn">{work.title.bn}</span>
+				{work.title}
 			</a>
 		</h3>
-		<p class="text-sm sm:text-base leading-relaxed text-muted">
-			<span data-lang="en">{work.description.en}</span>
-			<span data-lang="bn" lang="bn">{work.description.bn}</span>
+		<p lang="en" class="text-sm sm:text-base leading-relaxed text-muted">
+			{work.description}
 		</p>
-		<ul class="flex flex-wrap gap-2">
+		<ul lang="en" class="flex flex-wrap gap-2">
 			{
 				work.tags.map((tag) => (
 					<li class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase">
-						<span data-lang="en">{tag.en}</span>
-						<span data-lang="bn" lang="bn">
-							{tag.bn}
-						</span>
+						{tag}
 					</li>
 				))
 			}
