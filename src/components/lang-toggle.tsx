@@ -1,15 +1,19 @@
 import ui from "@/data/ui.json";
-import { applyLanguage, type Lang } from "@/utils/head-language";
 
 export const LangToggle = () => {
   const toggle = (): void => {
     const currentLang = document.documentElement.lang === "bn" ? "bn" : "en";
-    const nextLang: Lang = currentLang === "bn" ? "en" : "bn";
-    // The write stays here rather than inside applyLanguage, which also runs on
-    // every navigation to re-read the stored choice and so must not be what
-    // decides it.
+    const nextLang = currentLang === "bn" ? "en" : "bn";
     localStorage.setItem("language", nextLang);
-    applyLanguage(nextLang);
+    document.documentElement.lang = nextLang;
+    const title = document.querySelector<HTMLTitleElement>("title");
+    if (title) {
+      title.textContent = title.dataset[nextLang === "bn" ? "titleBn" : "titleEn"] ?? "";
+    }
+    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    if (description) {
+      description.setAttribute("content", description.dataset[nextLang === "bn" ? "descBn" : "descEn"] ?? "");
+    }
   };
 
   return (
