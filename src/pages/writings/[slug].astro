@@ -1,0 +1,84 @@
+---
+import {
+	getCollection,
+	render,
+	type CollectionEntry,
+} from "astro:content";
+import Layout from "@/layouts/base.astro";
+import Container from "@/components/helpers/container.astro";
+import ui from "@/data/ui.json";
+
+export const getStaticPaths = async () => {
+	const entries = await getCollection("writings");
+	return entries
+		// Glob order is alphabetical by filename, so post-one, post-two,
+		// post-three come back as one, three, two.
+		.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+		.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+};
+
+type Props = { entry: CollectionEntry<"writings"> };
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout
+	title={{
+		en: `${entry.data.title.en} | ${ui.hero.title.en}`,
+		bn: `${entry.data.title.bn} | ${ui.hero.title.bn}`,
+	}}
+	description={entry.data.description}
+>
+	<Container id="writings" heading={ui.writings.title}>
+		<a
+			href="/writings"
+			slot="action"
+			class="border border-muted px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm transition-colors duration-200 ease-linear hover:border-ink hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+		>
+			<span data-lang="en">{ui.writings.back.en}</span>
+			<span data-lang="bn" lang="bn">{ui.writings.back.bn}</span>
+		</a>
+
+		<article class="flex flex-col gap-6 sm:gap-8">
+			<header class="flex flex-col gap-3">
+				<span class="font-heading text-xs text-muted">
+					<span data-lang="en">{entry.data.dateLabel.en}</span>
+					<span data-lang="bn" lang="bn">{entry.data.dateLabel.bn}</span>
+				</span>
+				<h2 class="font-heading text-2xl sm:text-3xl font-bold text-ink">
+					<span data-lang="en">{entry.data.title.en}</span>
+					<span data-lang="bn" lang="bn">{entry.data.title.bn}</span>
+				</h2>
+				<p class="text-sm sm:text-base leading-relaxed text-muted">
+					<span data-lang="en">{entry.data.description.en}</span>
+					<span data-lang="bn" lang="bn">{entry.data.description.bn}</span>
+				</p>
+				<ul class="flex flex-wrap gap-2">
+					{
+						entry.data.tags.map((tag) => (
+							<li class="border border-muted px-2 py-0.5 font-heading text-xs text-muted lowercase">
+								<span data-lang="en">{tag.en}</span>
+								<span data-lang="bn" lang="bn">
+									{tag.bn}
+								</span>
+							</li>
+						))
+					}
+				</ul>
+			</header>
+
+			{/*
+				No @tailwindcss/typography in the project, so the body is styled
+				with descendant variants. Only what blocks need to read correctly
+				is covered; heading, code block and table typography waits until
+				there is a body that actually uses them.
+			*/}
+			<div
+				class="text-sm sm:text-base leading-relaxed text-muted [&>*+*]:mt-4 [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-ink [&_code]:font-heading [&_li]:ml-4 [&_ol]:list-decimal [&_ul]:list-disc"
+			>
+				<Content />
+			</div>
+		</article>
+	</Container>
+</Layout>

@@ -1,9 +1,15 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@/layouts/base.astro";
 import Container from "@/components/helpers/container.astro";
 import WritingCard from "@/components/writing-card.astro";
-import writings from "@/data/writings.json";
 import ui from "@/data/ui.json";
+
+// Glob order is alphabetical by filename, so post-one, post-two, post-three
+// come back as one, three, two. Sort newest first instead of trusting it.
+const writings = (await getCollection("writings")).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
 <Layout title={ui.writings.meta.title}>
